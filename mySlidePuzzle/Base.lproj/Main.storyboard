@@ -27,7 +27,7 @@
                                 <rect key="frame" x="184" y="353" width="47" height="30"/>
                                 <state key="normal" title="START"/>
                                 <connections>
-                                    <segue destination="cWq-1q-mkV" kind="show" id="JQg-Ds-lqA"/>
+                                    <action selector="onTapStartBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BhF-SE-64u"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -49,7 +49,7 @@
         <!--Game View Controller-->
         <scene sceneID="fPL-xa-VA3">
             <objects>
-                <viewController id="cWq-1q-mkV" customClass="GameViewController" customModule="mySlidePuzzle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameView" id="cWq-1q-mkV" customClass="GameViewController" customModule="mySlidePuzzle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kiW-Jk-nxN"/>
                         <viewControllerLayoutGuide type="bottom" id="kNx-X7-PG8"/>
