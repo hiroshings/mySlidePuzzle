@@ -58,23 +58,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rXw-Mr-zXg">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6r-Id-j7m">
                                 <rect key="frame" x="57" y="218" width="300" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="T7V-Wl-Bxk"/>
-                                    <constraint firstAttribute="width" constant="300" id="aId-Vu-b9G"/>
+                                    <constraint firstAttribute="width" constant="300" id="Fir-p1-31A"/>
+                                    <constraint firstAttribute="height" constant="300" id="Jdt-B5-TuK"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rXw-Mr-zXg" firstAttribute="centerY" secondItem="WwR-cO-Egv" secondAttribute="centerY" id="AHX-B2-z3W"/>
-                            <constraint firstItem="rXw-Mr-zXg" firstAttribute="centerX" secondItem="WwR-cO-Egv" secondAttribute="centerX" id="B3L-zt-3nO"/>
+                            <constraint firstItem="y6r-Id-j7m" firstAttribute="centerX" secondItem="WwR-cO-Egv" secondAttribute="centerX" id="W0O-bq-rHO"/>
+                            <constraint firstItem="y6r-Id-j7m" firstAttribute="centerY" secondItem="WwR-cO-Egv" secondAttribute="centerY" id="cBZ-nW-ep8"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="baseImage" destination="rXw-Mr-zXg" id="ufY-6h-4KK"/>
+                        <outlet property="gameStageView" destination="y6r-Id-j7m" id="c0S-sf-IOR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sig-BC-R8N" userLabel="First Responder" sceneMemberID="firstResponder"/>

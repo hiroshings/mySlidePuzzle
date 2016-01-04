@@ -44,6 +44,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // イメージ表示
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         baseImage.image = image
+        baseImage.frame = CGRectMake(0, 0, AppConst.boardWidth, AppConst.boardHeight)
         
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.baseImage = baseImage

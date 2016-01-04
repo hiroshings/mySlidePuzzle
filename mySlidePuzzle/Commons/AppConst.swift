@@ -20,13 +20,14 @@ class AppConst: UIView {
     // MARK: - puzzle -
     ----------------------*/
     // bg
-    static let bgColor:UIColor = UIColor.rgb(42, g: 55, b: 79)
+    static let bgColor: UIColor = UIColor.rgb(42, g: 55, b: 79)
     
     // frame
-    static let xFrame:CGFloat = 300.0 //パズルの横幅
-    static let yFrame:CGFloat = 300.0 //パズルの縦幅
+    static let boardWidth: CGFloat = 300.0 //パズルの横幅
+    static let boardHeight: CGFloat = 300.0 //パズルの縦幅
     
     // piece
-    static let pieceSize:CGFloat = 100.0 //1ピースのサイズ
-    static let maxPieces:Int = 9 //ピースの最大数
+    static let pieceSize: CGFloat = 100.0 //1ピースのサイズ
+    static let maxPieces: Int = 9 //ピースの最大数
+    static let pieceColumn: Int = 3 //ピースの1列
 }
