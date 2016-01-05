@@ -1,0 +1,247 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "AppConst"
+provides-nominal:
+- "C13mySlidePuzzle8AppConst"
+provides-member:
+- ["C13mySlidePuzzle8AppConst", ""]
+provides-dynamic-lookup:
+- "maxPieces"
+- "pieceColumn"
+- "pieceSize"
+- "bgColor"
+- "boardWidth"
+- "boardHeight"
+depends-top-level:
+- "UIView"
+- "UIColor"
+- "Int"
+- "AppConst"
+- "CGFloat"
+depends-member:
+- ["PSs9AnyObject", "UIColor"]
+- ["PSs9AnyObject", "bgColor"]
+- ["PSs9AnyObject", "boardHeight"]
+- ["PSs9AnyObject", "boardWidth"]
+- ["PSs9AnyObject", "init"]
+- ["PSs9AnyObject", "maxPieces"]
+- ["PSs9AnyObject", "pieceColumn"]
+- ["PSs9AnyObject", "pieceSize"]
+- ["PSs9AnyObject", "rgb"]
+- ["PSs9AnyObject", ""]
+- ["C13mySlidePuzzle8AppConst", "CGFloat"]
+- ["C13mySlidePuzzle8AppConst", "Int"]
+- ["C13mySlidePuzzle8AppConst", "UIColor"]
+- ["C13mySlidePuzzle8AppConst", "bgColor"]
+- ["C13mySlidePuzzle8AppConst", "boardHeight"]
+- ["C13mySlidePuzzle8AppConst", "boardWidth"]
+- ["C13mySlidePuzzle8AppConst", "deinit"]
+- ["C13mySlidePuzzle8AppConst", "init"]
+- ["C13mySlidePuzzle8AppConst", "maxPieces"]
+- ["C13mySlidePuzzle8AppConst", "pieceColumn"]
+- ["C13mySlidePuzzle8AppConst", "pieceSize"]
+- ["V12CoreGraphics7CGFloat", "deinit"]
+- ["PSs11CVarArgType", "UIColor"]
+- ["PSs11CVarArgType", "bgColor"]
+- ["PSs11CVarArgType", "boardHeight"]
+- ["PSs11CVarArgType", "boardWidth"]
+- ["PSs11CVarArgType", "init"]
+- ["PSs11CVarArgType", "maxPieces"]
+- ["PSs11CVarArgType", "pieceColumn"]
+- ["PSs11CVarArgType", "pieceSize"]
+- ["PSs11CVarArgType", "rgb"]
+- ["PSs11CVarArgType", ""]
+- ["PSs23CustomStringConvertible", "UIColor"]
+- ["PSs23CustomStringConvertible", "bgColor"]
+- ["PSs23CustomStringConvertible", "boardHeight"]
+- ["PSs23CustomStringConvertible", "boardWidth"]
+- ["PSs23CustomStringConvertible", "init"]
+- ["PSs23CustomStringConvertible", "maxPieces"]
+- ["PSs23CustomStringConvertible", "pieceColumn"]
+- ["PSs23CustomStringConvertible", "pieceSize"]
+- ["PSs23CustomStringConvertible", "rgb"]
+- ["PSs23CustomStringConvertible", ""]
+- ["PSs9Equatable", "UIColor"]
+- ["PSs9Equatable", "bgColor"]
+- ["PSs9Equatable", "boardHeight"]
+- ["PSs9Equatable", "boardWidth"]
+- ["PSs9Equatable", "init"]
+- ["PSs9Equatable", "maxPieces"]
+- ["PSs9Equatable", "pieceColumn"]
+- ["PSs9Equatable", "pieceSize"]
+- ["PSs9Equatable", "rgb"]
+- ["PSs9Equatable", ""]
+- ["PSs8Hashable", "UIColor"]
+- ["PSs8Hashable", "bgColor"]
+- ["PSs8Hashable", "boardHeight"]
+- ["PSs8Hashable", "boardWidth"]
+- ["PSs8Hashable", "init"]
+- ["PSs8Hashable", "maxPieces"]
+- ["PSs8Hashable", "pieceColumn"]
+- ["PSs8Hashable", "pieceSize"]
+- ["PSs8Hashable", "rgb"]
+- ["PSs8Hashable", ""]
+- ["PSo8NSCoding", "UIColor"]
+- ["PSo8NSCoding", "bgColor"]
+- ["PSo8NSCoding", "boardHeight"]
+- ["PSo8NSCoding", "boardWidth"]
+- ["PSo8NSCoding", "init"]
+- ["PSo8NSCoding", "maxPieces"]
+- ["PSo8NSCoding", "pieceColumn"]
+- ["PSo8NSCoding", "pieceSize"]
+- ["PSo8NSCoding", "rgb"]
+- ["PSo8NSCoding", ""]
+- ["PSo9NSCopying", "rgb"]
+- ["CSo8NSObject", "CGFloat"]
+- ["CSo8NSObject", "Int"]
+- ["CSo8NSObject", "UIColor"]
+- ["CSo8NSObject", "bgColor"]
+- ["CSo8NSObject", "boardHeight"]
+- ["CSo8NSObject", "boardWidth"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "maxPieces"]
+- ["CSo8NSObject", "pieceColumn"]
+- ["CSo8NSObject", "pieceSize"]
+- ["CSo8NSObject", "rgb"]
+- ["PSo16NSObjectProtocol", "UIColor"]
+- ["PSo16NSObjectProtocol", "bgColor"]
+- ["PSo16NSObjectProtocol", "boardHeight"]
+- ["PSo16NSObjectProtocol", "boardWidth"]
+- ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", "maxPieces"]
+- ["PSo16NSObjectProtocol", "pieceColumn"]
+- ["PSo16NSObjectProtocol", "pieceSize"]
+- ["PSo16NSObjectProtocol", "rgb"]
+- ["PSo16NSObjectProtocol", ""]
+- ["PSo14NSSecureCoding", "rgb"]
+- ["PSo29UIAccessibilityIdentification", "UIColor"]
+- ["PSo29UIAccessibilityIdentification", "bgColor"]
+- ["PSo29UIAccessibilityIdentification", "boardHeight"]
+- ["PSo29UIAccessibilityIdentification", "boardWidth"]
+- ["PSo29UIAccessibilityIdentification", "init"]
+- ["PSo29UIAccessibilityIdentification", "maxPieces"]
+- ["PSo29UIAccessibilityIdentification", "pieceColumn"]
+- ["PSo29UIAccessibilityIdentification", "pieceSize"]
+- ["PSo29UIAccessibilityIdentification", ""]
+- ["PSo12UIAppearance", "UIColor"]
+- ["PSo12UIAppearance", "bgColor"]
+- ["PSo12UIAppearance", "boardHeight"]
+- ["PSo12UIAppearance", "boardWidth"]
+- ["PSo12UIAppearance", "init"]
+- ["PSo12UIAppearance", "maxPieces"]
+- ["PSo12UIAppearance", "pieceColumn"]
+- ["PSo12UIAppearance", "pieceSize"]
+- ["PSo12UIAppearance", ""]
+- ["PSo21UIAppearanceContainer", "UIColor"]
+- ["PSo21UIAppearanceContainer", "bgColor"]
+- ["PSo21UIAppearanceContainer", "boardHeight"]
+- ["PSo21UIAppearanceContainer", "boardWidth"]
+- ["PSo21UIAppearanceContainer", "init"]
+- ["PSo21UIAppearanceContainer", "maxPieces"]
+- ["PSo21UIAppearanceContainer", "pieceColumn"]
+- ["PSo21UIAppearanceContainer", "pieceSize"]
+- ["PSo21UIAppearanceContainer", ""]
+- ["CSo7UIColor", "rgb"]
+- ["PSo17UICoordinateSpace", "UIColor"]
+- ["PSo17UICoordinateSpace", "bgColor"]
+- ["PSo17UICoordinateSpace", "boardHeight"]
+- ["PSo17UICoordinateSpace", "boardWidth"]
+- ["PSo17UICoordinateSpace", "init"]
+- ["PSo17UICoordinateSpace", "maxPieces"]
+- ["PSo17UICoordinateSpace", "pieceColumn"]
+- ["PSo17UICoordinateSpace", "pieceSize"]
+- ["PSo17UICoordinateSpace", ""]
+- ["PSo13UIDynamicItem", "UIColor"]
+- ["PSo13UIDynamicItem", "bgColor"]
+- ["PSo13UIDynamicItem", "boardHeight"]
+- ["PSo13UIDynamicItem", "boardWidth"]
+- ["PSo13UIDynamicItem", "init"]
+- ["PSo13UIDynamicItem", "maxPieces"]
+- ["PSo13UIDynamicItem", "pieceColumn"]
+- ["PSo13UIDynamicItem", "pieceSize"]
+- ["PSo13UIDynamicItem", ""]
+- ["PSo18UIFocusEnvironment", "UIColor"]
+- ["PSo18UIFocusEnvironment", "bgColor"]
+- ["PSo18UIFocusEnvironment", "boardHeight"]
+- ["PSo18UIFocusEnvironment", "boardWidth"]
+- ["PSo18UIFocusEnvironment", "init"]
+- ["PSo18UIFocusEnvironment", "maxPieces"]
+- ["PSo18UIFocusEnvironment", "pieceColumn"]
+- ["PSo18UIFocusEnvironment", "pieceSize"]
+- ["PSo18UIFocusEnvironment", ""]
+- ["CSo11UIResponder", "CGFloat"]
+- ["CSo11UIResponder", "Int"]
+- ["CSo11UIResponder", "UIColor"]
+- ["CSo11UIResponder", "bgColor"]
+- ["CSo11UIResponder", "boardHeight"]
+- ["CSo11UIResponder", "boardWidth"]
+- ["CSo11UIResponder", "init"]
+- ["CSo11UIResponder", "maxPieces"]
+- ["CSo11UIResponder", "pieceColumn"]
+- ["CSo11UIResponder", "pieceSize"]
+- ["PSo18UITraitEnvironment", "UIColor"]
+- ["PSo18UITraitEnvironment", "bgColor"]
+- ["PSo18UITraitEnvironment", "boardHeight"]
+- ["PSo18UITraitEnvironment", "boardWidth"]
+- ["PSo18UITraitEnvironment", "init"]
+- ["PSo18UITraitEnvironment", "maxPieces"]
+- ["PSo18UITraitEnvironment", "pieceColumn"]
+- ["PSo18UITraitEnvironment", "pieceSize"]
+- ["PSo18UITraitEnvironment", ""]
+- ["CSo6UIView", "CGFloat"]
+- ["CSo6UIView", "Int"]
+- ["CSo6UIView", "UIColor"]
+- ["CSo6UIView", "bgColor"]
+- ["CSo6UIView", "boardHeight"]
+- ["CSo6UIView", "boardWidth"]
+- ["CSo6UIView", "init"]
+- ["CSo6UIView", "maxPieces"]
+- ["CSo6UIView", "pieceColumn"]
+- ["CSo6UIView", "pieceSize"]
+- ["CSo6UIView", ""]
+- ["PSs24_ColorLiteralConvertible", "rgb"]
+- ["PSs12_Reflectable", "UIColor"]
+- ["PSs12_Reflectable", "bgColor"]
+- ["PSs12_Reflectable", "boardHeight"]
+- ["PSs12_Reflectable", "boardWidth"]
+- ["PSs12_Reflectable", "init"]
+- ["PSs12_Reflectable", "maxPieces"]
+- ["PSs12_Reflectable", "pieceColumn"]
+- ["PSs12_Reflectable", "pieceSize"]
+- ["PSs12_Reflectable", ""]
+depends-nominal:
+- "PSs9AnyObject"
+- "C13mySlidePuzzle8AppConst"
+- "V12CoreGraphics7CGFloat"
+- "PSs11CVarArgType"
+- "PSs23CustomStringConvertible"
+- "PSs9Equatable"
+- "PSs8Hashable"
+- "PSo8NSCoding"
+- "PSo9NSCopying"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "PSo14NSSecureCoding"
+- "PSo29UIAccessibilityIdentification"
+- "PSo12UIAppearance"
+- "PSo21UIAppearanceContainer"
+- "CSo7UIColor"
+- "PSo17UICoordinateSpace"
+- "PSo13UIDynamicItem"
+- "PSo18UIFocusEnvironment"
+- "CSo11UIResponder"
+- "PSo18UITraitEnvironment"
+- "CSo6UIView"
+- "PSs24_ColorLiteralConvertible"
+- "PSs12_Reflectable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+interface-hash: "6b8beb4db37517be5b685562b5ceeca0"

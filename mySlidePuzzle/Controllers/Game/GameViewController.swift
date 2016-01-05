@@ -21,6 +21,10 @@ class GameViewController: UIViewController {
     var id: Int = 0
     var ids:Array<Int> = []
     
+    // タッチした座標
+    var touchLocation_x: CGFloat = 0.0
+    var touchLocation_y: CGFloat = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,13 +59,15 @@ class GameViewController: UIViewController {
                 pieceImage = UIImageView(frame: CGRectMake(offset_x, offset_y, AppConst.pieceSize, AppConst.pieceSize))
                 pieceImage.image = cropedImage
                 pieceImage.tag = id
+                pieceImage.userInteractionEnabled = true
                 ids.append(pieceImage.tag)
                 
                 // 最後のピースを黒く塗りつぶす
                 if id == AppConst.maxPieces {
-                    let blackPiece = UIView(frame: CGRectMake(0, 0, AppConst.pieceSize, AppConst.pieceSize))
-                    blackPiece.backgroundColor = UIColor.blackColor()
-                    pieceImage.addSubview(blackPiece)
+                    let emptyPiece = UIView(frame: CGRectMake(0, 0, AppConst.pieceSize, AppConst.pieceSize))
+                    emptyPiece.backgroundColor = UIColor.blackColor()
+                    emptyPiece.tag = AppConst.maxPieces
+                    pieceImage.addSubview(emptyPiece)
                 }
                 
                 pieceImage.addSubview(pieceId)
@@ -77,7 +83,7 @@ class GameViewController: UIViewController {
     /*-----------------------
     // MARK: - private -
     ----------------------*/
-    
+
     /**
     画像のクリッピング
     - Returns: クリッピングした画像
@@ -157,6 +163,47 @@ class GameViewController: UIViewController {
                 gameStageView.addSubview(piece)
             }
         }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        if let touch = touches.first {
+            for touch in touches {
+                
+                // カラピースのある座標
+                let emptyPiece = gameStageView.viewWithTag(AppConst.maxPieces) as! UIImageView
+                let emptyLocation_x = CGRectGetMidX(emptyPiece.frame)
+                let emptyLocation_y = CGRectGetMidY(emptyPiece.frame)
+                
+                print(emptyLocation_x)
+                print(emptyLocation_y)
+                
+                // タッチした座標を取得
+                touchLocation_x = touch.locationInView(self.gameStageView).x
+                touchLocation_y = touch.locationInView(self.gameStageView).y
+
+                print(touchLocation_x)
+                print(touchLocation_y)
+                
+                var flags = getEnableMoveFlag(emptyLocation_x, emptyLocation_y: emptyLocation_y, touchLocation_x: touchLocation_x, touchLocation_y: touchLocation_y)
+                
+                print(flags.enable_x)
+                print(flags.enable_y)
+            }
+        }
+        
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
+    func getEnableMoveFlag(emptyLocation_x: CGFloat, emptyLocation_y: CGFloat, touchLocation_x: CGFloat, touchLocation_y: CGFloat) -> (enable_x: Int, enable_y: Int) {
+        
+        var enable_x: Int = 0
+        var enable_y: Int = 0
+        
+        enable_x = Int((touchLocation_x / emptyLocation_x))
+        enable_y = Int((touchLocation_y / emptyLocation_y))
+        
+        return (enable_x, enable_y)
     }
 
 }

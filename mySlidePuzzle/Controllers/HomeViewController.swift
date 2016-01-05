@@ -42,7 +42,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let baseImage = UIImageView()
         
         // イメージ表示
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let image = info[UIImagePickerControllerEditedImage] as! UIImage // editedImageにすることで編集後のイメージを使用可能
         baseImage.image = image
         baseImage.frame = CGRectMake(0, 0, AppConst.boardWidth, AppConst.boardHeight)
         
