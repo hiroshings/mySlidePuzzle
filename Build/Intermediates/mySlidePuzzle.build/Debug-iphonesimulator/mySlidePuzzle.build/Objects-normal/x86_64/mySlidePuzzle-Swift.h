@@ -125,8 +125,8 @@ SWIFT_CLASS("_TtC13mySlidePuzzle11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIImage;
 @class UITouch;
+@class UIImage;
 @class UIEvent;
 @class NSBundle;
 
@@ -137,6 +137,9 @@ SWIFT_CLASS("_TtC13mySlidePuzzle18GameViewController")
 @property (nonatomic, strong) UIImageView * __nonnull pieceImage;
 @property (nonatomic) NSInteger id;
 @property (nonatomic, copy) NSArray<NSNumber *> * __nonnull ids;
+@property (nonatomic, strong) UIImageView * __nonnull emptyPiece;
+@property (nonatomic, strong) UIImageView * __nonnull touchPiece;
+@property (nonatomic, readonly, strong) UITouch * __nonnull touch;
 @property (nonatomic) CGFloat touchLocation_x;
 @property (nonatomic) CGFloat touchLocation_y;
 - (void)viewDidLoad;
@@ -152,6 +155,7 @@ SWIFT_CLASS("_TtC13mySlidePuzzle18GameViewController")
 /// <h2>シャッフルしたピースの再配置</h2>
 - (void)showPieces:(NSArray<NSNumber *> * __nonnull)ids gameStageView:(UIView * __nonnull)gameStageView;
 - (void)touchesBegan:(NSSet<UITouch *> * __nonnull)touches withEvent:(UIEvent * __nullable)event;
+- (void)movePiece:(NSInteger)enable_x enable_y:(NSInteger)enable_y piece:(UIImageView * __nonnull)piece;
 - (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end

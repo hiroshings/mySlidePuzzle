@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ebb-WE-asC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ebb-WE-asC">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -60,21 +60,30 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6r-Id-j7m">
                                 <rect key="frame" x="57" y="218" width="300" height="300"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Fir-p1-31A"/>
                                     <constraint firstAttribute="height" constant="300" id="Jdt-B5-TuK"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HB1-rf-4MI">
+                                <rect key="frame" x="123" y="578" width="169" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="HB1-rf-4MI" firstAttribute="centerX" secondItem="WwR-cO-Egv" secondAttribute="centerX" id="O84-1J-4LP"/>
                             <constraint firstItem="y6r-Id-j7m" firstAttribute="centerX" secondItem="WwR-cO-Egv" secondAttribute="centerX" id="W0O-bq-rHO"/>
+                            <constraint firstItem="HB1-rf-4MI" firstAttribute="top" secondItem="y6r-Id-j7m" secondAttribute="bottom" constant="60" id="ais-K6-OA7"/>
                             <constraint firstItem="y6r-Id-j7m" firstAttribute="centerY" secondItem="WwR-cO-Egv" secondAttribute="centerY" id="cBZ-nW-ep8"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="compMessage" destination="HB1-rf-4MI" id="e8b-td-bMz"/>
                         <outlet property="gameStageView" destination="y6r-Id-j7m" id="c0S-sf-IOR"/>
                     </connections>
                 </viewController>

@@ -125,18 +125,27 @@ SWIFT_CLASS("_TtC13mySlidePuzzle11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIImage;
 @class UITouch;
+@class UIImage;
 @class UIEvent;
+@class UILabel;
 @class NSBundle;
 
 SWIFT_CLASS("_TtC13mySlidePuzzle18GameViewController")
 @interface GameViewController : UIViewController
 @property (nonatomic, weak) IBOutlet UIView * __null_unspecified gameStageView;
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified compMessage;
 @property (nonatomic, strong) UIImageView * __nonnull baseImage;
+@property (nonatomic) BOOL gamingFlag;
 @property (nonatomic, strong) UIImageView * __nonnull pieceImage;
 @property (nonatomic) NSInteger id;
 @property (nonatomic, copy) NSArray<NSNumber *> * __nonnull ids;
+@property (nonatomic, strong) UIImageView * __nonnull emptyPiece;
+@property (nonatomic, strong) UIImageView * __nonnull touchPiece;
+@property (nonatomic, readonly, strong) UITouch * __nonnull touch;
+@property (nonatomic) CGFloat touchLocation_x;
+@property (nonatomic) CGFloat touchLocation_y;
+@property (nonatomic) BOOL completeFlag;
 - (void)viewDidLoad;
 
 /// 画像のクリッピング
@@ -149,7 +158,11 @@ SWIFT_CLASS("_TtC13mySlidePuzzle18GameViewController")
 
 /// <h2>シャッフルしたピースの再配置</h2>
 - (void)showPieces:(NSArray<NSNumber *> * __nonnull)ids gameStageView:(UIView * __nonnull)gameStageView;
-- (void)touchesBegan:(NSSet<UITouch *> * __nonnull)touches withEvent:(UIEvent * __nullable)event;
+- (void)touchesEnded:(NSSet<UITouch *> * __nonnull)touches withEvent:(UIEvent * __nullable)event;
+- (void)movePiece:(NSInteger)enable_x enable_y:(NSInteger)enable_y piece:(UIImageView * __nonnull)piece;
+- (BOOL)checkComplete;
+- (void)showCompleteProduction;
+- (void)toggleUserInteractionEnabled:(BOOL)flag;
 - (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end

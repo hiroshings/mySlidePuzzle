@@ -15,25 +15,41 @@ class GameViewController: UIViewController {
     ----------------------*/
     
     @IBOutlet weak var gameStageView: UIView!
+    @IBOutlet weak var compMessage: UILabel!
+    
+    // 元画像
     var baseImage = UIImageView()
     
+    // ゲーム中フラグ
+    var gamingFlag = false
+    
+    // ピース
     var pieceImage = UIImageView()
     var id: Int = 0
-    var ids:Array<Int> = []
-    
+    var ids: Array<Int> = []
+    var emptyPiece = UIImageView()
+    var touchPiece = UIImageView()
+
     // タッチした座標
+    let touch = UITouch()
     var touchLocation_x: CGFloat = 0.0
     var touchLocation_y: CGFloat = 0.0
+    
+    // クリアフラグ
+    var completeFlag = false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = "My Slide Puzzle"
-        gameStageView.backgroundColor = AppConst.bgColor
         
         // デリゲート
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         baseImage = appDelegate.baseImage
+        
+        // complete!!文字を非表示にする
+        compMessage.alpha = 0.0
         
         
         // パズルの初期化
@@ -66,7 +82,6 @@ class GameViewController: UIViewController {
                 if id == AppConst.maxPieces {
                     let emptyPiece = UIView(frame: CGRectMake(0, 0, AppConst.pieceSize, AppConst.pieceSize))
                     emptyPiece.backgroundColor = UIColor.blackColor()
-                    emptyPiece.tag = AppConst.maxPieces
                     pieceImage.addSubview(emptyPiece)
                 }
                 
@@ -75,7 +90,9 @@ class GameViewController: UIViewController {
             }
         }
         
+        // ピースをスワップする
         let swapedIds: Array<Int> = swapPieces(ids)
+        // スワップしたピースの表示
         showPieces(swapedIds, gameStageView: gameStageView)
     }
     
@@ -121,9 +138,9 @@ class GameViewController: UIViewController {
         for (var i = 0; i < 100; i++) {
             for (var i = 0; i < 2; i++) {
                 
-                // 最終マスは固定のため -2する
-                from = Int(arc4random_uniform(UInt32(AppConst.maxPieces - 2))) + 1
-                to = Int(arc4random_uniform(UInt32(AppConst.maxPieces - 2))) + 1
+                // TODO: 解法がない場合がある
+                from = Int(arc4random_uniform(UInt32(AppConst.maxPieces)))
+                to = Int(arc4random_uniform(UInt32(AppConst.maxPieces)))
                 
                 print(from)
                 print(to)
@@ -165,45 +182,175 @@ class GameViewController: UIViewController {
         }
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
-        if let touch = touches.first {
+        if let _ = touches.first {
             for touch in touches {
                 
                 // カラピースのある座標
-                let emptyPiece = gameStageView.viewWithTag(AppConst.maxPieces) as! UIImageView
-                let emptyLocation_x = CGRectGetMidX(emptyPiece.frame)
-                let emptyLocation_y = CGRectGetMidY(emptyPiece.frame)
+                emptyPiece = gameStageView.viewWithTag(AppConst.maxPieces) as! UIImageView
+                let emptyLocation_x = emptyPiece.frame.origin.x
+                let emptyLocation_y = emptyPiece.frame.origin.y
                 
-                print(emptyLocation_x)
-                print(emptyLocation_y)
+                print("emptyLocation_x" + String(emptyLocation_x))
+                print("emptyLocation_y" + String(emptyLocation_y))
+
                 
                 // タッチした座標を取得
+                let touchViewId = touch.view?.tag
+                
+                if touchViewId == 0 {
+                    return
+                }
+                
+                touchPiece = gameStageView.viewWithTag(touchViewId!) as! UIImageView
+
                 touchLocation_x = touch.locationInView(self.gameStageView).x
                 touchLocation_y = touch.locationInView(self.gameStageView).y
-
-                print(touchLocation_x)
-                print(touchLocation_y)
                 
-                var flags = getEnableMoveFlag(emptyLocation_x, emptyLocation_y: emptyLocation_y, touchLocation_x: touchLocation_x, touchLocation_y: touchLocation_y)
+                print("touchLocation_x" + String(touchLocation_x))
+                print("touchLocation_y" + String(touchLocation_y))
                 
-                print(flags.enable_x)
-                print(flags.enable_y)
+                let enablePositons = getEnableMovePiece(emptyLocation_x, e_y: emptyLocation_y, t_x: touchLocation_x, t_y: touchLocation_y)
+                
+                // ピースの移動
+                movePiece(enablePositons.enable_x, enable_y: enablePositons.enable_y, piece: touchPiece)
+                
+                // クリア判定
+                completeFlag = checkComplete()
+                print(completeFlag)
+                
+                // クリア判定trueの場合、クリア演出に移行
+                if completeFlag == true {
+                    showCompleteProduction()
+                }
             }
         }
         
-        super.touchesBegan(touches, withEvent: event)
+        super.touchesEnded(touches, withEvent: event)
     }
     
-    func getEnableMoveFlag(emptyLocation_x: CGFloat, emptyLocation_y: CGFloat, touchLocation_x: CGFloat, touchLocation_y: CGFloat) -> (enable_x: Int, enable_y: Int) {
+    
+    func getEnableMovePiece(e_x: CGFloat, e_y: CGFloat, t_x: CGFloat, t_y: CGFloat) -> (enable_x: Int, enable_y: Int) {
         
-        var enable_x: Int = 0
-        var enable_y: Int = 0
+        let enable_x = (Int(t_x) / Int(AppConst.pieceSize)) - (Int(e_x) / Int(AppConst.pieceSize))
+        let enable_y = (Int(t_y) / Int(AppConst.pieceSize)) - (Int(e_y) / Int(AppConst.pieceSize))
         
-        enable_x = Int((touchLocation_x / emptyLocation_x))
-        enable_y = Int((touchLocation_y / emptyLocation_y))
+        print("x座標の移動可能範囲" + String(enable_x))
+        print("y座標の移動可能範囲" + String(enable_y))
         
         return (enable_x, enable_y)
+    }
+    
+    
+    func movePiece(enable_x: Int, enable_y: Int, piece: UIImageView) {
+        
+        let enablePositons = (enable_x, enable_y) // x座標に動かせる距離, y座標に動かせる距離
+        
+        switch enablePositons {
+            // ピースを下に移動
+            case (0, -1):
+                emptyPiece.frame.origin.y -= AppConst.pieceSize
+                piece.frame.origin.y += AppConst.pieceSize
+                break
+            // ピースを上に移動
+            case (0, 1):
+                emptyPiece.frame.origin.y += AppConst.pieceSize
+                piece.frame.origin.y -= AppConst.pieceSize
+                break
+            // ピースを左に移動
+            case (-1, 0):
+                emptyPiece.frame.origin.x -= AppConst.pieceSize
+                piece.frame.origin.x += AppConst.pieceSize
+                break
+            // ピースを右に移動
+            case (1, 0):
+                emptyPiece.frame.origin.x += AppConst.pieceSize
+                piece.frame.origin.x -= AppConst.pieceSize
+            default:
+                break
+        }
+    }
+    
+    
+    
+    func checkComplete() -> Bool {
+        
+        var offset_x = CGFloat()
+        var offset_y = CGFloat()
+        var count: Int = 0
+        var piece = UIImageView()
+        
+        var completeFlag_x = false
+        var completeFlag_y = false
+        var completeCount:Int = 0
+        
+        for (var i = 0; i < AppConst.pieceColumn; i++) {
+            offset_y = CGFloat(i) * AppConst.pieceSize
+            
+            for (var j = 0; j < AppConst.pieceColumn; j++) {
+                
+                offset_x = CGFloat(j) * AppConst.pieceSize
+                
+                count++
+                piece = gameStageView.viewWithTag(count) as! UIImageView
+                
+                let pieceOffset_x = piece.frame.origin.x
+                let pieceOffset_y = piece.frame.origin.y
+                
+                print("offset_x" + String(offset_x))
+                print("offset_y" + String(offset_y))
+                
+                print("pieceOffset_x" + String(pieceOffset_x))
+                print("pieceOffset_y" + String(pieceOffset_y))
+                
+                completeFlag_x = offset_x == pieceOffset_x ? true : false
+                completeFlag_y = offset_y == pieceOffset_y ? true : false
+                
+                print(completeFlag_x)
+                print(completeFlag_y)
+                
+                if completeFlag_x == true && completeFlag_y == true {
+                    completeCount++
+                }
+            }
+        }
+        
+        if completeCount == AppConst.maxPieces {
+            completeFlag = true
+        }
+        
+        return completeFlag
+    }
+    
+    
+    func showCompleteProduction() {
+        
+        // ピースの操作を無効にする
+        toggleUserInteractionEnabled(false)
+        
+        // Complete!!メッセージをフェードイン        
+        UIView.animateWithDuration(0.4, animations: {self.compMessage.alpha = 1})
+        
+        // ピースの番号・黒マスを排除
+        for id in ids {
+            let piece = gameStageView.viewWithTag(id) as! UIImageView
+            let subViews = piece.subviews
+            for subView in subViews {
+                subView.removeFromSuperview()
+            }
+        }
+    }
+    
+    
+    func toggleUserInteractionEnabled(flag: Bool) {
+        
+        // ピースの操作の有効・無効を切り替える
+        for id in ids {
+            let piece = gameStageView.viewWithTag(id) as! UIImageView
+            piece.userInteractionEnabled = flag
+        }
     }
 
 }
