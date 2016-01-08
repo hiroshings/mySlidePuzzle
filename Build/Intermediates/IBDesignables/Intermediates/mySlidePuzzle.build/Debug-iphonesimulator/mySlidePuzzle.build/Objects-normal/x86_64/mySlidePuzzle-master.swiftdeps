@@ -1,0 +1,11 @@
+version: "Apple Swift version 2.1.1 (swiftlang-700.1.101.15 clang-700.1.81)"
+options: "9001e49e10f3d7daa18186c5f1875f26"
+build_time: [505485930, 435304000]
+inputs:
+  "/Users/sakamoto/localApache/mySlidePuzzle/mySlidePuzzle/Controllers/MyPuzzleViewController.swift": [505485930, 0]
+  "/Users/sakamoto/localApache/mySlidePuzzle/mySlidePuzzle/MyPuzzleView.swift": [505484762, 0]
+  "/Users/sakamoto/localApache/mySlidePuzzle/mySlidePuzzle/Controllers/HomeViewController.swift": [505480573, 0]
+  "/Users/sakamoto/localApache/mySlidePuzzle/mySlidePuzzle/Controllers/AppDelegate.swift": [505274128, 0]
+  "/Users/sakamoto/localApache/mySlidePuzzle/mySlidePuzzle/Commons/AppConst.swift": [505274128, 0]
+  "/Users/sakamoto/localApache/mySlidePuzzle/mySlidePuzzle/Controllers/Game/GameViewController.swift": [505459425, 0]
+  "/Users/sakamoto/localApache/mySlidePuzzle/mySlidePuzzle/Commons/Util.swift": [505274128, 0]

@@ -142,9 +142,6 @@ class GameViewController: UIViewController {
                 from = Int(arc4random_uniform(UInt32(AppConst.maxPieces)))
                 to = Int(arc4random_uniform(UInt32(AppConst.maxPieces)))
                 
-                print(from)
-                print(to)
-                
                 if from != to {
                     swap(&ids[from], &ids[to])
                 }
@@ -183,7 +180,7 @@ class GameViewController: UIViewController {
     }
     
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         if let _ = touches.first {
             for touch in touches {
@@ -228,7 +225,7 @@ class GameViewController: UIViewController {
             }
         }
         
-        super.touchesEnded(touches, withEvent: event)
+        super.touchesBegan(touches, withEvent: event)
     }
     
     

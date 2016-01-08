@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol HomeViewControllerDelegate {
-    func goGameView()
-}
-
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     override func viewWillAppear(animated: Bool) {
@@ -41,18 +37,23 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let baseImage = UIImageView()
         
-        // イメージ表示
+        // イメージデータを取得
         let image = info[UIImagePickerControllerEditedImage] as! UIImage // editedImageにすることで編集後のイメージを使用可能
         baseImage.image = image
         baseImage.frame = CGRectMake(0, 0, AppConst.boardWidth, AppConst.boardHeight)
         
+        // デリゲートにイメージデータを渡す
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.baseImage = baseImage
+        
+        // ローカルストレージに画像データを保存
+        savePhotoData(baseImage.image!)
         
         // 選択画面閉じる
         self.dismissViewControllerAnimated(true, completion: nil)
         
-        goGameView()
+        // ゲーム画面に遷移
+        self.performSegueWithIdentifier("goGameView", sender: self)
     }
     
     /// STARTボタン押下でフォトライブラリを表示
@@ -89,11 +90,62 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
-    
-    func goGameView() -> Void {
+    func setDirectory() -> NSURL {
         
-        let gameView = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("gameView")
-        self.presentViewController(gameView, animated: true, completion: nil)
+        let fileManager = NSFileManager.defaultManager()
+        
+        // NSURL型でルートディレクトリの取得
+        let url = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        print("ディレクトリ = " + String(url))
+        
+        // photoディレクトリを参照
+        let dirUrl = url.URLByAppendingPathComponent("photo")
+        let dir = dirUrl.path
+        print("ディレクトリ = " + dir!)
+        
+        // photoディレクトリがなければ作成
+        if !fileManager.fileExistsAtPath(dir!) {
+            do {
+                try fileManager.createDirectoryAtPath(dir!, withIntermediateDirectories: true, attributes: nil)
+            }
+            catch {
+                print("Unable to create directory: \(error)")
+            }
+        }
+        
+        return dirUrl
+    }
+    
+    func savePhotoData(image: UIImage) {
+        
+        // pngデータ生成
+        let _photoData = UIImagePNGRepresentation(image)
+        
+        let dirUrl = setDirectory()
+        
+        let photoName = getCurrentTime() + ".png"
+        let path = dirUrl.URLByAppendingPathComponent(photoName).path
+        
+        // nilチェック
+        guard let photoData = _photoData else {
+            return
+        }
+        
+        // フォトデータの保存
+        if photoData.writeToFile(path!, atomically: true) {
+            print(photoName)
+        } else {
+            print("error writing file: \(path)")
+        }
+    }
+    
+    func getCurrentTime() -> String {
+        let now = NSDate()
+        let dataFormatter = NSDateFormatter()
+        dataFormatter.locale = NSLocale(localeIdentifier: "ja_JP")
+        dataFormatter.dateFormat = "yyyyMMddHHmmss"
+        
+        return dataFormatter.stringFromDate(now)
     }
 }
 

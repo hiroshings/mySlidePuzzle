@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension UIColor{
+extension UIColor {
 
     class func rgb(r:CGFloat, g:CGFloat, b:CGFloat) -> UIColor{
         return rgba(r, g: g, b: b, a: 1.0)
@@ -25,5 +25,12 @@ extension UIColor{
         
         let color = UIColor(red: red, green: green, blue: blue, alpha: a)
         return color
+    }
+}
+
+extension UIScrollView {
+    
+    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        superview?.touchesBegan(touches, withEvent: event)
     }
 }

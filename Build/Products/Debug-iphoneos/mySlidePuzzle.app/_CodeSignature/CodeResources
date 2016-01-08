@@ -12,7 +12,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			GjtrC0ZVFh6LW0JJXbEqcxPOlto=
+			0fsOGepDGYsdAzr2GcA7cG08NqA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -30,7 +30,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			peZQiimbSDto+qIFBR3FrLy+V1g=
+			oi6Wr0ph8QBaMLfysbtd4dG4coM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -39,7 +39,16 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			n5XfXkoPjVYfP1KCb3m6+QHUbRY=
+			O9L+imPjrjgIHDhsGYwqrErz/gk=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/CKX-1S-Cf0-view-byU-SS-QQj.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cRWvkVT7XSSW+0OunwPP3M6bKPg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -48,7 +57,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			EVvDotNT0hu8hyz0hoQb7R524aA=
+			jQUdHtUQM4sIGZE/kWmEiUkspVQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -57,7 +66,16 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			V3MRe3N9n/i75c4B4cvckaZZoWE=
+			KDLhK0HaT2pMeAIpmiYP/PdQQkw=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/UIViewController-CKX-1S-Cf0.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			9G0Hza+YyerErhxcufemiQUtQ/M=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -66,7 +84,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			l9ubekfYNMgGUTKMa0rkVRS7p8A=
+			X/V+LPoMPwjJWOn1CDxZ0eKddtM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -75,7 +93,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wBxwfBHq4EFpZS4Ek32QsSku4VM=
+			LLsQemvfW7M8efqTbkC1nfoTcZw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -128,6 +146,10 @@
 		<data>
 		TagCV4KxQSJYdTzeHcw43arECCM=
 		</data>
+		<key>myPuzzleView.nib</key>
+		<data>
+		CytCGBJN6POkpMa6F/EPaC43FpA=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -139,7 +161,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			GjtrC0ZVFh6LW0JJXbEqcxPOlto=
+			0fsOGepDGYsdAzr2GcA7cG08NqA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -157,7 +179,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			peZQiimbSDto+qIFBR3FrLy+V1g=
+			oi6Wr0ph8QBaMLfysbtd4dG4coM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -166,7 +188,16 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			n5XfXkoPjVYfP1KCb3m6+QHUbRY=
+			O9L+imPjrjgIHDhsGYwqrErz/gk=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/CKX-1S-Cf0-view-byU-SS-QQj.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cRWvkVT7XSSW+0OunwPP3M6bKPg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -175,7 +206,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			EVvDotNT0hu8hyz0hoQb7R524aA=
+			jQUdHtUQM4sIGZE/kWmEiUkspVQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -184,7 +215,16 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			V3MRe3N9n/i75c4B4cvckaZZoWE=
+			KDLhK0HaT2pMeAIpmiYP/PdQQkw=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/UIViewController-CKX-1S-Cf0.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			9G0Hza+YyerErhxcufemiQUtQ/M=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -193,7 +233,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			l9ubekfYNMgGUTKMa0rkVRS7p8A=
+			X/V+LPoMPwjJWOn1CDxZ0eKddtM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -202,7 +242,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wBxwfBHq4EFpZS4Ek32QsSku4VM=
+			LLsQemvfW7M8efqTbkC1nfoTcZw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -246,6 +286,10 @@
 		<key>embedded.mobileprovision</key>
 		<data>
 		TagCV4KxQSJYdTzeHcw43arECCM=
+		</data>
+		<key>myPuzzleView.nib</key>
+		<data>
+		CytCGBJN6POkpMa6F/EPaC43FpA=
 		</data>
 	</dict>
 	<key>rules</key>

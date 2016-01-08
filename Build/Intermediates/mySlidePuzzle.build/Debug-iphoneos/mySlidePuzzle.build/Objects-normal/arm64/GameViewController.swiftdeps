@@ -7,71 +7,71 @@ provides-member:
 - ["C13mySlidePuzzle18GameViewController", ""]
 provides-dynamic-lookup:
 - "touchPiece"
-- "touchLocation_y"
-- "ids"
+- "touchesBegan"
 - "showPieces"
-- "cropImage"
-- "touchesEnded"
-- "touch"
-- "checkComplete"
-- "completeFlag"
-- "pieceImage"
-- "compMessage"
-- "viewDidLoad"
-- "swapPieces"
-- "emptyPiece"
-- "movePiece"
-- "gamingFlag"
-- "touchLocation_x"
-- "baseImage"
-- "id"
 - "gameStageView"
+- "id"
+- "ids"
+- "cropImage"
+- "checkComplete"
 - "toggleUserInteractionEnabled"
+- "touchLocation_y"
+- "gamingFlag"
+- "movePiece"
+- "pieceImage"
+- "completeFlag"
+- "viewDidLoad"
 - "showCompleteProduction"
+- "touch"
+- "baseImage"
+- "compMessage"
+- "touchLocation_x"
+- "emptyPiece"
+- "swapPieces"
 depends-top-level:
-- "UILabel"
-- !private "UIGraphicsEndImageContext"
-- !private "AppConst"
-- "UIImage"
-- !private "StringLiteralType"
-- !private "-="
-- !private "arc4random_uniform"
-- "CGFloat"
-- !private "UIColor"
-- !private "UInt32"
-- !private "CGRectMake"
-- "UIView"
-- !private "UIGraphicsGetImageFromCurrentImageContext"
-- !private "&&"
-- "Array"
-- "Set"
-- "Bool"
-- "GameViewController"
-- !private "=="
-- !private "print"
-- !private "*"
-- !private "UIGraphicsBeginImageContext"
-- !private "CGImageCreateWithImageInRect"
 - !private "!="
-- !private "+"
-- !private "AppDelegate"
-- "UITouch"
-- !private "String"
-- !private "~="
-- "BooleanLiteralType"
-- !private "UIApplication"
-- !private "<"
-- !private "+="
-- !private "swap"
-- !private "NSTextAlignment"
-- !private "-"
+- !private "*"
+- !private "UInt32"
 - !private "/"
-- "Int"
+- "BooleanLiteralType"
+- "UILabel"
 - !private "++"
-- "UIImageView"
-- "UIViewController"
+- !private "UIGraphicsEndImageContext"
+- !private "swap"
+- !private "+="
 - !private "CGSize"
+- !private "CGRectMake"
+- "Array"
+- !private "<"
+- !private "UIGraphicsBeginImageContext"
+- !private "AppConst"
+- !private "-="
+- !private "UIGraphicsGetImageFromCurrentImageContext"
+- "UIImageView"
+- !private "StringLiteralType"
+- !private "~="
+- "UIViewController"
+- "UITouch"
+- "Bool"
+- "UIView"
+- "GameViewController"
+- !private "&&"
+- !private "NSTextAlignment"
+- "UIImage"
+- !private "UIColor"
+- !private "-"
+- "CGFloat"
+- "Set"
+- !private "print"
+- !private "+"
+- !private "CGImageCreateWithImageInRect"
+- "Int"
+- !private "String"
+- !private "=="
 - "UIEvent"
+- !private "arc4random_uniform"
+- !private "UIApplication"
+- !private "AppDelegate"
 depends-member:
 - !private ["PSs16AbsoluteValuable", "IntegerLiteralType"]
 - !private ["PSs16AbsoluteValuable", "Stride"]
@@ -146,7 +146,7 @@ depends-member:
 - ["PSs9AnyObject", "touchLocation_x"]
 - ["PSs9AnyObject", "touchLocation_y"]
 - ["PSs9AnyObject", "touchPiece"]
-- ["PSs9AnyObject", "touchesEnded"]
+- ["PSs9AnyObject", "touchesBegan"]
 - !private ["PSs9AnyObject", "userInteractionEnabled"]
 - !private ["PSs9AnyObject", "view"]
 - ["PSs9AnyObject", "viewDidLoad"]
@@ -272,7 +272,7 @@ depends-member:
 - ["PSs11CVarArgType", "touchLocation_x"]
 - ["PSs11CVarArgType", "touchLocation_y"]
 - ["PSs11CVarArgType", "touchPiece"]
-- ["PSs11CVarArgType", "touchesEnded"]
+- ["PSs11CVarArgType", "touchesBegan"]
 - !private ["PSs11CVarArgType", "userInteractionEnabled"]
 - !private ["PSs11CVarArgType", "view"]
 - ["PSs11CVarArgType", "viewDidLoad"]
@@ -383,7 +383,7 @@ depends-member:
 - ["PSs23CustomStringConvertible", "touchLocation_x"]
 - ["PSs23CustomStringConvertible", "touchLocation_y"]
 - ["PSs23CustomStringConvertible", "touchPiece"]
-- ["PSs23CustomStringConvertible", "touchesEnded"]
+- ["PSs23CustomStringConvertible", "touchesBegan"]
 - !private ["PSs23CustomStringConvertible", "userInteractionEnabled"]
 - !private ["PSs23CustomStringConvertible", "view"]
 - ["PSs23CustomStringConvertible", "viewDidLoad"]
@@ -477,7 +477,7 @@ depends-member:
 - ["PSs9Equatable", "touchLocation_x"]
 - ["PSs9Equatable", "touchLocation_y"]
 - ["PSs9Equatable", "touchPiece"]
-- ["PSs9Equatable", "touchesEnded"]
+- ["PSs9Equatable", "touchesBegan"]
 - !private ["PSs9Equatable", "userInteractionEnabled"]
 - !private ["PSs9Equatable", "view"]
 - ["PSs9Equatable", "viewDidLoad"]
@@ -554,7 +554,7 @@ depends-member:
 - ["C13mySlidePuzzle18GameViewController", "touchLocation_x"]
 - ["C13mySlidePuzzle18GameViewController", "touchLocation_y"]
 - ["C13mySlidePuzzle18GameViewController", "touchPiece"]
-- ["C13mySlidePuzzle18GameViewController", "touchesEnded"]
+- ["C13mySlidePuzzle18GameViewController", "touchesBegan"]
 - ["C13mySlidePuzzle18GameViewController", "viewDidLoad"]
 - !private ["PSs13GeneratorType", "Element"]
 - !private ["PSs8Hashable", "AppConst"]
@@ -638,7 +638,7 @@ depends-member:
 - ["PSs8Hashable", "touchLocation_x"]
 - ["PSs8Hashable", "touchLocation_y"]
 - ["PSs8Hashable", "touchPiece"]
-- ["PSs8Hashable", "touchesEnded"]
+- ["PSs8Hashable", "touchesBegan"]
 - !private ["PSs8Hashable", "userInteractionEnabled"]
 - !private ["PSs8Hashable", "view"]
 - ["PSs8Hashable", "viewDidLoad"]
@@ -774,7 +774,7 @@ depends-member:
 - ["PSo8NSCoding", "touchLocation_x"]
 - ["PSo8NSCoding", "touchLocation_y"]
 - ["PSo8NSCoding", "touchPiece"]
-- ["PSo8NSCoding", "touchesEnded"]
+- ["PSo8NSCoding", "touchesBegan"]
 - !private ["PSo8NSCoding", "userInteractionEnabled"]
 - ["PSo8NSCoding", "viewDidLoad"]
 - !private ["PSo8NSCoding", "viewWithTag"]
@@ -827,7 +827,7 @@ depends-member:
 - ["PSo26NSExtensionRequestHandling", "touchLocation_x"]
 - ["PSo26NSExtensionRequestHandling", "touchLocation_y"]
 - ["PSo26NSExtensionRequestHandling", "touchPiece"]
-- ["PSo26NSExtensionRequestHandling", "touchesEnded"]
+- ["PSo26NSExtensionRequestHandling", "touchesBegan"]
 - ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
 - ["PSo26NSExtensionRequestHandling", ""]
 - !private ["CSo8NSNumber", "deinit"]
@@ -907,7 +907,7 @@ depends-member:
 - ["CSo8NSObject", "touchLocation_x"]
 - ["CSo8NSObject", "touchLocation_y"]
 - ["CSo8NSObject", "touchPiece"]
-- ["CSo8NSObject", "touchesEnded"]
+- ["CSo8NSObject", "touchesBegan"]
 - !private ["CSo8NSObject", "userInteractionEnabled"]
 - !private ["CSo8NSObject", "view"]
 - ["CSo8NSObject", "viewDidLoad"]
@@ -983,7 +983,7 @@ depends-member:
 - ["PSo16NSObjectProtocol", "touchLocation_x"]
 - ["PSo16NSObjectProtocol", "touchLocation_y"]
 - ["PSo16NSObjectProtocol", "touchPiece"]
-- ["PSo16NSObjectProtocol", "touchesEnded"]
+- ["PSo16NSObjectProtocol", "touchesBegan"]
 - !private ["PSo16NSObjectProtocol", "userInteractionEnabled"]
 - !private ["PSo16NSObjectProtocol", "view"]
 - ["PSo16NSObjectProtocol", "viewDidLoad"]
@@ -1158,7 +1158,7 @@ depends-member:
 - ["PSo21UIAppearanceContainer", "touchLocation_x"]
 - ["PSo21UIAppearanceContainer", "touchLocation_y"]
 - ["PSo21UIAppearanceContainer", "touchPiece"]
-- ["PSo21UIAppearanceContainer", "touchesEnded"]
+- ["PSo21UIAppearanceContainer", "touchesBegan"]
 - !private ["PSo21UIAppearanceContainer", "userInteractionEnabled"]
 - ["PSo21UIAppearanceContainer", "viewDidLoad"]
 - !private ["PSo21UIAppearanceContainer", "viewWithTag"]
@@ -1213,7 +1213,7 @@ depends-member:
 - ["PSo18UIContentContainer", "touchLocation_x"]
 - ["PSo18UIContentContainer", "touchLocation_y"]
 - ["PSo18UIContentContainer", "touchPiece"]
-- ["PSo18UIContentContainer", "touchesEnded"]
+- ["PSo18UIContentContainer", "touchesBegan"]
 - ["PSo18UIContentContainer", "viewDidLoad"]
 - ["PSo18UIContentContainer", ""]
 - !private ["PSo17UICoordinateSpace", "addSubview"]
@@ -1321,7 +1321,7 @@ depends-member:
 - ["PSo18UIFocusEnvironment", "touchLocation_x"]
 - ["PSo18UIFocusEnvironment", "touchLocation_y"]
 - ["PSo18UIFocusEnvironment", "touchPiece"]
-- ["PSo18UIFocusEnvironment", "touchesEnded"]
+- ["PSo18UIFocusEnvironment", "touchesBegan"]
 - !private ["PSo18UIFocusEnvironment", "userInteractionEnabled"]
 - ["PSo18UIFocusEnvironment", "viewDidLoad"]
 - !private ["PSo18UIFocusEnvironment", "viewWithTag"]
@@ -1413,7 +1413,7 @@ depends-member:
 - ["CSo11UIResponder", "touchLocation_x"]
 - ["CSo11UIResponder", "touchLocation_y"]
 - ["CSo11UIResponder", "touchPiece"]
-- ["CSo11UIResponder", "touchesEnded"]
+- ["CSo11UIResponder", "touchesBegan"]
 - !private ["CSo11UIResponder", "userInteractionEnabled"]
 - ["CSo11UIResponder", "viewDidLoad"]
 - !private ["CSo11UIResponder", "viewWithTag"]
@@ -1462,7 +1462,7 @@ depends-member:
 - ["PSo16UIStateRestoring", "touchLocation_x"]
 - ["PSo16UIStateRestoring", "touchLocation_y"]
 - ["PSo16UIStateRestoring", "touchPiece"]
-- ["PSo16UIStateRestoring", "touchesEnded"]
+- ["PSo16UIStateRestoring", "touchesBegan"]
 - ["PSo16UIStateRestoring", "viewDidLoad"]
 - ["PSo16UIStateRestoring", ""]
 - ["CSo7UITouch", "init"]
@@ -1531,7 +1531,7 @@ depends-member:
 - ["PSo18UITraitEnvironment", "touchLocation_x"]
 - ["PSo18UITraitEnvironment", "touchLocation_y"]
 - ["PSo18UITraitEnvironment", "touchPiece"]
-- ["PSo18UITraitEnvironment", "touchesEnded"]
+- ["PSo18UITraitEnvironment", "touchesBegan"]
 - !private ["PSo18UITraitEnvironment", "userInteractionEnabled"]
 - ["PSo18UITraitEnvironment", "viewDidLoad"]
 - !private ["PSo18UITraitEnvironment", "viewWithTag"]
@@ -1607,7 +1607,7 @@ depends-member:
 - ["CSo16UIViewController", "touchLocation_x"]
 - ["CSo16UIViewController", "touchLocation_y"]
 - ["CSo16UIViewController", "touchPiece"]
-- ["CSo16UIViewController", "touchesEnded"]
+- ["CSo16UIViewController", "touchesBegan"]
 - ["CSo16UIViewController", "viewDidLoad"]
 - ["CSo16UIViewController", ""]
 - !private ["Su", "IntegerLiteralType"]
@@ -1897,4 +1897,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
-interface-hash: "8fa5c07203a0571533accdee1f0633b5"
+interface-hash: "dca324be15ec20af2dab73db85886f13"

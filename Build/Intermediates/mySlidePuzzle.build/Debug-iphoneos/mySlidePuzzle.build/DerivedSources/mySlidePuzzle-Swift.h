@@ -97,6 +97,9 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 
 SWIFT_CLASS("_TtC13mySlidePuzzle8AppConst")
 @interface AppConst : UIView
++ (CGFloat)statusBar_height;
++ (CGFloat)navbar_height;
++ (CGFloat)header_height;
 + (UIColor * __nonnull)bgColor;
 + (CGFloat)boardWidth;
 + (CGFloat)boardHeight;
@@ -158,7 +161,7 @@ SWIFT_CLASS("_TtC13mySlidePuzzle18GameViewController")
 
 /// <h2>シャッフルしたピースの再配置</h2>
 - (void)showPieces:(NSArray<NSNumber *> * __nonnull)ids gameStageView:(UIView * __nonnull)gameStageView;
-- (void)touchesEnded:(NSSet<UITouch *> * __nonnull)touches withEvent:(UIEvent * __nullable)event;
+- (void)touchesBegan:(NSSet<UITouch *> * __nonnull)touches withEvent:(UIEvent * __nullable)event;
 - (void)movePiece:(NSInteger)enable_x enable_y:(NSInteger)enable_y piece:(UIImageView * __nonnull)piece;
 - (BOOL)checkComplete;
 - (void)showCompleteProduction;
@@ -168,6 +171,7 @@ SWIFT_CLASS("_TtC13mySlidePuzzle18GameViewController")
 @end
 
 @class UIImagePickerController;
+@class NSURL;
 
 SWIFT_CLASS("_TtC13mySlidePuzzle18HomeViewController")
 @interface HomeViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -181,7 +185,41 @@ SWIFT_CLASS("_TtC13mySlidePuzzle18HomeViewController")
 
 /// STARTボタン押下でフォトライブラリを表示
 - (IBAction)onTapStartBtn:(id __nonnull)sender;
-- (void)goGameView;
+- (NSURL * __nonnull)setDirectory;
+- (void)savePhotoData:(UIImage * __nonnull)image;
+- (NSString * __nonnull)getCurrentTime;
+- (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIButton;
+
+SWIFT_CLASS("_TtC13mySlidePuzzle12MyPuzzleView")
+@interface MyPuzzleView : UIView
+@property (nonatomic, weak) IBOutlet UIButton * __null_unspecified playBtn;
+@property (nonatomic, weak) IBOutlet UIImageView * __null_unspecified puzzleImageView;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)viewInit;
+@end
+
+@class UIScrollView;
+@class NSLayoutConstraint;
+
+SWIFT_CLASS("_TtC13mySlidePuzzle22MyPuzzleViewController")
+@interface MyPuzzleViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UILabel * __null_unspecified noimageTxt;
+@property (nonatomic, weak) IBOutlet UIView * __null_unspecified contentView;
+@property (nonatomic, weak) IBOutlet UIScrollView * __null_unspecified scrollView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * __null_unspecified botomConstraint;
+@property (nonatomic, strong) UIImageView * __nonnull pazzle;
+@property (nonatomic, copy) NSString * __nonnull imagePath;
+@property (nonatomic, copy) NSArray<NSString *> * __nonnull imageData;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (NSURL * __nonnull)getPhotoDirectory;
+- (NSArray<NSString *> * __nullable)loadImageData;
+- (void)onTapPlayBtn:(id __nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -190,6 +228,11 @@ SWIFT_CLASS("_TtC13mySlidePuzzle18HomeViewController")
 @interface UIColor (SWIFT_EXTENSION(mySlidePuzzle))
 + (UIColor * __nonnull)rgb:(CGFloat)r g:(CGFloat)g b:(CGFloat)b;
 + (UIColor * __nonnull)rgba:(CGFloat)r g:(CGFloat)g b:(CGFloat)b a:(CGFloat)a;
+@end
+
+
+@interface UIScrollView (SWIFT_EXTENSION(mySlidePuzzle))
+- (void)touchesBegan:(NSSet<UITouch *> * __nonnull)touches withEvent:(UIEvent * __nullable)event;
 @end
 
 #pragma clang diagnostic pop

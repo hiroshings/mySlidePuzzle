@@ -11,6 +11,10 @@ import UIKit
 
 class AppConst: UIView {
     
+    static let statusBar_height: CGFloat = 20.0
+    static let navbar_height:CGFloat = 44.0
+    static let header_height:CGFloat = 64.0 // 20+44
+    
     /*-----------------------
     // MARK: - level -
     ----------------------*/
