@@ -11,6 +11,16 @@ import UIKit
 
 class AppConst: UIView {
     
+    /*-----------------------
+    // MARK: - screenSize -
+    ----------------------*/
+    static let screenBounds = UIScreen .mainScreen().bounds
+    static let screenSize = screenBounds.size
+    static let screenScale = UIScreen.mainScreen().scale
+    
+    /*-----------------------
+    // MARK: - headerMenuSize -
+    ----------------------*/
     static let statusBar_height: CGFloat = 20.0
     static let navbar_height:CGFloat = 44.0
     static let header_height:CGFloat = 64.0 // 20+44

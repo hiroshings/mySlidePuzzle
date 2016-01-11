@@ -10,53 +10,51 @@ import UIKit
 
 class MyPuzzleViewController: UIViewController {
     
+    /*---------------------
+    // MARK: - properties -
+    --------------------*/
+    
     @IBOutlet weak var noimageTxt: UILabel!
-    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
-    
-    
-    
-    // 画面下の制約
-    @IBOutlet weak var botomConstraint: NSLayoutConstraint!
     
     // pazzle
     var pazzle = UIImageView()
-    var imagePath: String = ""
-    
-    // 画像データ格納用の配列
-    var imageData: Array<String> = []
+    var imagePath: String = "" //画像のパス
+    var imageData: Array<String> = [] //画像データ格納用の配列
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "My Puzzles"
         
-        // パズル画像をローカルストレージから読み込む
-        if let imageData = loadImageData() {
+        // マイパズル生成
+        if let imageData = getImageDataNames() {
             
             for (var i = 0; i < imageData.count; i++) {
                 
-                let rect = CGRectMake(0, AppConst.header_height, 300, 400)
+                // myPuzzleインスタンスを生成
+                let rect = CGRectMake(0, 0, 300, 400)
                 let myPuzzleView = MyPuzzleView(frame: rect)
                 
-                // TODO: 関数にする
+                // myPuzzleの画像パスを取得
                 let dir = getPhotoDirectory()
                 let path = dir.URLByAppendingPathComponent(imageData[i]).path
                 print(path!)
                 
+                // 画像パスのpngファイルをmyPuzzleViewのUIImageに変換
                 let pazzleImage = UIImage(contentsOfFile: path!)
-                // TODO: 配列に画像データを格納する
                 myPuzzleView.puzzleImageView.image = pazzleImage
                 
-                let width = myPuzzleView.bounds.size.width
-                let height = myPuzzleView.bounds.size.height
+                // パズルの横幅・縦幅
+                let puzzleWidth = myPuzzleView.bounds.size.width
+                let puzzleHeight = myPuzzleView.bounds.size.height
                 
-                print(width)
-                print(height)
+                // myPuzzleViewの位置をズラす
+                myPuzzleView.frame.origin.x = self.view.bounds.width / 2 - (puzzleWidth / 2)
+                myPuzzleView.frame.origin.y = (puzzleHeight * CGFloat(i)) + 20
                 
-                myPuzzleView.frame.origin.x = self.view.bounds.width / 2 - (width / 2)
-                myPuzzleView.frame.origin.y = height * CGFloat(i)
-                
+                // tagの付与
                 myPuzzleView.puzzleImageView.tag = (i + 1)
                 myPuzzleView.playBtn.tag = (i + 1)
                 
@@ -67,16 +65,16 @@ class MyPuzzleViewController: UIViewController {
                 myPuzzleView.playBtn.addTarget(self, action: "onTapPlayBtn:", forControlEvents: .TouchUpInside)
                 myPuzzleView.userInteractionEnabled = true
                 
-                print(myPuzzleView.puzzleImageView.tag)
-                print(myPuzzleView.playBtn.tag)
+                // 下にスクロールできるようにContentSizeを拡大
+                scrollView.contentSize.height += (puzzleHeight + 20)
+                print(scrollView.contentSize.height)
                 
-                botomConstraint.constant += height
-                
-                contentView.addSubview(myPuzzleView)
+                scrollView.addSubview(myPuzzleView)
             }
             
         } else {
             
+            // 画像データが0の場合、代替テキストを表示
             noimageTxt.alpha = 1.0
 
         }
@@ -86,7 +84,14 @@ class MyPuzzleViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    
+    /**
+     ローカルストレージのphotoディレクトリを取得
+     
+     - parameters:
+        - none
+     
+     - returns: photoディレクトリまでのパス
+     */
     func getPhotoDirectory() -> NSURL {
         
         let fileManager = NSFileManager.defaultManager()
@@ -100,8 +105,15 @@ class MyPuzzleViewController: UIViewController {
         return dirUrl
     }
     
-
-    func loadImageData() -> Array<String>? {
+    /**
+     ローカルストレージからファイル名を取得
+     
+     - parameters:
+        - none
+     
+     - returns: ローカルストレージのpngファイル名
+     */
+    func getImageDataNames() -> Array<String>? {
         
         let fileManager = NSFileManager.defaultManager()
         
@@ -110,29 +122,41 @@ class MyPuzzleViewController: UIViewController {
         }
         
         do {
+            // ファイル名が格納された配列を返す
             let pngImages = try fileManager.contentsOfDirectoryAtPath(dir)
             print(pngImages)
             return pngImages
         }
         catch {
+            // ファイル名がない場合、nilを返す
             return nil
         }
     }
     
+    /**
+     playボタン押下時のイベント
+     
+     - parameters:
+        - none
+     
+     - returns: none
+     */
     func onTapPlayBtn(sender: AnyObject) {
         
+        // tag = 0の場合、return
         guard let touchPuzzleId = sender.tag else {
             return
         }
-
         if touchPuzzleId == 0 {
             return
         }
         
-        let imageData = loadImageData()
+        // 画像データのパスを取得
+        let imageData = getImageDataNames()
         let dir = getPhotoDirectory()
-        let path = dir.URLByAppendingPathComponent(imageData![touchPuzzleId]).path
+        let path = dir.URLByAppendingPathComponent(imageData![touchPuzzleId - 1]).path
         
+        // 画像データからUIImageViewを生成し、delegateに通知
         let baseImage = UIImageView()
         baseImage.image = UIImage(contentsOfFile: path!)
         baseImage.frame = CGRectMake(0, 0, AppConst.boardWidth, AppConst.boardHeight)
@@ -140,6 +164,7 @@ class MyPuzzleViewController: UIViewController {
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.baseImage = baseImage
         
+        // ゲーム画面に遷移
         self.performSegueWithIdentifier("goGameView", sender: self)
     }
     

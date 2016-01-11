@@ -90,6 +90,14 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    /**
+     photoディレクトリを作成
+     
+     - parameters:
+        - none
+     
+     - returns: photoディレクトリのパス
+     */
     func setDirectory() -> NSURL {
         
         let fileManager = NSFileManager.defaultManager()
@@ -116,6 +124,14 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         return dirUrl
     }
     
+    /**
+     photoディレクトリにpng画像を保存
+     
+     - parameters:
+        - image: 保存する画像
+     
+     - returns: none
+     */
     func savePhotoData(image: UIImage) {
         
         // pngデータ生成
@@ -123,6 +139,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let dirUrl = setDirectory()
         
+        // ファイル名のパスを作成する
         let photoName = getCurrentTime() + ".png"
         let path = dirUrl.URLByAppendingPathComponent(photoName).path
         
@@ -131,7 +148,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             return
         }
         
-        // フォトデータの保存
+        // pngデータの保存
         if photoData.writeToFile(path!, atomically: true) {
             print(photoName)
         } else {
@@ -139,6 +156,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    /// 現在時刻を返す
     func getCurrentTime() -> String {
         let now = NSDate()
         let dataFormatter = NSDateFormatter()

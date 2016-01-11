@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ebb-WE-asC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ebb-WE-asC">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -69,48 +69,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ゲームを遊ぶと遊んだパズルが表示されます" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0c-Rg-chZ">
+                                <rect key="frame" x="37" y="358" width="340" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bs9-T5-53G">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byN-Vi-asA">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ゲームを遊ぶと遊んだパズルが表示されます" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0c-Rg-chZ">
-                                                <rect key="frame" x="37" y="358" width="340" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="M0c-Rg-chZ" firstAttribute="centerX" secondItem="byN-Vi-asA" secondAttribute="centerX" id="Cqr-6c-6JE"/>
-                                            <constraint firstItem="M0c-Rg-chZ" firstAttribute="centerY" secondItem="byN-Vi-asA" secondAttribute="centerY" id="PFs-wd-pFM"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="byN-Vi-asA" secondAttribute="bottom" id="0so-Pp-VO0"/>
-                                    <constraint firstItem="byN-Vi-asA" firstAttribute="leading" secondItem="Bs9-T5-53G" secondAttribute="leading" id="TpK-5m-8AF"/>
-                                    <constraint firstAttribute="trailing" secondItem="byN-Vi-asA" secondAttribute="trailing" id="gDX-dP-DWz"/>
-                                    <constraint firstItem="byN-Vi-asA" firstAttribute="top" secondItem="Bs9-T5-53G" secondAttribute="top" id="yfF-iS-2YQ"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="M0c-Rg-chZ" firstAttribute="centerY" secondItem="byU-SS-QQj" secondAttribute="centerY" id="5oO-5m-0oR"/>
                             <constraint firstAttribute="trailing" secondItem="Bs9-T5-53G" secondAttribute="trailing" id="6YP-nn-E3B"/>
-                            <constraint firstItem="byN-Vi-asA" firstAttribute="height" secondItem="byU-SS-QQj" secondAttribute="height" priority="250" id="GWU-26-OBh" userLabel="View.height = height"/>
-                            <constraint firstItem="Bs9-T5-53G" firstAttribute="top" secondItem="byU-SS-QQj" secondAttribute="topMargin" id="Lid-Ie-YCE"/>
+                            <constraint firstItem="Bs9-T5-53G" firstAttribute="top" secondItem="byU-SS-QQj" secondAttribute="topMargin" constant="64" id="Lid-Ie-YCE"/>
                             <constraint firstItem="Bs9-T5-53G" firstAttribute="leading" secondItem="byU-SS-QQj" secondAttribute="leading" id="M9O-Gk-ytY"/>
                             <constraint firstItem="jAm-nG-UXz" firstAttribute="top" secondItem="Bs9-T5-53G" secondAttribute="bottom" id="Mm8-yH-1Ps"/>
-                            <constraint firstItem="byN-Vi-asA" firstAttribute="width" secondItem="byU-SS-QQj" secondAttribute="width" id="jSe-qY-u6P"/>
+                            <constraint firstItem="M0c-Rg-chZ" firstAttribute="centerX" secondItem="byU-SS-QQj" secondAttribute="centerX" id="tBp-qE-q9R"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="botomConstraint" destination="0so-Pp-VO0" id="Ntz-fa-noA"/>
-                        <outlet property="contentView" destination="byN-Vi-asA" id="5cK-dJ-Caz"/>
                         <outlet property="noimageTxt" destination="M0c-Rg-chZ" id="Gbv-HZ-0qI"/>
                         <outlet property="scrollView" destination="Bs9-T5-53G" id="KD0-H5-Z2z"/>
                         <segue destination="cWq-1q-mkV" kind="show" identifier="goGameView" id="Fsf-gV-tKr"/>
@@ -118,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Um-dj-UDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1745" y="1304"/>
+            <point key="canvasLocation" x="1729" y="1292"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="fPL-xa-VA3">
@@ -163,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sig-BC-R8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1745" y="387"/>
+            <point key="canvasLocation" x="2257" y="405"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SH5-Qh-ldY">
