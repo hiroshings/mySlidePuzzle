@@ -97,6 +97,9 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 
 SWIFT_CLASS("_TtC13mySlidePuzzle8AppConst")
 @interface AppConst : UIView
++ (CGRect)screenBounds;
++ (CGSize)screenSize;
++ (CGFloat)screenScale;
 + (CGFloat)statusBar_height;
 + (CGFloat)navbar_height;
 + (CGFloat)header_height;
@@ -153,28 +156,80 @@ SWIFT_CLASS("_TtC13mySlidePuzzle18GameViewController")
 
 /// 画像のクリッピング
 ///
-/// \returns  クリッピングした画像
+/// \param image 元画像
+///
+/// \param x クロップ画像のx座標
+///
+/// \param y クロップ画像のy座標
+///
+/// \param w クロップ画像の幅
+///
+/// \param y クロップ画像の高さ
+///
+/// \returns  クロップした画像
 - (UIImage * __nonnull)cropImage:(UIImage * __nonnull)image x:(CGFloat)x y:(CGFloat)y w:(CGFloat)w h:(CGFloat)h;
 
-/// <h2>ピースのスワップ処理</h2>
+/// ピースをシャッフルする
+///
+/// \param ids ピースID配列
+///
+/// \returns  シャッフルしたピースID配列
 - (NSArray<NSNumber *> * __nonnull)swapPieces:(NSArray<NSNumber *> * __nonnull)ids;
 
-/// <h2>シャッフルしたピースの再配置</h2>
+/// シャッフルしたピースの再配置
+///
+/// \param ids シャッフル済ピースID配列
+///
+/// \param gameStageView ゲーム画面のView
+///
+/// \returns  none
 - (void)showPieces:(NSArray<NSNumber *> * __nonnull)ids gameStageView:(UIView * __nonnull)gameStageView;
+
+/// ピースタッチ時の処理
 - (void)touchesBegan:(NSSet<UITouch *> * __nonnull)touches withEvent:(UIEvent * __nullable)event;
+
+/// ピースの移動
+///
+/// \param enable _x: ｘ座標に移動できる範囲
+///
+/// \param enable _y: y座標に移動できる範囲
+///
+/// \param piece ピース
+///
+/// \returns  none
 - (void)movePiece:(NSInteger)enable_x enable_y:(NSInteger)enable_y piece:(UIImageView * __nonnull)piece;
+
+/// クリア判定
+///
+/// \param none 
+///
+/// \returns  クリア判定
 - (BOOL)checkComplete;
+
+/// クリア演出
+///
+/// \param none 
+///
+/// \returns  none
 - (void)showCompleteProduction;
+
+/// ピースの操作の有効・無効を切り替える
+///
+/// \param flag 操作可能flag
+///
+/// \returns  none
 - (void)toggleUserInteractionEnabled:(BOOL)flag;
 - (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSUserDefaults;
 @class UIImagePickerController;
 @class NSURL;
 
 SWIFT_CLASS("_TtC13mySlidePuzzle18HomeViewController")
 @interface HomeViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@property (nonatomic, readonly, strong) NSUserDefaults * __nonnull defaults;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
@@ -185,9 +240,26 @@ SWIFT_CLASS("_TtC13mySlidePuzzle18HomeViewController")
 
 /// STARTボタン押下でフォトライブラリを表示
 - (IBAction)onTapStartBtn:(id __nonnull)sender;
+
+/// photoディレクトリを作成
+///
+/// \param none 
+///
+/// \returns  photoディレクトリのパス
 - (NSURL * __nonnull)setDirectory;
+
+/// photoディレクトリにpng画像を保存
+///
+/// \param image 保存する画像
+///
+/// \returns  none
 - (void)savePhotoData:(UIImage * __nonnull)image;
-- (NSString * __nonnull)getCurrentTime;
+
+/// 画像保存ログを保存
+- (void)setImageDataSaveLog;
+
+/// 画像保存ログの読み込み
+- (void)getImageDataSaveLog;
 - (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -204,21 +276,36 @@ SWIFT_CLASS("_TtC13mySlidePuzzle12MyPuzzleView")
 @end
 
 @class UIScrollView;
-@class NSLayoutConstraint;
 
 SWIFT_CLASS("_TtC13mySlidePuzzle22MyPuzzleViewController")
 @interface MyPuzzleViewController : UIViewController
 @property (nonatomic, weak) IBOutlet UILabel * __null_unspecified noimageTxt;
-@property (nonatomic, weak) IBOutlet UIView * __null_unspecified contentView;
 @property (nonatomic, weak) IBOutlet UIScrollView * __null_unspecified scrollView;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint * __null_unspecified botomConstraint;
 @property (nonatomic, strong) UIImageView * __nonnull pazzle;
 @property (nonatomic, copy) NSString * __nonnull imagePath;
 @property (nonatomic, copy) NSArray<NSString *> * __nonnull imageData;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+
+/// ローカルストレージのphotoディレクトリを取得
+///
+/// \param none 
+///
+/// \returns  photoディレクトリまでのパス
 - (NSURL * __nonnull)getPhotoDirectory;
-- (NSArray<NSString *> * __nullable)loadImageData;
+
+/// ローカルストレージからファイル名を取得
+///
+/// \param none 
+///
+/// \returns  ローカルストレージのpngファイル名
+- (NSArray<NSString *> * __nullable)getImageDataNames;
+
+/// playボタン押下時のイベント
+///
+/// \param none 
+///
+/// \returns  none
 - (void)onTapPlayBtn:(id __nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;

@@ -9,6 +9,10 @@
 import UIKit
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    let defaults = NSUserDefaults.standardUserDefaults()
+    let currentTime = CurrentTime()
+    let currentTimeFormatted = CurrentTimeFormatted()
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -16,6 +20,9 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // log読み込み
+        getImageDataSaveLog()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +55,9 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         // ローカルストレージに画像データを保存
         savePhotoData(baseImage.image!)
+        
+        // log保存
+        setImageDataSaveLog()
         
         // 選択画面閉じる
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -140,7 +150,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let dirUrl = setDirectory()
         
         // ファイル名のパスを作成する
-        let photoName = getCurrentTime() + ".png"
+        let photoName = currentTime.getCurrentTime() + ".png"
         let path = dirUrl.URLByAppendingPathComponent(photoName).path
         
         // nilチェック
@@ -156,14 +166,19 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
-    /// 現在時刻を返す
-    func getCurrentTime() -> String {
-        let now = NSDate()
-        let dataFormatter = NSDateFormatter()
-        dataFormatter.locale = NSLocale(localeIdentifier: "ja_JP")
-        dataFormatter.dateFormat = "yyyyMMddHHmmss"
+    /// 画像保存ログを保存
+    func setImageDataSaveLog() {
         
-        return dataFormatter.stringFromDate(now)
+        let log = currentTimeFormatted.getCurrentTime()
+        defaults.setObject(log, forKey: "log")
+    }
+    
+    /// 画像保存ログの読み込み
+    func getImageDataSaveLog() {
+        
+        if let log = defaults.objectForKey("log") {
+            print("画像保存ログ：" + String(log))
+        }
     }
 }
 

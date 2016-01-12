@@ -6,50 +6,46 @@ provides-nominal:
 provides-member:
 - ["C13mySlidePuzzle22MyPuzzleViewController", ""]
 provides-dynamic-lookup:
-- "pazzle"
-- "loadImageData"
-- "contentView"
-- "scrollView"
+- "didReceiveMemoryWarning"
+- "getPhotoDirectory"
 - "viewDidLoad"
+- "imageData"
 - "imagePath"
 - "onTapPlayBtn"
-- "getPhotoDirectory"
+- "scrollView"
+- "getImageDataNames"
+- "pazzle"
 - "noimageTxt"
-- "botomConstraint"
-- "imageData"
-- "didReceiveMemoryWarning"
 depends-top-level:
-- !private "CGRectMake"
-- !private "print"
 - "AnyObject"
-- "StringLiteralType"
-- !private "UIApplication"
+- !private "UIImage"
+- !private "/"
+- !private "+="
+- !private "BooleanLiteralType"
+- !private "print"
+- !private "*"
 - "MyPuzzleViewController"
-- "UIView"
-- "NSURL"
+- !private "NSFileManager"
+- "UILabel"
 - !private "=="
+- "NSURL"
+- !private "-"
+- !private "UITapGestureRecognizer"
+- !private "++"
+- "UIScrollView"
 - !private "AppDelegate"
 - !private "+"
+- !private "UIApplication"
+- !private "CGRectMake"
 - "UIViewController"
-- !private "UITapGestureRecognizer"
-- !private "UIImage"
-- !private "<"
-- "String"
-- "UILabel"
-- "UIImageView"
-- !private "-"
-- "NSLayoutConstraint"
-- !private "BooleanLiteralType"
-- !private "*"
-- !private "MyPuzzleView"
-- !private "CGFloat"
-- !private "/"
-- !private "NSFileManager"
-- !private "AppConst"
-- !private "+="
 - "Array"
-- "UIScrollView"
-- !private "++"
+- !private "CGFloat"
+- !private "MyPuzzleView"
+- "UIImageView"
+- "String"
+- !private "AppConst"
+- "StringLiteralType"
+- !private "<"
 depends-member:
 - !private ["PSs16AbsoluteValuable", "init"]
 - !private ["PSs9AnyObject", "AppConst"]
@@ -70,22 +66,20 @@ depends-member:
 - !private ["PSs9AnyObject", "baseImage"]
 - !private ["PSs9AnyObject", "boardHeight"]
 - !private ["PSs9AnyObject", "boardWidth"]
-- ["PSs9AnyObject", "botomConstraint"]
 - !private ["PSs9AnyObject", "bounds"]
-- !private ["PSs9AnyObject", "constant"]
-- ["PSs9AnyObject", "contentView"]
+- !private ["PSs9AnyObject", "contentSize"]
 - !private ["PSs9AnyObject", "contentsOfDirectoryAtPath"]
 - !private ["PSs9AnyObject", "defaultManager"]
 - !private ["PSs9AnyObject", "delegate"]
 - ["PSs9AnyObject", "didReceiveMemoryWarning"]
 - !private ["PSs9AnyObject", "frame"]
+- ["PSs9AnyObject", "getImageDataNames"]
 - ["PSs9AnyObject", "getPhotoDirectory"]
-- !private ["PSs9AnyObject", "header_height"]
 - !private ["PSs9AnyObject", "image"]
 - ["PSs9AnyObject", "imageData"]
 - ["PSs9AnyObject", "imagePath"]
 - ["PSs9AnyObject", "init"]
-- ["PSs9AnyObject", "loadImageData"]
+- !private ["PSs9AnyObject", "navigationItem"]
 - ["PSs9AnyObject", "noimageTxt"]
 - ["PSs9AnyObject", "onTapPlayBtn"]
 - !private ["PSs9AnyObject", "path"]
@@ -97,13 +91,13 @@ depends-member:
 - ["PSs9AnyObject", "scrollView"]
 - !private ["PSs9AnyObject", "sharedApplication"]
 - !private ["PSs9AnyObject", "tag"]
+- !private ["PSs9AnyObject", "title"]
 - !private ["PSs9AnyObject", "userInteractionEnabled"]
 - !private ["PSs9AnyObject", "view"]
 - ["PSs9AnyObject", "viewDidLoad"]
 - ["PSs9AnyObject", ""]
 - !private ["C13mySlidePuzzle8AppConst", "boardHeight"]
 - !private ["C13mySlidePuzzle8AppConst", "boardWidth"]
-- !private ["C13mySlidePuzzle8AppConst", "header_height"]
 - !private ["C13mySlidePuzzle11AppDelegate", "baseImage"]
 - !private ["Sa", "Generator"]
 - !private ["Sa", "Index"]
@@ -156,22 +150,20 @@ depends-member:
 - !private ["PSs11CVarArgType", "baseImage"]
 - !private ["PSs11CVarArgType", "boardHeight"]
 - !private ["PSs11CVarArgType", "boardWidth"]
-- ["PSs11CVarArgType", "botomConstraint"]
 - !private ["PSs11CVarArgType", "bounds"]
-- !private ["PSs11CVarArgType", "constant"]
-- ["PSs11CVarArgType", "contentView"]
+- !private ["PSs11CVarArgType", "contentSize"]
 - !private ["PSs11CVarArgType", "contentsOfDirectoryAtPath"]
 - !private ["PSs11CVarArgType", "defaultManager"]
 - !private ["PSs11CVarArgType", "delegate"]
 - ["PSs11CVarArgType", "didReceiveMemoryWarning"]
 - !private ["PSs11CVarArgType", "frame"]
+- ["PSs11CVarArgType", "getImageDataNames"]
 - ["PSs11CVarArgType", "getPhotoDirectory"]
-- !private ["PSs11CVarArgType", "header_height"]
 - !private ["PSs11CVarArgType", "image"]
 - ["PSs11CVarArgType", "imageData"]
 - ["PSs11CVarArgType", "imagePath"]
 - ["PSs11CVarArgType", "init"]
-- ["PSs11CVarArgType", "loadImageData"]
+- !private ["PSs11CVarArgType", "navigationItem"]
 - ["PSs11CVarArgType", "noimageTxt"]
 - ["PSs11CVarArgType", "onTapPlayBtn"]
 - !private ["PSs11CVarArgType", "path"]
@@ -183,6 +175,7 @@ depends-member:
 - ["PSs11CVarArgType", "scrollView"]
 - !private ["PSs11CVarArgType", "sharedApplication"]
 - !private ["PSs11CVarArgType", "tag"]
+- !private ["PSs11CVarArgType", "title"]
 - !private ["PSs11CVarArgType", "userInteractionEnabled"]
 - !private ["PSs11CVarArgType", "view"]
 - ["PSs11CVarArgType", "viewDidLoad"]
@@ -227,23 +220,21 @@ depends-member:
 - !private ["PSs23CustomStringConvertible", "baseImage"]
 - !private ["PSs23CustomStringConvertible", "boardHeight"]
 - !private ["PSs23CustomStringConvertible", "boardWidth"]
-- ["PSs23CustomStringConvertible", "botomConstraint"]
 - !private ["PSs23CustomStringConvertible", "bounds"]
-- !private ["PSs23CustomStringConvertible", "constant"]
-- ["PSs23CustomStringConvertible", "contentView"]
+- !private ["PSs23CustomStringConvertible", "contentSize"]
 - !private ["PSs23CustomStringConvertible", "contentsOfDirectoryAtPath"]
 - !private ["PSs23CustomStringConvertible", "count"]
 - !private ["PSs23CustomStringConvertible", "defaultManager"]
 - !private ["PSs23CustomStringConvertible", "delegate"]
 - ["PSs23CustomStringConvertible", "didReceiveMemoryWarning"]
 - !private ["PSs23CustomStringConvertible", "frame"]
+- ["PSs23CustomStringConvertible", "getImageDataNames"]
 - ["PSs23CustomStringConvertible", "getPhotoDirectory"]
-- !private ["PSs23CustomStringConvertible", "header_height"]
 - !private ["PSs23CustomStringConvertible", "image"]
 - ["PSs23CustomStringConvertible", "imageData"]
 - ["PSs23CustomStringConvertible", "imagePath"]
 - ["PSs23CustomStringConvertible", "init"]
-- ["PSs23CustomStringConvertible", "loadImageData"]
+- !private ["PSs23CustomStringConvertible", "navigationItem"]
 - ["PSs23CustomStringConvertible", "noimageTxt"]
 - ["PSs23CustomStringConvertible", "onTapPlayBtn"]
 - !private ["PSs23CustomStringConvertible", "path"]
@@ -256,6 +247,7 @@ depends-member:
 - !private ["PSs23CustomStringConvertible", "sharedApplication"]
 - !private ["PSs23CustomStringConvertible", "subscript"]
 - !private ["PSs23CustomStringConvertible", "tag"]
+- !private ["PSs23CustomStringConvertible", "title"]
 - !private ["PSs23CustomStringConvertible", "userInteractionEnabled"]
 - !private ["PSs23CustomStringConvertible", "view"]
 - ["PSs23CustomStringConvertible", "viewDidLoad"]
@@ -284,23 +276,21 @@ depends-member:
 - !private ["PSs9Equatable", "baseImage"]
 - !private ["PSs9Equatable", "boardHeight"]
 - !private ["PSs9Equatable", "boardWidth"]
-- ["PSs9Equatable", "botomConstraint"]
 - !private ["PSs9Equatable", "bounds"]
-- !private ["PSs9Equatable", "constant"]
-- ["PSs9Equatable", "contentView"]
+- !private ["PSs9Equatable", "contentSize"]
 - !private ["PSs9Equatable", "contentsOfDirectoryAtPath"]
 - !private ["PSs9Equatable", "defaultManager"]
 - !private ["PSs9Equatable", "delegate"]
 - ["PSs9Equatable", "didReceiveMemoryWarning"]
 - !private ["PSs9Equatable", "frame"]
+- ["PSs9Equatable", "getImageDataNames"]
 - ["PSs9Equatable", "getPhotoDirectory"]
-- !private ["PSs9Equatable", "header_height"]
 - !private ["PSs9Equatable", "height"]
 - !private ["PSs9Equatable", "image"]
 - ["PSs9Equatable", "imageData"]
 - ["PSs9Equatable", "imagePath"]
 - ["PSs9Equatable", "init"]
-- ["PSs9Equatable", "loadImageData"]
+- !private ["PSs9Equatable", "navigationItem"]
 - ["PSs9Equatable", "noimageTxt"]
 - ["PSs9Equatable", "onTapPlayBtn"]
 - !private ["PSs9Equatable", "origin"]
@@ -314,6 +304,7 @@ depends-member:
 - !private ["PSs9Equatable", "sharedApplication"]
 - !private ["PSs9Equatable", "size"]
 - !private ["PSs9Equatable", "tag"]
+- !private ["PSs9Equatable", "title"]
 - !private ["PSs9Equatable", "userInteractionEnabled"]
 - !private ["PSs9Equatable", "view"]
 - ["PSs9Equatable", "viewDidLoad"]
@@ -348,22 +339,20 @@ depends-member:
 - !private ["PSs8Hashable", "baseImage"]
 - !private ["PSs8Hashable", "boardHeight"]
 - !private ["PSs8Hashable", "boardWidth"]
-- ["PSs8Hashable", "botomConstraint"]
 - !private ["PSs8Hashable", "bounds"]
-- !private ["PSs8Hashable", "constant"]
-- ["PSs8Hashable", "contentView"]
+- !private ["PSs8Hashable", "contentSize"]
 - !private ["PSs8Hashable", "contentsOfDirectoryAtPath"]
 - !private ["PSs8Hashable", "defaultManager"]
 - !private ["PSs8Hashable", "delegate"]
 - ["PSs8Hashable", "didReceiveMemoryWarning"]
 - !private ["PSs8Hashable", "frame"]
+- ["PSs8Hashable", "getImageDataNames"]
 - ["PSs8Hashable", "getPhotoDirectory"]
-- !private ["PSs8Hashable", "header_height"]
 - !private ["PSs8Hashable", "image"]
 - ["PSs8Hashable", "imageData"]
 - ["PSs8Hashable", "imagePath"]
 - ["PSs8Hashable", "init"]
-- ["PSs8Hashable", "loadImageData"]
+- !private ["PSs8Hashable", "navigationItem"]
 - ["PSs8Hashable", "noimageTxt"]
 - ["PSs8Hashable", "onTapPlayBtn"]
 - !private ["PSs8Hashable", "path"]
@@ -375,6 +364,7 @@ depends-member:
 - ["PSs8Hashable", "scrollView"]
 - !private ["PSs8Hashable", "sharedApplication"]
 - !private ["PSs8Hashable", "tag"]
+- !private ["PSs8Hashable", "title"]
 - !private ["PSs8Hashable", "userInteractionEnabled"]
 - !private ["PSs8Hashable", "view"]
 - ["PSs8Hashable", "viewDidLoad"]
@@ -427,7 +417,6 @@ depends-member:
 - !private ["C13mySlidePuzzle22MyPuzzleViewController", "CGRectMake"]
 - !private ["C13mySlidePuzzle22MyPuzzleViewController", "MyPuzzleView"]
 - !private ["C13mySlidePuzzle22MyPuzzleViewController", "NSFileManager"]
-- ["C13mySlidePuzzle22MyPuzzleViewController", "NSLayoutConstraint"]
 - ["C13mySlidePuzzle22MyPuzzleViewController", "NSURL"]
 - ["C13mySlidePuzzle22MyPuzzleViewController", "String"]
 - !private ["C13mySlidePuzzle22MyPuzzleViewController", "UIApplication"]
@@ -436,16 +425,14 @@ depends-member:
 - ["C13mySlidePuzzle22MyPuzzleViewController", "UILabel"]
 - ["C13mySlidePuzzle22MyPuzzleViewController", "UIScrollView"]
 - !private ["C13mySlidePuzzle22MyPuzzleViewController", "UITapGestureRecognizer"]
-- ["C13mySlidePuzzle22MyPuzzleViewController", "UIView"]
-- ["C13mySlidePuzzle22MyPuzzleViewController", "botomConstraint"]
-- ["C13mySlidePuzzle22MyPuzzleViewController", "contentView"]
 - ["C13mySlidePuzzle22MyPuzzleViewController", "deinit"]
 - ["C13mySlidePuzzle22MyPuzzleViewController", "didReceiveMemoryWarning"]
+- ["C13mySlidePuzzle22MyPuzzleViewController", "getImageDataNames"]
 - ["C13mySlidePuzzle22MyPuzzleViewController", "getPhotoDirectory"]
 - ["C13mySlidePuzzle22MyPuzzleViewController", "imageData"]
 - ["C13mySlidePuzzle22MyPuzzleViewController", "imagePath"]
 - ["C13mySlidePuzzle22MyPuzzleViewController", "init"]
-- ["C13mySlidePuzzle22MyPuzzleViewController", "loadImageData"]
+- !private ["C13mySlidePuzzle22MyPuzzleViewController", "navigationItem"]
 - ["C13mySlidePuzzle22MyPuzzleViewController", "noimageTxt"]
 - ["C13mySlidePuzzle22MyPuzzleViewController", "onTapPlayBtn"]
 - ["C13mySlidePuzzle22MyPuzzleViewController", "pazzle"]
@@ -470,18 +457,17 @@ depends-member:
 - !private ["PSo8NSCoding", "alpha"]
 - !private ["PSo8NSCoding", "boardHeight"]
 - !private ["PSo8NSCoding", "boardWidth"]
-- ["PSo8NSCoding", "botomConstraint"]
 - !private ["PSo8NSCoding", "bounds"]
-- ["PSo8NSCoding", "contentView"]
+- !private ["PSo8NSCoding", "contentSize"]
 - ["PSo8NSCoding", "didReceiveMemoryWarning"]
 - !private ["PSo8NSCoding", "frame"]
+- ["PSo8NSCoding", "getImageDataNames"]
 - ["PSo8NSCoding", "getPhotoDirectory"]
-- !private ["PSo8NSCoding", "header_height"]
 - !private ["PSo8NSCoding", "image"]
 - ["PSo8NSCoding", "imageData"]
 - ["PSo8NSCoding", "imagePath"]
 - ["PSo8NSCoding", "init"]
-- ["PSo8NSCoding", "loadImageData"]
+- !private ["PSo8NSCoding", "navigationItem"]
 - ["PSo8NSCoding", "noimageTxt"]
 - ["PSo8NSCoding", "onTapPlayBtn"]
 - !private ["PSo8NSCoding", "path"]
@@ -492,6 +478,7 @@ depends-member:
 - !private ["PSo8NSCoding", "puzzleImageView"]
 - ["PSo8NSCoding", "scrollView"]
 - !private ["PSo8NSCoding", "tag"]
+- !private ["PSo8NSCoding", "title"]
 - !private ["PSo8NSCoding", "userInteractionEnabled"]
 - !private ["PSo8NSCoding", "view"]
 - ["PSo8NSCoding", "viewDidLoad"]
@@ -507,14 +494,13 @@ depends-member:
 - !private ["PSo26NSExtensionRequestHandling", "UIImage"]
 - ["PSo26NSExtensionRequestHandling", "UIImageView"]
 - !private ["PSo26NSExtensionRequestHandling", "UITapGestureRecognizer"]
-- ["PSo26NSExtensionRequestHandling", "botomConstraint"]
-- ["PSo26NSExtensionRequestHandling", "contentView"]
 - ["PSo26NSExtensionRequestHandling", "didReceiveMemoryWarning"]
+- ["PSo26NSExtensionRequestHandling", "getImageDataNames"]
 - ["PSo26NSExtensionRequestHandling", "getPhotoDirectory"]
 - ["PSo26NSExtensionRequestHandling", "imageData"]
 - ["PSo26NSExtensionRequestHandling", "imagePath"]
 - ["PSo26NSExtensionRequestHandling", "init"]
-- ["PSo26NSExtensionRequestHandling", "loadImageData"]
+- !private ["PSo26NSExtensionRequestHandling", "navigationItem"]
 - ["PSo26NSExtensionRequestHandling", "noimageTxt"]
 - ["PSo26NSExtensionRequestHandling", "onTapPlayBtn"]
 - ["PSo26NSExtensionRequestHandling", "pazzle"]
@@ -527,7 +513,6 @@ depends-member:
 - !private ["CSo13NSFileManager", "URLsForDirectory"]
 - !private ["CSo13NSFileManager", "contentsOfDirectoryAtPath"]
 - !private ["CSo13NSFileManager", "defaultManager"]
-- !private ["CSo18NSLayoutConstraint", "constant"]
 - ["CSo8NSObject", "AnyObject"]
 - !private ["CSo8NSObject", "AppConst"]
 - !private ["CSo8NSObject", "AppDelegate"]
@@ -536,7 +521,6 @@ depends-member:
 - !private ["CSo8NSObject", "CGRectMake"]
 - !private ["CSo8NSObject", "MyPuzzleView"]
 - !private ["CSo8NSObject", "NSFileManager"]
-- ["CSo8NSObject", "NSLayoutConstraint"]
 - ["CSo8NSObject", "NSURL"]
 - ["CSo8NSObject", "String"]
 - !private ["CSo8NSObject", "UIApplication"]
@@ -545,7 +529,6 @@ depends-member:
 - ["CSo8NSObject", "UILabel"]
 - ["CSo8NSObject", "UIScrollView"]
 - !private ["CSo8NSObject", "UITapGestureRecognizer"]
-- ["CSo8NSObject", "UIView"]
 - !private ["CSo8NSObject", "URLByAppendingPathComponent"]
 - !private ["CSo8NSObject", "URLsForDirectory"]
 - !private ["CSo8NSObject", "addGestureRecognizer"]
@@ -555,22 +538,20 @@ depends-member:
 - !private ["CSo8NSObject", "baseImage"]
 - !private ["CSo8NSObject", "boardHeight"]
 - !private ["CSo8NSObject", "boardWidth"]
-- ["CSo8NSObject", "botomConstraint"]
 - !private ["CSo8NSObject", "bounds"]
-- !private ["CSo8NSObject", "constant"]
-- ["CSo8NSObject", "contentView"]
+- !private ["CSo8NSObject", "contentSize"]
 - !private ["CSo8NSObject", "contentsOfDirectoryAtPath"]
 - !private ["CSo8NSObject", "defaultManager"]
 - !private ["CSo8NSObject", "delegate"]
 - ["CSo8NSObject", "didReceiveMemoryWarning"]
 - !private ["CSo8NSObject", "frame"]
+- ["CSo8NSObject", "getImageDataNames"]
 - ["CSo8NSObject", "getPhotoDirectory"]
-- !private ["CSo8NSObject", "header_height"]
 - !private ["CSo8NSObject", "image"]
 - ["CSo8NSObject", "imageData"]
 - ["CSo8NSObject", "imagePath"]
 - ["CSo8NSObject", "init"]
-- ["CSo8NSObject", "loadImageData"]
+- !private ["CSo8NSObject", "navigationItem"]
 - ["CSo8NSObject", "noimageTxt"]
 - ["CSo8NSObject", "onTapPlayBtn"]
 - !private ["CSo8NSObject", "path"]
@@ -582,6 +563,7 @@ depends-member:
 - ["CSo8NSObject", "scrollView"]
 - !private ["CSo8NSObject", "sharedApplication"]
 - !private ["CSo8NSObject", "tag"]
+- !private ["CSo8NSObject", "title"]
 - !private ["CSo8NSObject", "userInteractionEnabled"]
 - !private ["CSo8NSObject", "view"]
 - ["CSo8NSObject", "viewDidLoad"]
@@ -603,22 +585,20 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "baseImage"]
 - !private ["PSo16NSObjectProtocol", "boardHeight"]
 - !private ["PSo16NSObjectProtocol", "boardWidth"]
-- ["PSo16NSObjectProtocol", "botomConstraint"]
 - !private ["PSo16NSObjectProtocol", "bounds"]
-- !private ["PSo16NSObjectProtocol", "constant"]
-- ["PSo16NSObjectProtocol", "contentView"]
+- !private ["PSo16NSObjectProtocol", "contentSize"]
 - !private ["PSo16NSObjectProtocol", "contentsOfDirectoryAtPath"]
 - !private ["PSo16NSObjectProtocol", "defaultManager"]
 - !private ["PSo16NSObjectProtocol", "delegate"]
 - ["PSo16NSObjectProtocol", "didReceiveMemoryWarning"]
 - !private ["PSo16NSObjectProtocol", "frame"]
+- ["PSo16NSObjectProtocol", "getImageDataNames"]
 - ["PSo16NSObjectProtocol", "getPhotoDirectory"]
-- !private ["PSo16NSObjectProtocol", "header_height"]
 - !private ["PSo16NSObjectProtocol", "image"]
 - ["PSo16NSObjectProtocol", "imageData"]
 - ["PSo16NSObjectProtocol", "imagePath"]
 - ["PSo16NSObjectProtocol", "init"]
-- ["PSo16NSObjectProtocol", "loadImageData"]
+- !private ["PSo16NSObjectProtocol", "navigationItem"]
 - ["PSo16NSObjectProtocol", "noimageTxt"]
 - ["PSo16NSObjectProtocol", "onTapPlayBtn"]
 - !private ["PSo16NSObjectProtocol", "path"]
@@ -630,6 +610,7 @@ depends-member:
 - ["PSo16NSObjectProtocol", "scrollView"]
 - !private ["PSo16NSObjectProtocol", "sharedApplication"]
 - !private ["PSo16NSObjectProtocol", "tag"]
+- !private ["PSo16NSObjectProtocol", "title"]
 - !private ["PSo16NSObjectProtocol", "userInteractionEnabled"]
 - !private ["PSo16NSObjectProtocol", "view"]
 - ["PSo16NSObjectProtocol", "viewDidLoad"]
@@ -685,8 +666,8 @@ depends-member:
 - !private ["PSo29UIAccessibilityIdentification", "boardHeight"]
 - !private ["PSo29UIAccessibilityIdentification", "boardWidth"]
 - !private ["PSo29UIAccessibilityIdentification", "bounds"]
+- !private ["PSo29UIAccessibilityIdentification", "contentSize"]
 - !private ["PSo29UIAccessibilityIdentification", "frame"]
-- !private ["PSo29UIAccessibilityIdentification", "header_height"]
 - !private ["PSo29UIAccessibilityIdentification", "image"]
 - ["PSo29UIAccessibilityIdentification", "init"]
 - !private ["PSo29UIAccessibilityIdentification", "playBtn"]
@@ -700,8 +681,8 @@ depends-member:
 - !private ["PSo12UIAppearance", "boardHeight"]
 - !private ["PSo12UIAppearance", "boardWidth"]
 - !private ["PSo12UIAppearance", "bounds"]
+- !private ["PSo12UIAppearance", "contentSize"]
 - !private ["PSo12UIAppearance", "frame"]
-- !private ["PSo12UIAppearance", "header_height"]
 - !private ["PSo12UIAppearance", "image"]
 - ["PSo12UIAppearance", "init"]
 - !private ["PSo12UIAppearance", "playBtn"]
@@ -723,18 +704,17 @@ depends-member:
 - !private ["PSo21UIAppearanceContainer", "alpha"]
 - !private ["PSo21UIAppearanceContainer", "boardHeight"]
 - !private ["PSo21UIAppearanceContainer", "boardWidth"]
-- ["PSo21UIAppearanceContainer", "botomConstraint"]
 - !private ["PSo21UIAppearanceContainer", "bounds"]
-- ["PSo21UIAppearanceContainer", "contentView"]
+- !private ["PSo21UIAppearanceContainer", "contentSize"]
 - ["PSo21UIAppearanceContainer", "didReceiveMemoryWarning"]
 - !private ["PSo21UIAppearanceContainer", "frame"]
+- ["PSo21UIAppearanceContainer", "getImageDataNames"]
 - ["PSo21UIAppearanceContainer", "getPhotoDirectory"]
-- !private ["PSo21UIAppearanceContainer", "header_height"]
 - !private ["PSo21UIAppearanceContainer", "image"]
 - ["PSo21UIAppearanceContainer", "imageData"]
 - ["PSo21UIAppearanceContainer", "imagePath"]
 - ["PSo21UIAppearanceContainer", "init"]
-- ["PSo21UIAppearanceContainer", "loadImageData"]
+- !private ["PSo21UIAppearanceContainer", "navigationItem"]
 - ["PSo21UIAppearanceContainer", "noimageTxt"]
 - ["PSo21UIAppearanceContainer", "onTapPlayBtn"]
 - ["PSo21UIAppearanceContainer", "pazzle"]
@@ -762,14 +742,13 @@ depends-member:
 - !private ["PSo18UIContentContainer", "UIImage"]
 - ["PSo18UIContentContainer", "UIImageView"]
 - !private ["PSo18UIContentContainer", "UITapGestureRecognizer"]
-- ["PSo18UIContentContainer", "botomConstraint"]
-- ["PSo18UIContentContainer", "contentView"]
 - ["PSo18UIContentContainer", "didReceiveMemoryWarning"]
+- ["PSo18UIContentContainer", "getImageDataNames"]
 - ["PSo18UIContentContainer", "getPhotoDirectory"]
 - ["PSo18UIContentContainer", "imageData"]
 - ["PSo18UIContentContainer", "imagePath"]
 - ["PSo18UIContentContainer", "init"]
-- ["PSo18UIContentContainer", "loadImageData"]
+- !private ["PSo18UIContentContainer", "navigationItem"]
 - ["PSo18UIContentContainer", "noimageTxt"]
 - ["PSo18UIContentContainer", "onTapPlayBtn"]
 - ["PSo18UIContentContainer", "pazzle"]
@@ -789,8 +768,8 @@ depends-member:
 - !private ["PSo17UICoordinateSpace", "boardHeight"]
 - !private ["PSo17UICoordinateSpace", "boardWidth"]
 - !private ["PSo17UICoordinateSpace", "bounds"]
+- !private ["PSo17UICoordinateSpace", "contentSize"]
 - !private ["PSo17UICoordinateSpace", "frame"]
-- !private ["PSo17UICoordinateSpace", "header_height"]
 - !private ["PSo17UICoordinateSpace", "image"]
 - ["PSo17UICoordinateSpace", "init"]
 - !private ["PSo17UICoordinateSpace", "playBtn"]
@@ -804,8 +783,8 @@ depends-member:
 - !private ["PSo13UIDynamicItem", "boardHeight"]
 - !private ["PSo13UIDynamicItem", "boardWidth"]
 - !private ["PSo13UIDynamicItem", "bounds"]
+- !private ["PSo13UIDynamicItem", "contentSize"]
 - !private ["PSo13UIDynamicItem", "frame"]
-- !private ["PSo13UIDynamicItem", "header_height"]
 - !private ["PSo13UIDynamicItem", "image"]
 - ["PSo13UIDynamicItem", "init"]
 - !private ["PSo13UIDynamicItem", "playBtn"]
@@ -827,18 +806,17 @@ depends-member:
 - !private ["PSo18UIFocusEnvironment", "alpha"]
 - !private ["PSo18UIFocusEnvironment", "boardHeight"]
 - !private ["PSo18UIFocusEnvironment", "boardWidth"]
-- ["PSo18UIFocusEnvironment", "botomConstraint"]
 - !private ["PSo18UIFocusEnvironment", "bounds"]
-- ["PSo18UIFocusEnvironment", "contentView"]
+- !private ["PSo18UIFocusEnvironment", "contentSize"]
 - ["PSo18UIFocusEnvironment", "didReceiveMemoryWarning"]
 - !private ["PSo18UIFocusEnvironment", "frame"]
+- ["PSo18UIFocusEnvironment", "getImageDataNames"]
 - ["PSo18UIFocusEnvironment", "getPhotoDirectory"]
-- !private ["PSo18UIFocusEnvironment", "header_height"]
 - !private ["PSo18UIFocusEnvironment", "image"]
 - ["PSo18UIFocusEnvironment", "imageData"]
 - ["PSo18UIFocusEnvironment", "imagePath"]
 - ["PSo18UIFocusEnvironment", "init"]
-- ["PSo18UIFocusEnvironment", "loadImageData"]
+- !private ["PSo18UIFocusEnvironment", "navigationItem"]
 - ["PSo18UIFocusEnvironment", "noimageTxt"]
 - ["PSo18UIFocusEnvironment", "onTapPlayBtn"]
 - ["PSo18UIFocusEnvironment", "pazzle"]
@@ -860,6 +838,7 @@ depends-member:
 - ["CSo11UIImageView", "init"]
 - !private ["CSo11UIImageView", "tag"]
 - !private ["CSo7UILabel", "alpha"]
+- !private ["CSo16UINavigationItem", "title"]
 - ["CSo11UIResponder", "AnyObject"]
 - !private ["CSo11UIResponder", "AppConst"]
 - !private ["CSo11UIResponder", "AppDelegate"]
@@ -868,7 +847,6 @@ depends-member:
 - !private ["CSo11UIResponder", "CGRectMake"]
 - !private ["CSo11UIResponder", "MyPuzzleView"]
 - !private ["CSo11UIResponder", "NSFileManager"]
-- ["CSo11UIResponder", "NSLayoutConstraint"]
 - ["CSo11UIResponder", "NSURL"]
 - ["CSo11UIResponder", "String"]
 - !private ["CSo11UIResponder", "UIApplication"]
@@ -877,7 +855,6 @@ depends-member:
 - ["CSo11UIResponder", "UILabel"]
 - ["CSo11UIResponder", "UIScrollView"]
 - !private ["CSo11UIResponder", "UITapGestureRecognizer"]
-- ["CSo11UIResponder", "UIView"]
 - !private ["CSo11UIResponder", "addGestureRecognizer"]
 - !private ["CSo11UIResponder", "addSubview"]
 - !private ["CSo11UIResponder", "addTarget"]
@@ -885,19 +862,18 @@ depends-member:
 - !private ["CSo11UIResponder", "baseImage"]
 - !private ["CSo11UIResponder", "boardHeight"]
 - !private ["CSo11UIResponder", "boardWidth"]
-- ["CSo11UIResponder", "botomConstraint"]
 - !private ["CSo11UIResponder", "bounds"]
-- ["CSo11UIResponder", "contentView"]
+- !private ["CSo11UIResponder", "contentSize"]
 - !private ["CSo11UIResponder", "delegate"]
 - ["CSo11UIResponder", "didReceiveMemoryWarning"]
 - !private ["CSo11UIResponder", "frame"]
+- ["CSo11UIResponder", "getImageDataNames"]
 - ["CSo11UIResponder", "getPhotoDirectory"]
-- !private ["CSo11UIResponder", "header_height"]
 - !private ["CSo11UIResponder", "image"]
 - ["CSo11UIResponder", "imageData"]
 - ["CSo11UIResponder", "imagePath"]
 - ["CSo11UIResponder", "init"]
-- ["CSo11UIResponder", "loadImageData"]
+- !private ["CSo11UIResponder", "navigationItem"]
 - ["CSo11UIResponder", "noimageTxt"]
 - ["CSo11UIResponder", "onTapPlayBtn"]
 - ["CSo11UIResponder", "pazzle"]
@@ -911,6 +887,8 @@ depends-member:
 - !private ["CSo11UIResponder", "userInteractionEnabled"]
 - !private ["CSo11UIResponder", "view"]
 - ["CSo11UIResponder", "viewDidLoad"]
+- !private ["CSo12UIScrollView", "addSubview"]
+- !private ["CSo12UIScrollView", "contentSize"]
 - !private ["PSo16UIStateRestoring", "AppConst"]
 - !private ["PSo16UIStateRestoring", "CGFloat"]
 - !private ["PSo16UIStateRestoring", "CGRectMake"]
@@ -920,14 +898,13 @@ depends-member:
 - !private ["PSo16UIStateRestoring", "UIImage"]
 - ["PSo16UIStateRestoring", "UIImageView"]
 - !private ["PSo16UIStateRestoring", "UITapGestureRecognizer"]
-- ["PSo16UIStateRestoring", "botomConstraint"]
-- ["PSo16UIStateRestoring", "contentView"]
 - ["PSo16UIStateRestoring", "didReceiveMemoryWarning"]
+- ["PSo16UIStateRestoring", "getImageDataNames"]
 - ["PSo16UIStateRestoring", "getPhotoDirectory"]
 - ["PSo16UIStateRestoring", "imageData"]
 - ["PSo16UIStateRestoring", "imagePath"]
 - ["PSo16UIStateRestoring", "init"]
-- ["PSo16UIStateRestoring", "loadImageData"]
+- !private ["PSo16UIStateRestoring", "navigationItem"]
 - ["PSo16UIStateRestoring", "noimageTxt"]
 - ["PSo16UIStateRestoring", "onTapPlayBtn"]
 - ["PSo16UIStateRestoring", "pazzle"]
@@ -953,18 +930,17 @@ depends-member:
 - !private ["PSo18UITraitEnvironment", "alpha"]
 - !private ["PSo18UITraitEnvironment", "boardHeight"]
 - !private ["PSo18UITraitEnvironment", "boardWidth"]
-- ["PSo18UITraitEnvironment", "botomConstraint"]
 - !private ["PSo18UITraitEnvironment", "bounds"]
-- ["PSo18UITraitEnvironment", "contentView"]
+- !private ["PSo18UITraitEnvironment", "contentSize"]
 - ["PSo18UITraitEnvironment", "didReceiveMemoryWarning"]
 - !private ["PSo18UITraitEnvironment", "frame"]
+- ["PSo18UITraitEnvironment", "getImageDataNames"]
 - ["PSo18UITraitEnvironment", "getPhotoDirectory"]
-- !private ["PSo18UITraitEnvironment", "header_height"]
 - !private ["PSo18UITraitEnvironment", "image"]
 - ["PSo18UITraitEnvironment", "imageData"]
 - ["PSo18UITraitEnvironment", "imagePath"]
 - ["PSo18UITraitEnvironment", "init"]
-- ["PSo18UITraitEnvironment", "loadImageData"]
+- !private ["PSo18UITraitEnvironment", "navigationItem"]
 - ["PSo18UITraitEnvironment", "noimageTxt"]
 - ["PSo18UITraitEnvironment", "onTapPlayBtn"]
 - ["PSo18UITraitEnvironment", "pazzle"]
@@ -985,8 +961,8 @@ depends-member:
 - !private ["CSo6UIView", "boardHeight"]
 - !private ["CSo6UIView", "boardWidth"]
 - !private ["CSo6UIView", "bounds"]
+- !private ["CSo6UIView", "contentSize"]
 - !private ["CSo6UIView", "frame"]
-- !private ["CSo6UIView", "header_height"]
 - !private ["CSo6UIView", "image"]
 - ["CSo6UIView", "init"]
 - !private ["CSo6UIView", "playBtn"]
@@ -1001,7 +977,6 @@ depends-member:
 - !private ["CSo16UIViewController", "CGRectMake"]
 - !private ["CSo16UIViewController", "MyPuzzleView"]
 - !private ["CSo16UIViewController", "NSFileManager"]
-- ["CSo16UIViewController", "NSLayoutConstraint"]
 - ["CSo16UIViewController", "NSURL"]
 - ["CSo16UIViewController", "String"]
 - !private ["CSo16UIViewController", "UIApplication"]
@@ -1010,15 +985,13 @@ depends-member:
 - ["CSo16UIViewController", "UILabel"]
 - ["CSo16UIViewController", "UIScrollView"]
 - !private ["CSo16UIViewController", "UITapGestureRecognizer"]
-- ["CSo16UIViewController", "UIView"]
-- ["CSo16UIViewController", "botomConstraint"]
-- ["CSo16UIViewController", "contentView"]
 - ["CSo16UIViewController", "didReceiveMemoryWarning"]
+- ["CSo16UIViewController", "getImageDataNames"]
 - ["CSo16UIViewController", "getPhotoDirectory"]
 - ["CSo16UIViewController", "imageData"]
 - ["CSo16UIViewController", "imagePath"]
 - ["CSo16UIViewController", "init"]
-- ["CSo16UIViewController", "loadImageData"]
+- !private ["CSo16UIViewController", "navigationItem"]
 - ["CSo16UIViewController", "noimageTxt"]
 - ["CSo16UIViewController", "onTapPlayBtn"]
 - ["CSo16UIViewController", "pazzle"]
@@ -1079,9 +1052,9 @@ depends-member:
 - !private ["PSs12_Reflectable", "boardHeight"]
 - !private ["PSs12_Reflectable", "boardWidth"]
 - !private ["PSs12_Reflectable", "bounds"]
+- !private ["PSs12_Reflectable", "contentSize"]
 - !private ["PSs12_Reflectable", "count"]
 - !private ["PSs12_Reflectable", "frame"]
-- !private ["PSs12_Reflectable", "header_height"]
 - !private ["PSs12_Reflectable", "height"]
 - !private ["PSs12_Reflectable", "image"]
 - ["PSs12_Reflectable", "init"]
@@ -1146,7 +1119,6 @@ depends-nominal:
 - !private "PSo9NSCopying"
 - "PSo26NSExtensionRequestHandling"
 - !private "CSo13NSFileManager"
-- !private "CSo18NSLayoutConstraint"
 - "CSo8NSObject"
 - "PSo16NSObjectProtocol"
 - !private "OSC21NSSearchPathDirectory"
@@ -1182,7 +1154,9 @@ depends-nominal:
 - !private "CSo7UIImage"
 - "CSo11UIImageView"
 - !private "CSo7UILabel"
+- !private "CSo16UINavigationItem"
 - "CSo11UIResponder"
+- !private "CSo12UIScrollView"
 - "PSo16UIStateRestoring"
 - !private "CSo22UITapGestureRecognizer"
 - "PSo18UITraitEnvironment"
@@ -1215,4 +1189,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
-interface-hash: "b1d47b1f385e00a7bb8dcbbc3215ccd9"
+interface-hash: "ad40dfe1b11a165c97e6fe77ee42c68a"

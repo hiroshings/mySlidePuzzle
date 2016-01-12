@@ -6,72 +6,72 @@ provides-nominal:
 provides-member:
 - ["C13mySlidePuzzle18GameViewController", ""]
 provides-dynamic-lookup:
-- "showCompleteProduction"
-- "gameStageView"
 - "touchLocation_y"
-- "gamingFlag"
-- "baseImage"
-- "ids"
-- "movePiece"
-- "viewDidLoad"
-- "swapPieces"
-- "id"
-- "cropImage"
-- "touchesBegan"
 - "touchPiece"
+- "gameStageView"
 - "checkComplete"
+- "id"
+- "touchesBegan"
 - "showPieces"
-- "emptyPiece"
-- "touchLocation_x"
-- "compMessage"
-- "touch"
-- "completeFlag"
+- "baseImage"
+- "gamingFlag"
+- "ids"
+- "showCompleteProduction"
 - "toggleUserInteractionEnabled"
 - "pieceImage"
+- "swapPieces"
+- "movePiece"
+- "viewDidLoad"
+- "touchLocation_x"
+- "compMessage"
+- "cropImage"
+- "touch"
+- "completeFlag"
+- "emptyPiece"
 depends-top-level:
-- !private "++"
-- !private "UIColor"
-- "UIImageView"
-- "BooleanLiteralType"
-- "UIViewController"
-- !private "NSTextAlignment"
-- "CGFloat"
-- !private "~="
-- !private "String"
-- !private "!="
-- !private "+="
-- "Int"
 - !private "UIApplication"
-- !private "AppDelegate"
-- !private "UIGraphicsEndImageContext"
-- !private "<"
-- !private "CGSize"
-- "UITouch"
-- "Set"
-- !private "&&"
-- "UIEvent"
+- !private "StringLiteralType"
 - !private "swap"
-- "UILabel"
-- !private "-="
-- !private "*"
+- "UIView"
+- !private "+="
+- !private "AppConst"
+- !private "UIColor"
+- !private "!="
+- "UITouch"
+- !private "NSTextAlignment"
 - "Bool"
+- !private "UIGraphicsBeginImageContext"
+- "Int"
+- !private "arc4random_uniform"
+- !private "=="
+- !private "++"
+- !private "UInt32"
+- !private "String"
+- !private "-="
+- !private "~="
+- !private "<"
+- "CGFloat"
+- "UIViewController"
+- !private "*"
+- "BooleanLiteralType"
+- "UIImage"
 - "GameViewController"
 - !private "UIGraphicsGetImageFromCurrentImageContext"
-- "UIView"
-- !private "CGRectMake"
-- !private "-"
-- !private "StringLiteralType"
-- !private "UIGraphicsBeginImageContext"
-- !private "/"
 - !private "CGImageCreateWithImageInRect"
-- "Array"
+- "UILabel"
+- !private "-"
+- !private "/"
+- "UIImageView"
+- !private "CGSize"
+- !private "UIGraphicsEndImageContext"
 - !private "print"
-- !private "arc4random_uniform"
-- !private "UInt32"
-- !private "AppConst"
-- "UIImage"
-- !private "=="
 - !private "+"
+- !private "CGRectMake"
+- !private "&&"
+- "Array"
+- "Set"
+- !private "AppDelegate"
+- "UIEvent"
 depends-member:
 - !private ["PSs16AbsoluteValuable", "IntegerLiteralType"]
 - !private ["PSs16AbsoluteValuable", "Stride"]
@@ -116,7 +116,7 @@ depends-member:
 - !private ["PSs9AnyObject", "frame"]
 - ["PSs9AnyObject", "gameStageView"]
 - ["PSs9AnyObject", "gamingFlag"]
-- ["PSs9AnyObject", "getEnableMovePiece"]
+- ["PSs9AnyObject", "getEnableMovePositions"]
 - ["PSs9AnyObject", "id"]
 - ["PSs9AnyObject", "ids"]
 - !private ["PSs9AnyObject", "image"]
@@ -242,7 +242,7 @@ depends-member:
 - !private ["PSs11CVarArgType", "frame"]
 - ["PSs11CVarArgType", "gameStageView"]
 - ["PSs11CVarArgType", "gamingFlag"]
-- ["PSs11CVarArgType", "getEnableMovePiece"]
+- ["PSs11CVarArgType", "getEnableMovePositions"]
 - ["PSs11CVarArgType", "id"]
 - ["PSs11CVarArgType", "ids"]
 - !private ["PSs11CVarArgType", "image"]
@@ -352,7 +352,7 @@ depends-member:
 - !private ["PSs23CustomStringConvertible", "frame"]
 - ["PSs23CustomStringConvertible", "gameStageView"]
 - ["PSs23CustomStringConvertible", "gamingFlag"]
-- ["PSs23CustomStringConvertible", "getEnableMovePiece"]
+- ["PSs23CustomStringConvertible", "getEnableMovePositions"]
 - ["PSs23CustomStringConvertible", "id"]
 - ["PSs23CustomStringConvertible", "ids"]
 - !private ["PSs23CustomStringConvertible", "image"]
@@ -445,7 +445,7 @@ depends-member:
 - !private ["PSs9Equatable", "frame"]
 - ["PSs9Equatable", "gameStageView"]
 - ["PSs9Equatable", "gamingFlag"]
-- ["PSs9Equatable", "getEnableMovePiece"]
+- ["PSs9Equatable", "getEnableMovePositions"]
 - !private ["PSs9Equatable", "height"]
 - ["PSs9Equatable", "id"]
 - ["PSs9Equatable", "ids"]
@@ -537,7 +537,7 @@ depends-member:
 - ["C13mySlidePuzzle18GameViewController", "emptyPiece"]
 - ["C13mySlidePuzzle18GameViewController", "gameStageView"]
 - ["C13mySlidePuzzle18GameViewController", "gamingFlag"]
-- ["C13mySlidePuzzle18GameViewController", "getEnableMovePiece"]
+- ["C13mySlidePuzzle18GameViewController", "getEnableMovePositions"]
 - ["C13mySlidePuzzle18GameViewController", "id"]
 - ["C13mySlidePuzzle18GameViewController", "ids"]
 - ["C13mySlidePuzzle18GameViewController", "init"]
@@ -608,7 +608,7 @@ depends-member:
 - !private ["PSs8Hashable", "frame"]
 - ["PSs8Hashable", "gameStageView"]
 - ["PSs8Hashable", "gamingFlag"]
-- ["PSs8Hashable", "getEnableMovePiece"]
+- ["PSs8Hashable", "getEnableMovePositions"]
 - ["PSs8Hashable", "id"]
 - ["PSs8Hashable", "ids"]
 - !private ["PSs8Hashable", "image"]
@@ -746,7 +746,7 @@ depends-member:
 - !private ["PSo8NSCoding", "frame"]
 - ["PSo8NSCoding", "gameStageView"]
 - ["PSo8NSCoding", "gamingFlag"]
-- ["PSo8NSCoding", "getEnableMovePiece"]
+- ["PSo8NSCoding", "getEnableMovePositions"]
 - ["PSo8NSCoding", "id"]
 - ["PSo8NSCoding", "ids"]
 - !private ["PSo8NSCoding", "image"]
@@ -810,7 +810,7 @@ depends-member:
 - ["PSo26NSExtensionRequestHandling", "emptyPiece"]
 - ["PSo26NSExtensionRequestHandling", "gameStageView"]
 - ["PSo26NSExtensionRequestHandling", "gamingFlag"]
-- ["PSo26NSExtensionRequestHandling", "getEnableMovePiece"]
+- ["PSo26NSExtensionRequestHandling", "getEnableMovePositions"]
 - ["PSo26NSExtensionRequestHandling", "id"]
 - ["PSo26NSExtensionRequestHandling", "ids"]
 - ["PSo26NSExtensionRequestHandling", "init"]
@@ -877,7 +877,7 @@ depends-member:
 - !private ["CSo8NSObject", "frame"]
 - ["CSo8NSObject", "gameStageView"]
 - ["CSo8NSObject", "gamingFlag"]
-- ["CSo8NSObject", "getEnableMovePiece"]
+- ["CSo8NSObject", "getEnableMovePositions"]
 - ["CSo8NSObject", "id"]
 - ["CSo8NSObject", "ids"]
 - !private ["CSo8NSObject", "image"]
@@ -953,7 +953,7 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "frame"]
 - ["PSo16NSObjectProtocol", "gameStageView"]
 - ["PSo16NSObjectProtocol", "gamingFlag"]
-- ["PSo16NSObjectProtocol", "getEnableMovePiece"]
+- ["PSo16NSObjectProtocol", "getEnableMovePositions"]
 - ["PSo16NSObjectProtocol", "id"]
 - ["PSo16NSObjectProtocol", "ids"]
 - !private ["PSo16NSObjectProtocol", "image"]
@@ -1131,7 +1131,7 @@ depends-member:
 - !private ["PSo21UIAppearanceContainer", "frame"]
 - ["PSo21UIAppearanceContainer", "gameStageView"]
 - ["PSo21UIAppearanceContainer", "gamingFlag"]
-- ["PSo21UIAppearanceContainer", "getEnableMovePiece"]
+- ["PSo21UIAppearanceContainer", "getEnableMovePositions"]
 - ["PSo21UIAppearanceContainer", "id"]
 - ["PSo21UIAppearanceContainer", "ids"]
 - !private ["PSo21UIAppearanceContainer", "image"]
@@ -1196,7 +1196,7 @@ depends-member:
 - ["PSo18UIContentContainer", "emptyPiece"]
 - ["PSo18UIContentContainer", "gameStageView"]
 - ["PSo18UIContentContainer", "gamingFlag"]
-- ["PSo18UIContentContainer", "getEnableMovePiece"]
+- ["PSo18UIContentContainer", "getEnableMovePositions"]
 - ["PSo18UIContentContainer", "id"]
 - ["PSo18UIContentContainer", "ids"]
 - ["PSo18UIContentContainer", "init"]
@@ -1294,7 +1294,7 @@ depends-member:
 - !private ["PSo18UIFocusEnvironment", "frame"]
 - ["PSo18UIFocusEnvironment", "gameStageView"]
 - ["PSo18UIFocusEnvironment", "gamingFlag"]
-- ["PSo18UIFocusEnvironment", "getEnableMovePiece"]
+- ["PSo18UIFocusEnvironment", "getEnableMovePositions"]
 - ["PSo18UIFocusEnvironment", "id"]
 - ["PSo18UIFocusEnvironment", "ids"]
 - !private ["PSo18UIFocusEnvironment", "image"]
@@ -1385,7 +1385,7 @@ depends-member:
 - !private ["CSo11UIResponder", "frame"]
 - ["CSo11UIResponder", "gameStageView"]
 - ["CSo11UIResponder", "gamingFlag"]
-- ["CSo11UIResponder", "getEnableMovePiece"]
+- ["CSo11UIResponder", "getEnableMovePositions"]
 - ["CSo11UIResponder", "id"]
 - ["CSo11UIResponder", "ids"]
 - !private ["CSo11UIResponder", "image"]
@@ -1445,7 +1445,7 @@ depends-member:
 - ["PSo16UIStateRestoring", "emptyPiece"]
 - ["PSo16UIStateRestoring", "gameStageView"]
 - ["PSo16UIStateRestoring", "gamingFlag"]
-- ["PSo16UIStateRestoring", "getEnableMovePiece"]
+- ["PSo16UIStateRestoring", "getEnableMovePositions"]
 - ["PSo16UIStateRestoring", "id"]
 - ["PSo16UIStateRestoring", "ids"]
 - ["PSo16UIStateRestoring", "init"]
@@ -1504,7 +1504,7 @@ depends-member:
 - !private ["PSo18UITraitEnvironment", "frame"]
 - ["PSo18UITraitEnvironment", "gameStageView"]
 - ["PSo18UITraitEnvironment", "gamingFlag"]
-- ["PSo18UITraitEnvironment", "getEnableMovePiece"]
+- ["PSo18UITraitEnvironment", "getEnableMovePositions"]
 - ["PSo18UITraitEnvironment", "id"]
 - ["PSo18UITraitEnvironment", "ids"]
 - !private ["PSo18UITraitEnvironment", "image"]
@@ -1590,7 +1590,7 @@ depends-member:
 - ["CSo16UIViewController", "emptyPiece"]
 - ["CSo16UIViewController", "gameStageView"]
 - ["CSo16UIViewController", "gamingFlag"]
-- ["CSo16UIViewController", "getEnableMovePiece"]
+- ["CSo16UIViewController", "getEnableMovePositions"]
 - ["CSo16UIViewController", "id"]
 - ["CSo16UIViewController", "ids"]
 - ["CSo16UIViewController", "init"]
@@ -1897,4 +1897,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/ObjectiveC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreGraphics.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreImage.swiftmodule"
-interface-hash: "dca324be15ec20af2dab73db85886f13"
+interface-hash: "a8adaa19f1d678b737055188f2902a2b"

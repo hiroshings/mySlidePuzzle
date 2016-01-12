@@ -1,82 +1,157 @@
 ### Swift dependencies file v0 ###
 provides-top-level:
+- "CurrentTime"
+- "CurrentTimeFormatted"
 provides-nominal:
+- "C13mySlidePuzzle11CurrentTime"
+- "C13mySlidePuzzle20CurrentTimeFormatted"
 provides-member:
 - ["CSo7UIColor", ""]
 - ["CSo12UIScrollView", ""]
+- ["C13mySlidePuzzle11CurrentTime", ""]
+- ["C13mySlidePuzzle20CurrentTimeFormatted", ""]
 - ["CSo7UIColor", "rgb"]
 - ["CSo7UIColor", "rgba"]
 - ["CSo12UIScrollView", "touchesBegan"]
 provides-dynamic-lookup:
+- "rgba"
 - "rgb"
 - "touchesBegan"
-- "rgba"
 depends-top-level:
-- "UIEvent"
 - "Set"
-- "UIColor"
-- "UIScrollView"
-- "UITouch"
-- !private "/"
+- !private "NSLocale"
 - "CGFloat"
+- "UIColor"
+- "NSDateFormatter"
+- "CurrentTimeFormatted"
+- "UIScrollView"
+- "CurrentTime"
+- !private "/"
+- "UITouch"
+- !private "StringLiteralType"
+- "NSDate"
+- "String"
+- "UIEvent"
 depends-member:
+- ["PSs9AnyObject", "NSDate"]
+- ["PSs9AnyObject", "NSDateFormatter"]
+- !private ["PSs9AnyObject", "NSLocale"]
 - !private ["PSs9AnyObject", "UIColor"]
-- !private ["PSs9AnyObject", "init"]
+- !private ["PSs9AnyObject", "dataFormatter"]
+- !private ["PSs9AnyObject", "dateFormat"]
+- ["PSs9AnyObject", "getCurrentTime"]
+- ["PSs9AnyObject", "init"]
+- !private ["PSs9AnyObject", "locale"]
+- !private ["PSs9AnyObject", "now"]
 - ["PSs9AnyObject", "rgb"]
 - ["PSs9AnyObject", "rgba"]
+- !private ["PSs9AnyObject", "stringFromDate"]
 - !private ["PSs9AnyObject", "superview"]
 - ["PSs9AnyObject", "touchesBegan"]
+- ["PSs9AnyObject", ""]
 - !private ["V12CoreGraphics7CGFloat", "deinit"]
 - !private ["PSs11CVarArgType", "UIColor"]
-- !private ["PSs11CVarArgType", "init"]
+- !private ["PSs11CVarArgType", "dateFormat"]
+- ["PSs11CVarArgType", "init"]
+- !private ["PSs11CVarArgType", "locale"]
 - ["PSs11CVarArgType", "rgb"]
 - ["PSs11CVarArgType", "rgba"]
+- !private ["PSs11CVarArgType", "stringFromDate"]
 - !private ["PSs11CVarArgType", "superview"]
 - ["PSs11CVarArgType", "touchesBegan"]
+- ["C13mySlidePuzzle11CurrentTime", "NSDate"]
+- ["C13mySlidePuzzle11CurrentTime", "NSDateFormatter"]
+- !private ["C13mySlidePuzzle11CurrentTime", "NSLocale"]
+- ["C13mySlidePuzzle11CurrentTime", "String"]
+- ["C13mySlidePuzzle11CurrentTime", "dataFormatter"]
+- ["C13mySlidePuzzle11CurrentTime", "deinit"]
+- ["C13mySlidePuzzle11CurrentTime", "getCurrentTime"]
+- ["C13mySlidePuzzle11CurrentTime", "init"]
+- ["C13mySlidePuzzle11CurrentTime", "now"]
+- ["C13mySlidePuzzle11CurrentTime", ""]
+- !private ["C13mySlidePuzzle20CurrentTimeFormatted", "NSLocale"]
+- ["C13mySlidePuzzle20CurrentTimeFormatted", "String"]
+- !private ["C13mySlidePuzzle20CurrentTimeFormatted", "dataFormatter"]
+- ["C13mySlidePuzzle20CurrentTimeFormatted", "deinit"]
+- ["C13mySlidePuzzle20CurrentTimeFormatted", "getCurrentTime"]
+- ["C13mySlidePuzzle20CurrentTimeFormatted", "init"]
+- !private ["C13mySlidePuzzle20CurrentTimeFormatted", "now"]
 - !private ["PSs23CustomStringConvertible", "UIColor"]
-- !private ["PSs23CustomStringConvertible", "init"]
+- !private ["PSs23CustomStringConvertible", "dateFormat"]
+- ["PSs23CustomStringConvertible", "init"]
+- !private ["PSs23CustomStringConvertible", "locale"]
 - ["PSs23CustomStringConvertible", "rgb"]
 - ["PSs23CustomStringConvertible", "rgba"]
+- !private ["PSs23CustomStringConvertible", "stringFromDate"]
 - !private ["PSs23CustomStringConvertible", "superview"]
 - ["PSs23CustomStringConvertible", "touchesBegan"]
 - !private ["PSs9Equatable", "UIColor"]
-- !private ["PSs9Equatable", "init"]
+- !private ["PSs9Equatable", "dateFormat"]
+- ["PSs9Equatable", "init"]
+- !private ["PSs9Equatable", "locale"]
 - ["PSs9Equatable", "rgb"]
 - ["PSs9Equatable", "rgba"]
+- !private ["PSs9Equatable", "stringFromDate"]
 - !private ["PSs9Equatable", "superview"]
 - ["PSs9Equatable", "touchesBegan"]
 - !private ["PSs8Hashable", "UIColor"]
-- !private ["PSs8Hashable", "init"]
+- !private ["PSs8Hashable", "dateFormat"]
+- ["PSs8Hashable", "init"]
+- !private ["PSs8Hashable", "locale"]
 - ["PSs8Hashable", "rgb"]
 - ["PSs8Hashable", "rgba"]
+- !private ["PSs8Hashable", "stringFromDate"]
 - !private ["PSs8Hashable", "superview"]
 - ["PSs8Hashable", "touchesBegan"]
+- !private ["SQ", "deinit"]
 - !private ["PSo8NSCoding", "UIColor"]
-- !private ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "dateFormat"]
+- ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "locale"]
 - !private ["PSo8NSCoding", "rgba"]
+- !private ["PSo8NSCoding", "stringFromDate"]
 - !private ["PSo8NSCoding", "superview"]
 - ["PSo8NSCoding", "touchesBegan"]
 - !private ["PSo9NSCopying", "UIColor"]
-- !private ["PSo9NSCopying", "init"]
+- !private ["PSo9NSCopying", "dateFormat"]
+- ["PSo9NSCopying", "init"]
+- !private ["PSo9NSCopying", "locale"]
 - !private ["PSo9NSCopying", "rgba"]
+- !private ["PSo9NSCopying", "stringFromDate"]
+- ["CSo6NSDate", "init"]
+- !private ["CSo15NSDateFormatter", "dateFormat"]
+- ["CSo15NSDateFormatter", "init"]
+- !private ["CSo15NSDateFormatter", "locale"]
+- !private ["CSo15NSDateFormatter", "stringFromDate"]
+- !private ["CSo11NSFormatter", "dateFormat"]
+- ["CSo11NSFormatter", "init"]
+- !private ["CSo11NSFormatter", "locale"]
+- !private ["CSo11NSFormatter", "stringFromDate"]
+- !private ["CSo8NSLocale", "init"]
 - ["CSo8NSObject", "CGFloat"]
 - ["CSo8NSObject", "Set"]
 - ["CSo8NSObject", "UIColor"]
 - ["CSo8NSObject", "UIEvent"]
 - ["CSo8NSObject", "UITouch"]
-- !private ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "dateFormat"]
+- ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "locale"]
 - ["CSo8NSObject", "rgb"]
 - ["CSo8NSObject", "rgba"]
+- !private ["CSo8NSObject", "stringFromDate"]
 - !private ["CSo8NSObject", "superview"]
 - ["CSo8NSObject", "touchesBegan"]
 - !private ["PSo16NSObjectProtocol", "UIColor"]
-- !private ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "dateFormat"]
+- ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "locale"]
 - ["PSo16NSObjectProtocol", "rgb"]
 - ["PSo16NSObjectProtocol", "rgba"]
+- !private ["PSo16NSObjectProtocol", "stringFromDate"]
 - !private ["PSo16NSObjectProtocol", "superview"]
 - ["PSo16NSObjectProtocol", "touchesBegan"]
 - !private ["PSo14NSSecureCoding", "UIColor"]
-- !private ["PSo14NSSecureCoding", "init"]
+- ["PSo14NSSecureCoding", "init"]
 - !private ["PSo14NSSecureCoding", "rgba"]
 - !private ["PSo29UIAccessibilityIdentification", "superview"]
 - ["PSo29UIAccessibilityIdentification", "touchesBegan"]
@@ -115,20 +190,28 @@ depends-member:
 - !private ["PSs24_ColorLiteralConvertible", "UIColor"]
 - !private ["PSs24_ColorLiteralConvertible", "init"]
 - !private ["PSs24_ColorLiteralConvertible", "rgba"]
+- ["PSs12_Reflectable", "init"]
 - !private ["PSs12_Reflectable", "superview"]
 - ["PSs12_Reflectable", "touchesBegan"]
 depends-nominal:
 - "PSs9AnyObject"
 - !private "V12CoreGraphics7CGFloat"
 - "PSs11CVarArgType"
+- "C13mySlidePuzzle11CurrentTime"
+- "C13mySlidePuzzle20CurrentTimeFormatted"
 - "PSs23CustomStringConvertible"
 - "PSs9Equatable"
 - "PSs8Hashable"
+- !private "SQ"
 - "PSo8NSCoding"
-- !private "PSo9NSCopying"
+- "PSo9NSCopying"
+- "CSo6NSDate"
+- "CSo15NSDateFormatter"
+- "CSo11NSFormatter"
+- !private "CSo8NSLocale"
 - "CSo8NSObject"
 - "PSo16NSObjectProtocol"
-- !private "PSo14NSSecureCoding"
+- "PSo14NSSecureCoding"
 - "PSo29UIAccessibilityIdentification"
 - "PSo12UIAppearance"
 - "PSo21UIAppearanceContainer"
@@ -152,4 +235,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
-interface-hash: "a2d9a7c69666019ebf2e585c8865d688"
+interface-hash: "bddb13e1973b2b6b19313970f5ea1bab"

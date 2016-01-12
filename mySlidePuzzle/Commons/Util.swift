@@ -34,3 +34,27 @@ extension UIScrollView {
         superview?.touchesBegan(touches, withEvent: event)
     }
 }
+
+public class CurrentTime {
+    
+    let now = NSDate()
+    let dataFormatter = NSDateFormatter()
+    
+    /// 現在時刻を返す
+    internal func getCurrentTime() -> String {
+        
+        dataFormatter.locale = NSLocale(localeIdentifier: "ja_JP")
+        dataFormatter.dateFormat = "yyyyMMddHHmmss"
+        return dataFormatter.stringFromDate(now)
+    }
+}
+
+public class CurrentTimeFormatted: CurrentTime {
+    
+    override internal func getCurrentTime() -> String {
+        
+        dataFormatter.locale = NSLocale(localeIdentifier: "ja_JP")
+        dataFormatter.dateFormat = "yyyy/MM/dd/HH:mm:ss"
+        return dataFormatter.stringFromDate(now)
+    }
+}

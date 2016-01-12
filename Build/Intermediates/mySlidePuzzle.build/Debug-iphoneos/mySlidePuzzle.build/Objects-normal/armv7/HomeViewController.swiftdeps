@@ -6,45 +6,47 @@ provides-nominal:
 provides-member:
 - ["C13mySlidePuzzle18HomeViewController", ""]
 provides-dynamic-lookup:
+- "getCurrentTime"
 - "onTapStartBtn"
 - "viewWillAppear"
 - "savePhotoData"
-- "getCurrentTime"
-- "viewWillDisappear"
 - "didReceiveMemoryWarning"
-- "viewDidLoad"
+- "viewWillDisappear"
+- "setDirectory"
 - "imagePickerController"
+- "viewDidLoad"
 depends-top-level:
-- !private "CGRectMake"
-- "UIViewController"
-- !private "AppConst"
-- !private "UIImagePickerControllerSourceType"
-- !private "BooleanLiteralType"
-- !private "UIImagePickerControllerEditedImage"
-- !private "UIAlertAction"
-- !private "AppDelegate"
-- !private "!"
-- !private "UIApplication"
-- !private "UIAlertController"
-- "UIImagePickerControllerDelegate"
-- !private "UIAlertActionStyle"
-- !private "NSFileManager"
-- "UINavigationControllerDelegate"
-- "AnyObject"
-- !private "NSLocale"
-- "UIImagePickerController"
-- !private "StringLiteralType"
-- "Bool"
-- !private "+"
-- "String"
-- !private "NSDate"
-- !private "UIAlertControllerStyle"
 - !private "UIImageView"
-- !private "print"
-- "UIImage"
-- "HomeViewController"
-- !private "UIImagePNGRepresentation"
+- "AnyObject"
 - !private "NSDateFormatter"
+- "Bool"
+- "NSURL"
+- !private "BooleanLiteralType"
+- !private "print"
+- !private "UIImagePickerControllerSourceType"
+- !private "UIAlertControllerStyle"
+- "UIImage"
+- !private "+"
+- !private "AppDelegate"
+- "UIImagePickerController"
+- !private "CGRectMake"
+- "UIImagePickerControllerDelegate"
+- !private "StringLiteralType"
+- !private "!"
+- !private "UIAlertActionStyle"
+- "UINavigationControllerDelegate"
+- !private "UIAlertController"
+- "String"
+- !private "UIImagePickerControllerEditedImage"
+- !private "NSFileManager"
+- !private "AppConst"
+- !private "UIImagePNGRepresentation"
+- "UIViewController"
+- !private "NSLocale"
+- !private "UIAlertAction"
+- !private "UIApplication"
+- !private "NSDate"
+- "HomeViewController"
 depends-member:
 - !private ["PSs9AnyObject", "AppConst"]
 - !private ["PSs9AnyObject", "CGRectMake"]
@@ -94,6 +96,7 @@ depends-member:
 - !private ["PSs9AnyObject", "presentViewController"]
 - !private ["PSs9AnyObject", "print"]
 - ["PSs9AnyObject", "savePhotoData"]
+- ["PSs9AnyObject", "setDirectory"]
 - !private ["PSs9AnyObject", "setNavigationBarHidden"]
 - !private ["PSs9AnyObject", "sharedApplication"]
 - !private ["PSs9AnyObject", "sourceType"]
@@ -165,6 +168,7 @@ depends-member:
 - !private ["PSs11CVarArgType", "presentViewController"]
 - !private ["PSs11CVarArgType", "print"]
 - ["PSs11CVarArgType", "savePhotoData"]
+- ["PSs11CVarArgType", "setDirectory"]
 - !private ["PSs11CVarArgType", "setNavigationBarHidden"]
 - !private ["PSs11CVarArgType", "sharedApplication"]
 - !private ["PSs11CVarArgType", "sourceType"]
@@ -235,6 +239,7 @@ depends-member:
 - !private ["PSs23CustomStringConvertible", "presentViewController"]
 - !private ["PSs23CustomStringConvertible", "print"]
 - ["PSs23CustomStringConvertible", "savePhotoData"]
+- ["PSs23CustomStringConvertible", "setDirectory"]
 - !private ["PSs23CustomStringConvertible", "setNavigationBarHidden"]
 - !private ["PSs23CustomStringConvertible", "sharedApplication"]
 - !private ["PSs23CustomStringConvertible", "sourceType"]
@@ -305,6 +310,7 @@ depends-member:
 - !private ["PSs9Equatable", "presentViewController"]
 - !private ["PSs9Equatable", "print"]
 - ["PSs9Equatable", "savePhotoData"]
+- ["PSs9Equatable", "setDirectory"]
 - !private ["PSs9Equatable", "setNavigationBarHidden"]
 - !private ["PSs9Equatable", "sharedApplication"]
 - !private ["PSs9Equatable", "sourceType"]
@@ -370,6 +376,7 @@ depends-member:
 - !private ["PSs8Hashable", "presentViewController"]
 - !private ["PSs8Hashable", "print"]
 - ["PSs8Hashable", "savePhotoData"]
+- ["PSs8Hashable", "setDirectory"]
 - !private ["PSs8Hashable", "setNavigationBarHidden"]
 - !private ["PSs8Hashable", "sharedApplication"]
 - !private ["PSs8Hashable", "sourceType"]
@@ -388,6 +395,7 @@ depends-member:
 - !private ["C13mySlidePuzzle18HomeViewController", "NSDateFormatter"]
 - !private ["C13mySlidePuzzle18HomeViewController", "NSFileManager"]
 - !private ["C13mySlidePuzzle18HomeViewController", "NSLocale"]
+- ["C13mySlidePuzzle18HomeViewController", "NSURL"]
 - ["C13mySlidePuzzle18HomeViewController", "String"]
 - !private ["C13mySlidePuzzle18HomeViewController", "UIAlertAction"]
 - !private ["C13mySlidePuzzle18HomeViewController", "UIAlertActionStyle"]
@@ -415,6 +423,7 @@ depends-member:
 - !private ["C13mySlidePuzzle18HomeViewController", "presentViewController"]
 - !private ["C13mySlidePuzzle18HomeViewController", "print"]
 - ["C13mySlidePuzzle18HomeViewController", "savePhotoData"]
+- ["C13mySlidePuzzle18HomeViewController", "setDirectory"]
 - ["C13mySlidePuzzle18HomeViewController", "viewDidLoad"]
 - ["C13mySlidePuzzle18HomeViewController", "viewWillAppear"]
 - ["C13mySlidePuzzle18HomeViewController", "viewWillDisappear"]
@@ -480,6 +489,7 @@ depends-member:
 - !private ["PSo8NSCoding", "presentViewController"]
 - !private ["PSo8NSCoding", "print"]
 - ["PSo8NSCoding", "savePhotoData"]
+- ["PSo8NSCoding", "setDirectory"]
 - !private ["PSo8NSCoding", "setNavigationBarHidden"]
 - !private ["PSo8NSCoding", "sourceType"]
 - !private ["PSo8NSCoding", "stringFromDate"]
@@ -536,6 +546,7 @@ depends-member:
 - !private ["PSo26NSExtensionRequestHandling", "presentViewController"]
 - !private ["PSo26NSExtensionRequestHandling", "print"]
 - ["PSo26NSExtensionRequestHandling", "savePhotoData"]
+- ["PSo26NSExtensionRequestHandling", "setDirectory"]
 - !private ["PSo26NSExtensionRequestHandling", "setNavigationBarHidden"]
 - !private ["PSo26NSExtensionRequestHandling", "sourceType"]
 - ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
@@ -562,6 +573,7 @@ depends-member:
 - !private ["CSo8NSObject", "NSDateFormatter"]
 - !private ["CSo8NSObject", "NSFileManager"]
 - !private ["CSo8NSObject", "NSLocale"]
+- ["CSo8NSObject", "NSURL"]
 - ["CSo8NSObject", "String"]
 - !private ["CSo8NSObject", "UIAlertAction"]
 - !private ["CSo8NSObject", "UIAlertActionStyle"]
@@ -606,6 +618,7 @@ depends-member:
 - !private ["CSo8NSObject", "presentViewController"]
 - !private ["CSo8NSObject", "print"]
 - ["CSo8NSObject", "savePhotoData"]
+- ["CSo8NSObject", "setDirectory"]
 - !private ["CSo8NSObject", "setNavigationBarHidden"]
 - !private ["CSo8NSObject", "sharedApplication"]
 - !private ["CSo8NSObject", "sourceType"]
@@ -662,6 +675,7 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "presentViewController"]
 - !private ["PSo16NSObjectProtocol", "print"]
 - ["PSo16NSObjectProtocol", "savePhotoData"]
+- ["PSo16NSObjectProtocol", "setDirectory"]
 - !private ["PSo16NSObjectProtocol", "setNavigationBarHidden"]
 - !private ["PSo16NSObjectProtocol", "sharedApplication"]
 - !private ["PSo16NSObjectProtocol", "sourceType"]
@@ -763,6 +777,7 @@ depends-member:
 - !private ["PSo21UIAppearanceContainer", "presentViewController"]
 - !private ["PSo21UIAppearanceContainer", "print"]
 - ["PSo21UIAppearanceContainer", "savePhotoData"]
+- ["PSo21UIAppearanceContainer", "setDirectory"]
 - !private ["PSo21UIAppearanceContainer", "setNavigationBarHidden"]
 - !private ["PSo21UIAppearanceContainer", "sourceType"]
 - ["PSo21UIAppearanceContainer", "viewDidLoad"]
@@ -807,6 +822,7 @@ depends-member:
 - !private ["PSo18UIContentContainer", "presentViewController"]
 - !private ["PSo18UIContentContainer", "print"]
 - ["PSo18UIContentContainer", "savePhotoData"]
+- ["PSo18UIContentContainer", "setDirectory"]
 - !private ["PSo18UIContentContainer", "setNavigationBarHidden"]
 - !private ["PSo18UIContentContainer", "sourceType"]
 - ["PSo18UIContentContainer", "viewDidLoad"]
@@ -862,6 +878,7 @@ depends-member:
 - !private ["PSo18UIFocusEnvironment", "presentViewController"]
 - !private ["PSo18UIFocusEnvironment", "print"]
 - ["PSo18UIFocusEnvironment", "savePhotoData"]
+- ["PSo18UIFocusEnvironment", "setDirectory"]
 - !private ["PSo18UIFocusEnvironment", "setNavigationBarHidden"]
 - !private ["PSo18UIFocusEnvironment", "sourceType"]
 - ["PSo18UIFocusEnvironment", "viewDidLoad"]
@@ -901,6 +918,7 @@ depends-member:
 - !private ["PSo31UIImagePickerControllerDelegate", "presentViewController"]
 - !private ["PSo31UIImagePickerControllerDelegate", "print"]
 - !private ["PSo31UIImagePickerControllerDelegate", "savePhotoData"]
+- !private ["PSo31UIImagePickerControllerDelegate", "setDirectory"]
 - ["PSo31UIImagePickerControllerDelegate", ""]
 - !private ["OSC33UIImagePickerControllerSourceType", "PhotoLibrary"]
 - !private ["CSo11UIImageView", "frame"]
@@ -940,6 +958,7 @@ depends-member:
 - !private ["PSo30UINavigationControllerDelegate", "presentViewController"]
 - !private ["PSo30UINavigationControllerDelegate", "print"]
 - !private ["PSo30UINavigationControllerDelegate", "savePhotoData"]
+- !private ["PSo30UINavigationControllerDelegate", "setDirectory"]
 - ["PSo30UINavigationControllerDelegate", ""]
 - ["CSo11UIResponder", "AnyObject"]
 - !private ["CSo11UIResponder", "AppConst"]
@@ -950,6 +969,7 @@ depends-member:
 - !private ["CSo11UIResponder", "NSDateFormatter"]
 - !private ["CSo11UIResponder", "NSFileManager"]
 - !private ["CSo11UIResponder", "NSLocale"]
+- ["CSo11UIResponder", "NSURL"]
 - ["CSo11UIResponder", "String"]
 - !private ["CSo11UIResponder", "UIAlertAction"]
 - !private ["CSo11UIResponder", "UIAlertActionStyle"]
@@ -985,6 +1005,7 @@ depends-member:
 - !private ["CSo11UIResponder", "presentViewController"]
 - !private ["CSo11UIResponder", "print"]
 - ["CSo11UIResponder", "savePhotoData"]
+- ["CSo11UIResponder", "setDirectory"]
 - !private ["CSo11UIResponder", "setNavigationBarHidden"]
 - !private ["CSo11UIResponder", "sharedApplication"]
 - !private ["CSo11UIResponder", "sourceType"]
@@ -1026,6 +1047,7 @@ depends-member:
 - !private ["PSo16UIStateRestoring", "presentViewController"]
 - !private ["PSo16UIStateRestoring", "print"]
 - ["PSo16UIStateRestoring", "savePhotoData"]
+- ["PSo16UIStateRestoring", "setDirectory"]
 - !private ["PSo16UIStateRestoring", "setNavigationBarHidden"]
 - !private ["PSo16UIStateRestoring", "sourceType"]
 - ["PSo16UIStateRestoring", "viewDidLoad"]
@@ -1071,6 +1093,7 @@ depends-member:
 - !private ["PSo18UITraitEnvironment", "presentViewController"]
 - !private ["PSo18UITraitEnvironment", "print"]
 - ["PSo18UITraitEnvironment", "savePhotoData"]
+- ["PSo18UITraitEnvironment", "setDirectory"]
 - !private ["PSo18UITraitEnvironment", "setNavigationBarHidden"]
 - !private ["PSo18UITraitEnvironment", "sourceType"]
 - ["PSo18UITraitEnvironment", "viewDidLoad"]
@@ -1091,6 +1114,7 @@ depends-member:
 - !private ["CSo16UIViewController", "NSDateFormatter"]
 - !private ["CSo16UIViewController", "NSFileManager"]
 - !private ["CSo16UIViewController", "NSLocale"]
+- ["CSo16UIViewController", "NSURL"]
 - ["CSo16UIViewController", "String"]
 - !private ["CSo16UIViewController", "UIAlertAction"]
 - !private ["CSo16UIViewController", "UIAlertActionStyle"]
@@ -1121,6 +1145,7 @@ depends-member:
 - !private ["CSo16UIViewController", "presentViewController"]
 - !private ["CSo16UIViewController", "print"]
 - ["CSo16UIViewController", "savePhotoData"]
+- ["CSo16UIViewController", "setDirectory"]
 - !private ["CSo16UIViewController", "setNavigationBarHidden"]
 - !private ["CSo16UIViewController", "sourceType"]
 - ["CSo16UIViewController", "viewDidLoad"]
@@ -1280,4 +1305,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/ObjectiveC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreGraphics.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreImage.swiftmodule"
-interface-hash: "7c3fca6d8bfdbb268b246b9cdf392e46"
+interface-hash: "775c1b49f147d8a557b93d0dbfec7e51"

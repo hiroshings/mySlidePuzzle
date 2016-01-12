@@ -6,24 +6,24 @@ provides-nominal:
 provides-member:
 - ["C13mySlidePuzzle11AppDelegate", ""]
 provides-dynamic-lookup:
-- "application"
 - "applicationDidEnterBackground"
+- "application"
+- "applicationWillTerminate"
 - "applicationWillEnterForeground"
+- "applicationDidBecomeActive"
+- "baseImage"
 - "applicationWillResignActive"
 - "window"
-- "baseImage"
-- "applicationWillTerminate"
-- "applicationDidBecomeActive"
 depends-top-level:
-- "UIResponder"
+- "UIImageView"
 - !private "BooleanLiteralType"
+- "Bool"
+- "UIApplication"
+- "UIResponder"
+- "NSObject"
+- "AppDelegate"
 - "AnyObject"
 - "UIApplicationDelegate"
-- "NSObject"
-- "UIImageView"
-- "Bool"
-- "AppDelegate"
-- "UIApplication"
 - "UIWindow"
 depends-member:
 - ["PSs9AnyObject", "UIImageView"]
