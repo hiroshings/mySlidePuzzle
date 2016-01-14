@@ -32,7 +32,7 @@
 		44D1D1751C37E2F000C8CB76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44EC38121C37F39700EE9378 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5293F22E1C3E80720002BC66 /* myPuzzleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myPuzzleView.xib; sourceTree = "<group>"; };
-		5293F2311C3E835E0002BC66 /* MyPuzzleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPuzzleView.swift; path = mySlidePuzzle/MyPuzzleView.swift; sourceTree = SOURCE_ROOT; };
+		5293F2311C3E835E0002BC66 /* MyPuzzleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPuzzleView.swift; sourceTree = "<group>"; };
 		5293F2341C3E87F90002BC66 /* MyPuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPuzzleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,8 +59,8 @@
 		449F4F451C3838B1007CE3E0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5293F2301C3E83190002BC66 /* MyPuzzle */,
 				449F4F481C383C88007CE3E0 /* Game */,
+				5293F2301C3E83190002BC66 /* MyPuzzle */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -68,8 +68,8 @@
 		449F4F461C38394B007CE3E0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5293F2331C3E87CF0002BC66 /* MyPuzzle */,
 				449F4F471C383C7A007CE3E0 /* Game */,
+				5293F2331C3E87CF0002BC66 /* MyPuzzle */,
 				44D1D1691C37E2F000C8CB76 /* AppDelegate.swift */,
 				44D1D16B1C37E2F000C8CB76 /* HomeViewController.swift */,
 			);
@@ -127,8 +127,7 @@
 			children = (
 				5293F2311C3E835E0002BC66 /* MyPuzzleView.swift */,
 			);
-			name = MyPuzzle;
-			path = Game;
+			path = MyPuzzle;
 			sourceTree = "<group>";
 		};
 		5293F2331C3E87CF0002BC66 /* MyPuzzle */ = {
@@ -136,7 +135,7 @@
 			children = (
 				5293F2341C3E87F90002BC66 /* MyPuzzleViewController.swift */,
 			);
-			name = MyPuzzle;
+			path = MyPuzzle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
