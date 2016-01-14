@@ -171,7 +171,7 @@
 				TargetAttributes = {
 					44D1D1651C37E2EF00C8CB76 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = WL9FWC222D;
+						DevelopmentTeam = GZ8V6EHCPM;
 					};
 				};
 			};
@@ -336,9 +336,9 @@
 				INFOPLIST_FILE = mySlidePuzzle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.pivot.mySlidePuzzle;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.pivot.mySlidePuzzles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "502a80b2-4d23-4c3d-bc8c-8a6008a92959";
 			};
 			name = Debug;
 		};
@@ -347,13 +347,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: PIVOT, Inc. (GZ8V6EHCPM)";
 				INFOPLIST_FILE = mySlidePuzzle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.pivot.mySlidePuzzle;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.pivot.mySlidePuzzles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b7c545e2-c3a1-4065-b3f8-cbc714641fdf";
 			};
 			name = Release;
 		};

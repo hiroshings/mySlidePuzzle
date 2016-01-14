@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     let defaults = NSUserDefaults.standardUserDefaults()
+    // 現在時刻
     let currentTime = CurrentTime()
     let currentTimeFormatted = CurrentTimeFormatted()
     

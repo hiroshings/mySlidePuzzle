@@ -92,6 +92,10 @@ class GameViewController: UIViewController {
         
         // ピースをスワップする
         let swapedIds: Array<Int> = swapPieces(ids)
+        
+        // debug
+        isPossibleClear(swapedIds)
+        
         // スワップしたピースの表示
         showPieces(swapedIds, gameStageView: gameStageView)
     }
@@ -146,19 +150,19 @@ class GameViewController: UIViewController {
         
         var from = 0;
         var to = 0;
-
-        for (var i = 0; i < 100; i++) {
-            for (var i = 0; i < 2; i++) {
+        
+        for _ in 1...100 {
+            // 1~8ピースを偶数置換させることで、解けるパズルにする（奇数置換だと解けない）
+            
+                // from == toの場合のみ、繰り返し乱数を生成
+                from = Int(arc4random_uniform(UInt32(AppConst.maxPieces - 1)))
                 
-                // TODO: 解法がない場合がある
-                from = Int(arc4random_uniform(UInt32(AppConst.maxPieces)))
-                to = Int(arc4random_uniform(UInt32(AppConst.maxPieces)))
-                
+                repeat {
+                    to = Int(arc4random_uniform(UInt32(AppConst.maxPieces - 1)))
+                } while from == to
+            
                 // ピースID同士をスワップ
-                if from != to {
-                    swap(&ids[from], &ids[to])
-                }
-            }
+                swap(&ids[from], &ids[to])
         }
         
         return ids
@@ -402,6 +406,30 @@ class GameViewController: UIViewController {
             let piece = gameStageView.viewWithTag(id) as! UIImageView
             piece.userInteractionEnabled = flag
         }
+    }
+    
+    func isPossibleClear(var ids: [Int]) {
+        
+        var cnt = 0
+        
+        // バブルソート
+        for (var i = 0; i < ids.count; i++) {
+            
+            // jよりiの方が数字が大きい場合、スワップする
+            for (var j = i + 1; j < ids.count; j++) {
+                
+                if ids[j] < ids[i] {
+                    let tmp: Int = ids[i]
+                    ids[i] = ids[j]
+                    ids[j] = tmp
+                    
+                    cnt++
+                }
+            }
+        }
+        
+        print("count" + String(cnt))
+        print("ids" + String(ids))
     }
 
 }
