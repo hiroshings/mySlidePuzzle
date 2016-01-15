@@ -96,6 +96,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             // デリゲート
             imagePickerController.delegate = self
             
+            
             // 選択画面起動
             self.presentViewController(imagePickerController, animated: true, completion: nil)
         }

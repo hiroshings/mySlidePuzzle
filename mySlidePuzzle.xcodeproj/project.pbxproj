@@ -18,6 +18,7 @@
 		5293F22F1C3E80720002BC66 /* myPuzzleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5293F22E1C3E80720002BC66 /* myPuzzleView.xib */; };
 		5293F2321C3E835E0002BC66 /* MyPuzzleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293F2311C3E835E0002BC66 /* MyPuzzleView.swift */; };
 		5293F2351C3E87F90002BC66 /* MyPuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293F2341C3E87F90002BC66 /* MyPuzzleViewController.swift */; };
+		52CC9B881C48963200778463 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CC9B871C48963200778463 /* Puzzle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		5293F22E1C3E80720002BC66 /* myPuzzleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myPuzzleView.xib; sourceTree = "<group>"; };
 		5293F2311C3E835E0002BC66 /* MyPuzzleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPuzzleView.swift; sourceTree = "<group>"; };
 		5293F2341C3E87F90002BC66 /* MyPuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPuzzleViewController.swift; sourceTree = "<group>"; };
+		52CC9B871C48963200778463 /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 		449F4F441C383893007CE3E0 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				52CC9B871C48963200778463 /* Puzzle.swift */,
 				44B3AE881C38FCBB00DF15E4 /* AppConst.swift */,
 				44B3AE861C38FC3900DF15E4 /* Util.swift */,
 			);
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5293F2321C3E835E0002BC66 /* MyPuzzleView.swift in Sources */,
+				52CC9B881C48963200778463 /* Puzzle.swift in Sources */,
 				44D1D16C1C37E2F000C8CB76 /* HomeViewController.swift in Sources */,
 				44B3AE871C38FC3900DF15E4 /* Util.swift in Sources */,
 				44B3AE891C38FCBB00DF15E4 /* AppConst.swift in Sources */,
