@@ -10,7 +10,6 @@ import UIKit
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    let defaults = NSUserDefaults.standardUserDefaults()
     // 現在時刻
     let currentTime = CurrentTime()
     let currentTimeFormatted = CurrentTimeFormatted()
@@ -167,6 +166,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             print("error writing file: \(path)")
         }
     }
+    
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     /// 画像保存ログを保存
     func setImageDataSaveLog() {

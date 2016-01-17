@@ -9,12 +9,16 @@
 import Foundation
 import UIKit
 
+// パズルデータを一元管理
 struct Puzzle {
     
-    var puzzleImage = UIImageView()
-    var puzzleBgImage = UIImageView()
+    var image = UIImageView()
+    var bgImage = UIImageView()
     var highScore: Float = 0.0
     
-    // TODO:どこまで構造体で管理するか検討
-    
+    init(image: UIImageView, bgImage: UIImageView, highScore: Float) {
+        self.image = image
+        self.bgImage = bgImage
+        self.highScore = highScore
+    }
 }

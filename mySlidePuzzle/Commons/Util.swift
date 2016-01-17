@@ -58,3 +58,87 @@ public class CurrentTimeFormatted: CurrentTime {
         return dataFormatter.stringFromDate(now)
     }
 }
+
+/*-----------------------
+// MARK: - directory -
+----------------------*/
+
+// TODO: ディレクトリにアクセスする処理をここにまとめる
+public class PuzzleDirectory {
+    
+    let fileManager = NSFileManager.defaultManager()
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
+    
+    /**
+     ローカルストレージのRootディレクトリを取得
+     
+     - parameters:
+        - none
+     
+     - returns: ディレクトリまでのパス
+     */
+    func getRootDirectory() -> NSURL {
+        
+        // NSURL型でルートディレクトリの取得
+        let url = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        return url
+    }
+    
+    /**
+    ローカルストレージのSubディレクトリを取得
+    
+    - parameters:
+     - subDirName: 参照するディレクトリ名
+    
+    - returns: ディレクトリまでのパス
+    */
+    func getSubDirectory(subDirName: String) -> NSURL {
+        
+        // NSURL型でルートディレクトリの取得
+        let url = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        
+        // ディレクトリを参照
+        let dirUrl = url.URLByAppendingPathComponent(subDirName)
+        
+        return dirUrl
+    }
+    
+    /**
+     ローカルストレージからファイル名を取得
+     
+     - parameters:
+     - none
+     
+     - returns: ローカルストレージのpngファイル名
+     */
+    func getImageDataNames() -> Array<String>? {
+        
+        
+        guard let dir = getSubDirectory("photo").path else {
+            return nil
+        }
+        
+        do {
+            // ファイル名が格納された配列を返す
+            let pngImages = try fileManager.contentsOfDirectoryAtPath(dir)
+            print(pngImages)
+            return pngImages
+        }
+        catch {
+            // ファイル名がない場合、nilを返す
+            return nil
+        }
+    }
+    
+    /// TODO: HighScoreの読み込み
+    func getHighScore(key: String) -> String {
+        
+        if let highScore = defaults.objectForKey(key) {
+            return highScore as! String
+        } else {
+            return "00:00:00"
+        }
+    }
+
+}
