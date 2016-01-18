@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameView" customModule="mySlidePuzzle" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="HI5-Rb-o0n">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UwO-5a-pmU" userLabel="GameStageBgView">
+                    <rect key="frame" x="148" y="148" width="304" height="304"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="304" id="8aI-rX-alk"/>
+                        <constraint firstAttribute="height" constant="304" id="Iau-aZ-tub"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhX-gr-Qg3" userLabel="GameStageView">
+                    <rect key="frame" x="150" y="150" width="300" height="300"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="R8l-ZZ-Mvy"/>
+                        <constraint firstAttribute="height" constant="300" id="lXg-Sd-Llr"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFd-Qw-kHv" userLabel="CompMessage">
+                    <rect key="frame" x="216" y="510" width="169" height="39"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="EhX-gr-Qg3" firstAttribute="centerX" secondItem="HI5-Rb-o0n" secondAttribute="centerX" id="BMW-wW-DQs"/>
+                <constraint firstItem="EhX-gr-Qg3" firstAttribute="centerY" secondItem="HI5-Rb-o0n" secondAttribute="centerY" id="Qw1-Gp-vTp"/>
+                <constraint firstItem="UwO-5a-pmU" firstAttribute="centerX" secondItem="HI5-Rb-o0n" secondAttribute="centerX" id="Yyn-SB-Xx4"/>
+                <constraint firstItem="KFd-Qw-kHv" firstAttribute="centerX" secondItem="HI5-Rb-o0n" secondAttribute="centerX" id="apv-Mh-btA"/>
+                <constraint firstItem="UwO-5a-pmU" firstAttribute="centerY" secondItem="HI5-Rb-o0n" secondAttribute="centerY" id="m8b-mk-lKQ"/>
+                <constraint firstItem="KFd-Qw-kHv" firstAttribute="top" secondItem="EhX-gr-Qg3" secondAttribute="bottom" constant="60" id="t5C-y5-pbY"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
