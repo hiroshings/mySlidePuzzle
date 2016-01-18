@@ -10,6 +10,8 @@ import UIKit
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    let puzzleDirectory = PuzzleDirectory()
+    
     // 現在時刻
     let currentTime = CurrentTime()
     let currentTimeFormatted = CurrentTimeFormatted()
@@ -20,9 +22,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // log読み込み
-        getImageDataSaveLog()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,28 +42,37 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     /// UIImagePickerDelegate
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
-        let baseImage = UIImageView()
+        let baseImageView = UIImageView()
+        let bgImageView = UIImageView()
         
         // イメージデータを取得
-        let image = info[UIImagePickerControllerEditedImage] as! UIImage // editedImageにすることで編集後のイメージを使用可能
-        baseImage.image = image
-        baseImage.frame = CGRectMake(0, 0, AppConst.boardWidth, AppConst.boardHeight)
+        let baseImage = info[UIImagePickerControllerEditedImage] as! UIImage // editedImageにすることで編集後のイメージを使用可能
+        let bgImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
+        baseImageView.image = baseImage
+        bgImageView.image = bgImage
+        
+        // TODO: 縦横比を守ったままリサイズ
+        baseImageView.frame = CGRectMake(0, 0, AppConst.boardWidth, AppConst.boardHeight)
+        bgImageView.frame = CGRectMake(0, 0, AppConst.boardWidth, AppConst.boardHeight)
+
         // デリゲートにイメージデータを渡す
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.baseImage = baseImage
+        appDelegate.baseImage = baseImageView
         
         // ローカルストレージに画像データを保存
-        savePhotoData(baseImage.image!)
-        
-        // log保存
-        setImageDataSaveLog()
+        saveImageData(baseImageView.image!, imageFileName: ".png") // ベースイメージ
+        saveImageData(bgImageView.image!, imageFileName: "_bg.png") // 背景イメージ
         
         // 選択画面閉じる
         self.dismissViewControllerAnimated(true, completion: nil)
         
         // ゲーム画面に遷移
-        self.performSegueWithIdentifier("goGameView", sender: self)
+//        self.performSegueWithIdentifier("goGameView", sender: self)
+        
+        // debug
+        self.view.addSubview(baseImageView)
+        self.view.addSubview(bgImageView)
     }
     
     /// STARTボタン押下でフォトライブラリを表示
@@ -102,27 +111,22 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     /**
-     photoディレクトリを作成
+     imageディレクトリを作成
      
      - parameters:
         - none
      
-     - returns: photoディレクトリのパス
+     - returns: imageディレクトリのパス
      */
     func setDirectory() -> NSURL {
         
         let fileManager = NSFileManager.defaultManager()
         
-        // NSURL型でルートディレクトリの取得
-        let url = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-        print("ディレクトリ = " + String(url))
-        
-        // photoディレクトリを参照
-        let dirUrl = url.URLByAppendingPathComponent("photo")
+        let dirUrl = puzzleDirectory.getSubDirectory("image")
         let dir = dirUrl.path
         print("ディレクトリ = " + dir!)
         
-        // photoディレクトリがなければ作成
+        // imageディレクトリがなければ作成
         if !fileManager.fileExistsAtPath(dir!) {
             do {
                 try fileManager.createDirectoryAtPath(dir!, withIntermediateDirectories: true, attributes: nil)
@@ -136,49 +140,40 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     /**
-     photoディレクトリにpng画像を保存
+     imageディレクトリにpng画像を保存
      
      - parameters:
         - image: 保存する画像
      
      - returns: none
      */
-    func savePhotoData(image: UIImage) {
+    func saveImageData(image: UIImage, imageFileName: String) {
         
         // pngデータ生成
-        let _photoData = UIImagePNGRepresentation(image)
+        let _imageData = UIImagePNGRepresentation(image)
         
-        let dirUrl = setDirectory()
+        let dirUrl = puzzleDirectory.getSubDirectory("image")
         
         // ファイル名のパスを作成する
-        let photoName = currentTime.getCurrentTime() + ".png"
-        let path = dirUrl.URLByAppendingPathComponent(photoName).path
+        let imageName = currentTime.getCurrentTime() + imageFileName
+        let path = dirUrl.URLByAppendingPathComponent(imageName).path
         
         // nilチェック
-        guard let photoData = _photoData else {
+        guard let imageData = _imageData else {
             return
         }
         
         // pngデータの保存
-        if photoData.writeToFile(path!, atomically: true) {
-            print(photoName)
+        if imageData.writeToFile(path!, atomically: true) {
+            print(imageName)
         } else {
             print("error writing file: \(path)")
         }
     }
     
-    let defaults = NSUserDefaults.standardUserDefaults()
-    
-    /// 画像保存ログを保存
-    func setImageDataSaveLog() {
-        
-        let log = currentTimeFormatted.getCurrentTime()
-        defaults.setObject(log, forKey: "log")
-    }
-    
-    /// 画像保存ログの読み込み
     func getImageDataSaveLog() {
         
+        let defaults = NSUserDefaults()
         if let log = defaults.objectForKey("log") {
             print("画像保存ログ：" + String(log))
         }
