@@ -54,11 +54,14 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         // TODO: 縦横比を守ったままリサイズ
         baseImageView.frame = CGRectMake(0, 0, AppConst.boardWidth, AppConst.boardHeight)
-        bgImageView.frame = CGRectMake(0, 0, AppConst.boardWidth, AppConst.boardHeight)
+        bgImageView.frame = CGRectMake(0, 0, AppConst.screenBounds.width, AppConst.screenBounds.height)
 
         // デリゲートにイメージデータを渡す
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.baseImage = baseImageView
+        
+        // imageディレクトリがなければ作成
+        setDirectory()
         
         // ローカルストレージに画像データを保存
         saveImageData(baseImageView.image!, imageFileName: ".png") // ベースイメージ
@@ -68,11 +71,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.dismissViewControllerAnimated(true, completion: nil)
         
         // ゲーム画面に遷移
-//        self.performSegueWithIdentifier("goGameView", sender: self)
-        
-        // debug
-        self.view.addSubview(baseImageView)
-        self.view.addSubview(bgImageView)
+        self.performSegueWithIdentifier("goGameView", sender: self)
     }
     
     /// STARTボタン押下でフォトライブラリを表示
@@ -118,7 +117,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
      
      - returns: imageディレクトリのパス
      */
-    func setDirectory() -> NSURL {
+    func setDirectory() {
         
         let fileManager = NSFileManager.defaultManager()
         
@@ -135,8 +134,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 print("Unable to create directory: \(error)")
             }
         }
-        
-        return dirUrl
     }
     
     /**
