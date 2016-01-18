@@ -59,6 +59,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // デリゲートにイメージデータを渡す
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.baseImage = baseImageView
+        appDelegate.bgImage = bgImageView
         
         // imageディレクトリがなければ作成
         setDirectory()

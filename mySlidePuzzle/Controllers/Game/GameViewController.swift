@@ -15,10 +15,12 @@ class GameViewController: UIViewController {
     ----------------------*/
     
     @IBOutlet weak var gameStageView: UIView!
+    @IBOutlet weak var gameStageBgView: UIView!
     @IBOutlet weak var compMessage: UILabel!
+    @IBOutlet weak var bgView: UIView!
     
-    // 元画像
     var baseImage = UIImageView()
+    var bgImage = UIImageView()
     
     // ゲーム中フラグ
     var gamingFlag = false
@@ -37,6 +39,9 @@ class GameViewController: UIViewController {
     
     // クリアフラグ
     var completeFlag = false
+    
+    // スコア
+    var score = "00:00:00"
 
     
     override func viewDidLoad() {
@@ -47,24 +52,29 @@ class GameViewController: UIViewController {
         // デリゲート
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         baseImage = appDelegate.baseImage
+        bgImage = appDelegate.bgImage
         
         // complete!!文字を非表示にする
         compMessage.alpha = 0.0
         
+        // ボードの枠線に影を付ける
+        gameStageBgView.layer.shadowColor = UIColor.blackColor().CGColor
+        gameStageBgView.layer.shadowOpacity = 0.4
+        gameStageBgView.layer.shadowOffset = CGSizeMake(1.0, 1.0)
+        gameStageBgView.layer.shadowRadius = 5.0
+        
         // 背景画像を生成
-        // TODO:背景Viewを用意して、そこにaddsubviewする必要あり
-        let bgImage = baseImage
         bgImage.frame = CGRectMake(0, 0, AppConst.screenBounds.width, AppConst.screenBounds.height)
         
-        let blurEffect = UIBlurEffect(style: .Light)
+        let blurEffect = UIBlurEffect(style: .ExtraLight)
         let visualEffectView = UIVisualEffectView(effect: blurEffect)
         visualEffectView.frame = bgImage.bounds
+        visualEffectView.alpha = 0.8
         
         bgImage.addSubview(visualEffectView)
-        self.view.addSubview(bgImage)
+        bgView.addSubview(bgImage)
         
-        
-        // パズルの初期化
+        // パズルの生成
         var offset_x: CGFloat = pieceImage.bounds.origin.x
         var offset_y: CGFloat = pieceImage.bounds.origin.y
         

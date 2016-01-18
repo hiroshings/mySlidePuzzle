@@ -14,9 +14,9 @@ struct Puzzle {
     
     var image = UIImageView()
     var bgImage = UIImageView()
-    var highScore: Float = 0.0
+    var highScore = ""
     
-    init(image: UIImageView, bgImage: UIImageView, highScore: Float) {
+    init(image: UIImageView, bgImage: UIImageView, highScore: String) {
         self.image = image
         self.bgImage = bgImage
         self.highScore = highScore
