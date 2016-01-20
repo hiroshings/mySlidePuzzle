@@ -25,7 +25,7 @@ class MyPuzzleView: UIView {
     func viewInit() {
         
         // xibからカスタムviewをロードする
-        let nib = UINib(nibName: "myPuzzleView", bundle: nil)
+        let nib = UINib(nibName: "MyPuzzleView", bundle: nil)
         let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         
         addSubview(view)

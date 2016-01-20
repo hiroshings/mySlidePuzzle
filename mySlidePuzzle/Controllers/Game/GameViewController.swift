@@ -14,11 +14,7 @@ class GameViewController: UIViewController {
     // MARK: - properties -
     ----------------------*/
     
-    @IBOutlet weak var gameStageView: UIView!
-    @IBOutlet weak var gameStageBgView: UIView!
-    @IBOutlet weak var compMessage: UILabel!
-    @IBOutlet weak var bgView: UIView!
-    
+    @IBOutlet var gameView: GameView!
     var baseImage = UIImageView()
     var bgImage = UIImageView()
     
@@ -48,78 +44,6 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = "My Slide Puzzle"
-        
-        // デリゲート
-        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        baseImage = appDelegate.baseImage
-        bgImage = appDelegate.bgImage
-        
-        // complete!!文字を非表示にする
-        compMessage.alpha = 0.0
-        
-        // ボードの枠線に影を付ける
-        gameStageBgView.layer.shadowColor = UIColor.blackColor().CGColor
-        gameStageBgView.layer.shadowOpacity = 0.4
-        gameStageBgView.layer.shadowOffset = CGSizeMake(1.0, 1.0)
-        gameStageBgView.layer.shadowRadius = 5.0
-        
-        // 背景画像を生成
-        bgImage.frame = CGRectMake(0, 0, AppConst.screenBounds.width, AppConst.screenBounds.height)
-        
-        let blurEffect = UIBlurEffect(style: .ExtraLight)
-        let visualEffectView = UIVisualEffectView(effect: blurEffect)
-        visualEffectView.frame = bgImage.bounds
-        visualEffectView.alpha = 0.8
-        
-        bgImage.addSubview(visualEffectView)
-        bgView.addSubview(bgImage)
-        
-        // パズルの生成
-        var offset_x: CGFloat = pieceImage.bounds.origin.x
-        var offset_y: CGFloat = pieceImage.bounds.origin.y
-        
-        for (var i = 0; i < AppConst.pieceColumn; i++) {
-            offset_y = CGFloat(i) * AppConst.pieceSize
-            
-            for (var j = 0; j < AppConst.pieceColumn; j++) {
-                
-                // ピース番号を生成
-                id++
-                let pieceId: UILabel = UILabel(frame: CGRectMake(0, 0, AppConst.pieceSize, AppConst.pieceSize))
-                pieceId.text = String(id)
-                pieceId.textAlignment = NSTextAlignment.Center
-                pieceId.textColor = UIColor.whiteColor()
-                
-                // ピースの生成
-                offset_x = CGFloat(j) * AppConst.pieceSize
-
-                let cropedImage = cropImage(baseImage.image!, x: offset_x, y: offset_y, w: AppConst.pieceSize, h: AppConst.pieceSize)
-                pieceImage = UIImageView(frame: CGRectMake(offset_x, offset_y, AppConst.pieceSize, AppConst.pieceSize))
-                pieceImage.image = cropedImage
-                pieceImage.tag = id
-                pieceImage.userInteractionEnabled = true
-                ids.append(pieceImage.tag)
-                
-                // 最後のピースを黒く塗りつぶす
-                if id == AppConst.maxPieces {
-                    let emptyPiece = UIView(frame: CGRectMake(0, 0, AppConst.pieceSize, AppConst.pieceSize))
-                    emptyPiece.backgroundColor = UIColor.blackColor()
-                    pieceImage.addSubview(emptyPiece)
-                }
-                
-                pieceImage.addSubview(pieceId)
-                gameStageView.addSubview(pieceImage)
-            }
-        }
-        
-        // ピースをスワップする
-        let swapedIds: Array<Int> = swapPieces(ids)
-        
-        // debug
-        isPossibleClear(swapedIds)
-        
-        // スワップしたピースの表示
-        showPieces(swapedIds, gameStageView: gameStageView)
     }
     
     

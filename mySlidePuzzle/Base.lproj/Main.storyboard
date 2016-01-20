@@ -105,60 +105,17 @@
             <objects>
                 <viewController storyboardIdentifier="gameView" id="cWq-1q-mkV" customClass="GameViewController" customModule="mySlidePuzzle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kiW-Jk-nxN"/>
-                        <viewControllerLayoutGuide type="bottom" id="kNx-X7-PG8"/>
+                        <viewControllerLayoutGuide type="top" id="t9g-My-auV"/>
+                        <viewControllerLayoutGuide type="bottom" id="YJ3-oS-5Lb"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WwR-cO-Egv">
+                    <view key="view" contentMode="scaleToFill" id="Vjy-1b-G8M" customClass="GameView" customModule="mySlidePuzzle" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2B-wI-0Ov">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUk-If-iea">
-                                <rect key="frame" x="55" y="216" width="304" height="304"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="304" id="1br-0X-Uyo"/>
-                                    <constraint firstAttribute="width" constant="304" id="MFN-BK-082"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6r-Id-j7m">
-                                <rect key="frame" x="57" y="218" width="300" height="300"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Fir-p1-31A"/>
-                                    <constraint firstAttribute="height" constant="300" id="Jdt-B5-TuK"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HB1-rf-4MI">
-                                <rect key="frame" x="123" y="578" width="169" height="39"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="p2B-wI-0Ov" firstAttribute="leading" secondItem="WwR-cO-Egv" secondAttribute="leading" id="84o-pJ-B7C"/>
-                            <constraint firstItem="tUk-If-iea" firstAttribute="centerY" secondItem="WwR-cO-Egv" secondAttribute="centerY" id="Ekn-rb-mpB"/>
-                            <constraint firstItem="HB1-rf-4MI" firstAttribute="centerX" secondItem="WwR-cO-Egv" secondAttribute="centerX" id="O84-1J-4LP"/>
-                            <constraint firstItem="kNx-X7-PG8" firstAttribute="top" secondItem="p2B-wI-0Ov" secondAttribute="bottom" id="Vq8-G6-2MO"/>
-                            <constraint firstItem="y6r-Id-j7m" firstAttribute="centerX" secondItem="WwR-cO-Egv" secondAttribute="centerX" id="W0O-bq-rHO"/>
-                            <constraint firstItem="HB1-rf-4MI" firstAttribute="top" secondItem="y6r-Id-j7m" secondAttribute="bottom" constant="60" id="ais-K6-OA7"/>
-                            <constraint firstItem="y6r-Id-j7m" firstAttribute="centerY" secondItem="WwR-cO-Egv" secondAttribute="centerY" id="cBZ-nW-ep8"/>
-                            <constraint firstAttribute="trailing" secondItem="p2B-wI-0Ov" secondAttribute="trailing" id="iYA-YN-f6m"/>
-                            <constraint firstItem="tUk-If-iea" firstAttribute="centerX" secondItem="WwR-cO-Egv" secondAttribute="centerX" id="ihV-Az-ZkO"/>
-                            <constraint firstItem="p2B-wI-0Ov" firstAttribute="top" secondItem="WwR-cO-Egv" secondAttribute="topMargin" id="jgM-x8-wFm"/>
-                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="bgView" destination="p2B-wI-0Ov" id="SAt-OS-3gA"/>
-                        <outlet property="compMessage" destination="HB1-rf-4MI" id="e8b-td-bMz"/>
-                        <outlet property="gameStageBgView" destination="tUk-If-iea" id="TmD-60-4Jb"/>
-                        <outlet property="gameStageView" destination="y6r-Id-j7m" id="c0S-sf-IOR"/>
+                        <outlet property="gameView" destination="Vjy-1b-G8M" id="0JL-Xz-IAL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sig-BC-R8N" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -17,7 +17,7 @@
 		44EC38131C37F39700EE9378 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EC38121C37F39700EE9378 /* GameViewController.swift */; };
 		5247FB561C4C9DC700B3C6CF /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5247FB551C4C9DC700B3C6CF /* GameView.xib */; };
 		5247FB581C4C9F1700B3C6CF /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5247FB571C4C9F1700B3C6CF /* GameView.swift */; };
-		5293F22F1C3E80720002BC66 /* myPuzzleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5293F22E1C3E80720002BC66 /* myPuzzleView.xib */; };
+		5293F22F1C3E80720002BC66 /* MyPuzzleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5293F22E1C3E80720002BC66 /* MyPuzzleView.xib */; };
 		5293F2321C3E835E0002BC66 /* MyPuzzleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293F2311C3E835E0002BC66 /* MyPuzzleView.swift */; };
 		5293F2351C3E87F90002BC66 /* MyPuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293F2341C3E87F90002BC66 /* MyPuzzleViewController.swift */; };
 		52CC9B881C48963200778463 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CC9B871C48963200778463 /* Puzzle.swift */; };
@@ -36,7 +36,7 @@
 		44EC38121C37F39700EE9378 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5247FB551C4C9DC700B3C6CF /* GameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
 		5247FB571C4C9F1700B3C6CF /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
-		5293F22E1C3E80720002BC66 /* myPuzzleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myPuzzleView.xib; sourceTree = "<group>"; };
+		5293F22E1C3E80720002BC66 /* MyPuzzleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPuzzleView.xib; sourceTree = "<group>"; };
 		5293F2311C3E835E0002BC66 /* MyPuzzleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPuzzleView.swift; sourceTree = "<group>"; };
 		5293F2341C3E87F90002BC66 /* MyPuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPuzzleViewController.swift; sourceTree = "<group>"; };
 		52CC9B871C48963200778463 /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 				44D1D1751C37E2F000C8CB76 /* Info.plist */,
 				44D1D1721C37E2F000C8CB76 /* LaunchScreen.storyboard */,
 				44D1D16D1C37E2F000C8CB76 /* Main.storyboard */,
-				5293F22E1C3E80720002BC66 /* myPuzzleView.xib */,
+				5293F22E1C3E80720002BC66 /* MyPuzzleView.xib */,
 				5247FB551C4C9DC700B3C6CF /* GameView.xib */,
 			);
 			path = mySlidePuzzle;
@@ -206,7 +206,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5293F22F1C3E80720002BC66 /* myPuzzleView.xib in Resources */,
+				5293F22F1C3E80720002BC66 /* MyPuzzleView.xib in Resources */,
 				5247FB561C4C9DC700B3C6CF /* GameView.xib in Resources */,
 				44D1D1741C37E2F000C8CB76 /* LaunchScreen.storyboard in Resources */,
 				44D1D1711C37E2F000C8CB76 /* Assets.xcassets in Resources */,
