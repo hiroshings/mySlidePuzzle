@@ -51,18 +51,6 @@ class GameViewController: UIViewController {
         // complete!!文字を非表示にする
         compMessage.alpha = 0.0
         
-        // 背景画像を生成
-        // TODO:背景Viewを用意して、そこにaddsubviewする必要あり
-        let bgImage = baseImage
-        bgImage.frame = CGRectMake(0, 0, AppConst.screenBounds.width, AppConst.screenBounds.height)
-        
-        let blurEffect = UIBlurEffect(style: .Light)
-        let visualEffectView = UIVisualEffectView(effect: blurEffect)
-        visualEffectView.frame = bgImage.bounds
-        
-        bgImage.addSubview(visualEffectView)
-        self.view.addSubview(bgImage)
-        
         
         // パズルの初期化
         var offset_x: CGFloat = pieceImage.bounds.origin.x
