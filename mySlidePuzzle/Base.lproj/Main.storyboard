@@ -38,18 +38,27 @@
                                     <segue destination="CKX-1S-Cf0" kind="show" id="cE6-3c-fR5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48S-OK-Dy1">
+                                <rect key="frame" x="186" y="695" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9gG-o2-7yb" firstAttribute="centerX" secondItem="mIB-PN-3sq" secondAttribute="centerX" id="4Je-lU-wmB"/>
                             <constraint firstItem="9gG-o2-7yb" firstAttribute="top" secondItem="cmq-sU-7qm" secondAttribute="bottom" constant="150" id="DDX-jr-JUm"/>
+                            <constraint firstItem="ysl-cg-zKk" firstAttribute="top" secondItem="48S-OK-Dy1" secondAttribute="bottom" constant="20" id="MBO-ZA-tDC"/>
                             <constraint firstItem="cmq-sU-7qm" firstAttribute="top" secondItem="XSh-dk-HSF" secondAttribute="bottom" constant="100" id="NcL-QE-WKd"/>
+                            <constraint firstItem="48S-OK-Dy1" firstAttribute="centerX" secondItem="mIB-PN-3sq" secondAttribute="centerX" id="W7O-1n-U2U"/>
                             <constraint firstItem="cmq-sU-7qm" firstAttribute="centerX" secondItem="mIB-PN-3sq" secondAttribute="centerX" id="t3M-4O-1G1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MoM-RU-iyU"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="fileName" destination="48S-OK-Dy1" id="6UF-Zj-If9"/>
                         <segue destination="cWq-1q-mkV" kind="show" identifier="goGameView" id="1Z4-Jc-NeZ"/>
                     </connections>
                 </viewController>

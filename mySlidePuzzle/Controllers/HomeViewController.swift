@@ -9,6 +9,8 @@
 import UIKit
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @IBOutlet weak var fileName: UILabel!
 
     // 現在時刻
     let currentTime = CurrentTime()
@@ -22,7 +24,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewDidLoad()
         
         // log読み込み
-        getImageDataSaveLog()
+        let log: String = getImageDataSaveLog()
+        fileName.text = log
     }
 
     override func didReceiveMemoryWarning() {
@@ -177,11 +180,13 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     /// 画像保存ログの読み込み
-    func getImageDataSaveLog() {
+    func getImageDataSaveLog() -> String {
         
-        if let log = defaults.objectForKey("log") {
-            print("画像保存ログ：" + String(log))
+        guard let log = defaults.objectForKey("log") else {
+            return ""
         }
+        
+        return log as! String
     }
 }
 
