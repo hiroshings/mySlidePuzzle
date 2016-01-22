@@ -10,15 +10,21 @@ import UIKit
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    let puzzleDirectory = PuzzleDirectory()
+    /*-----------------------
+    // MARK: - properties -
+    ----------------------*/
+    
+    @IBOutlet weak var puzzleLevelSC: UISegmentedControl! // レベル変更ボタン
+    let puzzleDirectory = PuzzleDirectory() // ディレクト管理クラス
     
     // 現在時刻
     let currentTime = CurrentTime()
     let currentTimeFormatted = CurrentTimeFormatted()
     
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
+    
+//    override func viewWillAppear(animated: Bool) {
+//        self.navigationController?.setNavigationBarHidden(true, animated: true)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +36,9 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
+//    override func viewWillDisappear(animated: Bool) {
+//        self.navigationController?.setNavigationBarHidden(false, animated: true)
+//    }
     
     
     /*-----------------------

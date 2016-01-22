@@ -47,9 +47,21 @@
                             <constraint firstItem="cmq-sU-7qm" firstAttribute="centerX" secondItem="mIB-PN-3sq" secondAttribute="centerX" id="t3M-4O-1G1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="MoM-RU-iyU"/>
+                    <navigationItem key="navigationItem" id="MoM-RU-iyU">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="fGQ-84-AN2">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dbl-pD-Uoz">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                </segments>
+                            </segmentedControl>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="puzzleLevelSC" destination="dbl-pD-Uoz" id="mzT-sl-sfE"/>
                         <segue destination="cWq-1q-mkV" kind="show" identifier="goGameView" id="1Z4-Jc-NeZ"/>
                     </connections>
                 </viewController>

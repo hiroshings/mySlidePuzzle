@@ -229,12 +229,9 @@ class GameViewController: UIViewController {
         
         // ピースの番号・黒マスを排除
         for id in gameView.ids {
-            print("ここまで来てますかー")
             let piece = gameView.gameStageView.viewWithTag(id) as! UIImageView
-            print(piece)
             let subViews = piece.subviews
             for subView in subViews {
-                print(subView)
                 subView.removeFromSuperview()
             }
         }
