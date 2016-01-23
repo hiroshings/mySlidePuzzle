@@ -1,4 +1,4 @@
-//
+    //
 //  GameView.swift
 //  mySlidePuzzle
 //
@@ -29,6 +29,15 @@ class GameView: UIView {
     var ids: Array<Int> = []
     var emptyPiece = UIImageView()
     var touchPiece = UIImageView()
+    var maxPieces: Int = 0
+    var pieceColumn: Int = 0
+    var pieceSize: CGFloat = 0
+    
+    // レベル
+    var level = ""
+    
+    let defaults = NSUserDefaults()
+    let const = AppConst()
     
     
     override init(frame: CGRect) {
@@ -49,7 +58,7 @@ class GameView: UIView {
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         baseImage = appDelegate.baseImage
         bgImage = appDelegate.bgImage
-        
+    
         // complete!!文字を非表示にする
         compMessage.alpha = 0.0
         
@@ -70,35 +79,43 @@ class GameView: UIView {
         bgImage.addSubview(visualEffectView)
         bgView.addSubview(bgImage)
         
+        // レベルに応じて、ピースの最大数等を初期化
+        if let level = defaults.objectForKey("level") {
+            let pieceStatus = const.initPieceStatus(level as! String)
+            maxPieces = pieceStatus.maxPieces
+            pieceColumn = pieceStatus.pieceColumn
+            pieceSize = pieceStatus.pieceSize
+        }
+        
         // パズルの生成
         var offset_x: CGFloat = pieceImage.bounds.origin.x
         var offset_y: CGFloat = pieceImage.bounds.origin.y
         
-        for (var i = 0; i < AppConst.pieceColumn; i++) {
-            offset_y = CGFloat(i) * AppConst.pieceSize
+        for (var i = 0; i < pieceColumn; i++) {
+            offset_y = CGFloat(i) * pieceSize
             
-            for (var j = 0; j < AppConst.pieceColumn; j++) {
+            for (var j = 0; j < pieceColumn; j++) {
                 
                 // ピース番号を生成
                 id++
-                let pieceId: UILabel = UILabel(frame: CGRectMake(0, 0, AppConst.pieceSize, AppConst.pieceSize))
+                let pieceId: UILabel = UILabel(frame: CGRectMake(0, 0, pieceSize, pieceSize))
                 pieceId.text = String(id)
                 pieceId.textAlignment = NSTextAlignment.Center
                 pieceId.textColor = UIColor.whiteColor()
                 
                 // ピースの生成
-                offset_x = CGFloat(j) * AppConst.pieceSize
+                offset_x = CGFloat(j) * pieceSize
                 
-                let cropedImage = cropImage(baseImage.image!, x: offset_x, y: offset_y, w: AppConst.pieceSize, h: AppConst.pieceSize)
-                pieceImage = UIImageView(frame: CGRectMake(offset_x, offset_y, AppConst.pieceSize, AppConst.pieceSize))
+                let cropedImage = cropImage(baseImage.image!, x: offset_x, y: offset_y, w: pieceSize, h: pieceSize)
+                pieceImage = UIImageView(frame: CGRectMake(offset_x, offset_y, pieceSize, pieceSize))
                 pieceImage.image = cropedImage
                 pieceImage.tag = id
                 pieceImage.userInteractionEnabled = true
                 ids.append(pieceImage.tag)
                 
                 // 最後のピースを黒く塗りつぶす
-                if id == AppConst.maxPieces {
-                    let emptyPiece = UIView(frame: CGRectMake(0, 0, AppConst.pieceSize, AppConst.pieceSize))
+                if id == maxPieces {
+                    let emptyPiece = UIView(frame: CGRectMake(0, 0, pieceSize, pieceSize))
                     emptyPiece.backgroundColor = UIColor.blackColor()
                     pieceImage.addSubview(emptyPiece)
                 }
@@ -170,10 +187,10 @@ class GameView: UIView {
             // 1~8ピースを偶数置換させることで、解けるパズルにする（奇数置換だと解けない）
             
             // from == toの場合のみ、繰り返し乱数を生成
-            from = Int(arc4random_uniform(UInt32(AppConst.maxPieces - 1)))
+            from = Int(arc4random_uniform(UInt32(maxPieces - 1)))
             
             repeat {
-                to = Int(arc4random_uniform(UInt32(AppConst.maxPieces - 1)))
+                to = Int(arc4random_uniform(UInt32(maxPieces - 1)))
             } while from == to
             
             // ピースID同士をスワップ
@@ -200,11 +217,11 @@ class GameView: UIView {
         var count: Int = 0
         var tag: Int = 0
         
-        for (var i = 0; i < AppConst.pieceColumn; i++) {
-            offset_y = CGFloat(i) * AppConst.pieceSize
+        for (var i = 0; i < pieceColumn; i++) {
+            offset_y = CGFloat(i) * pieceSize
             
-            for (var j = 0; j < AppConst.pieceColumn; j++) {
-                offset_x = CGFloat(j) * AppConst.pieceSize
+            for (var j = 0; j < pieceColumn; j++) {
+                offset_x = CGFloat(j) * pieceSize
                 count++
                 
                 // gameStageViewのpieceをtagIdを参照し取得
@@ -212,7 +229,7 @@ class GameView: UIView {
                 piece = gameStageView.viewWithTag(tag) as! UIImageView
                 
                 // gameStageViewにピースを再配置
-                piece.frame = CGRectMake(offset_x, offset_y, AppConst.pieceSize, AppConst.pieceSize)
+                piece.frame = CGRectMake(offset_x, offset_y, pieceSize, pieceSize)
                 gameStageView.addSubview(piece)
             }
         }

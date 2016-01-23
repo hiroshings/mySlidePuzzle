@@ -14,8 +14,11 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // MARK: - properties -
     ----------------------*/
     
-    @IBOutlet weak var puzzleLevelSC: UISegmentedControl! // レベル変更ボタン
+    @IBOutlet weak var puzzleLevelSC: UISegmentedControl! // レベル切り替えボタン
     let puzzleDirectory = PuzzleDirectory() // ディレクト管理クラス
+    
+    let defaults = NSUserDefaults()
+    let const = AppConst()
     
     // 現在時刻
     let currentTime = CurrentTime()
@@ -28,6 +31,22 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 初期値は8パズル
+        defaults.registerDefaults(["level": const.piece8])
+        
+        // レベル選択ボタンの選択位置初期化
+        if let level = defaults.objectForKey("level") {
+            
+            switch String(level) {
+            case const.piece8:
+                puzzleLevelSC.selectedSegmentIndex = 0
+            case const.piece15:
+                puzzleLevelSC.selectedSegmentIndex = 1
+            default:
+                break
+            }
+        }
 
     }
 
@@ -177,9 +196,28 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func getImageDataSaveLog() {
         
-        let defaults = NSUserDefaults()
         if let log = defaults.objectForKey("log") {
             print("画像保存ログ：" + String(log))
+        }
+    }
+    
+    /**
+     レベル変更をデリゲートに通知
+     
+     - parameters:
+        - sender: actionの送信元オブジェクト
+     
+     - returns: none
+     */
+    @IBAction func levelChanged(sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex {
+            case 0:
+                defaults.setObject(const.piece8, forKey: "level")
+            case 1:
+                defaults.setObject(const.piece15, forKey: "level")
+            default:
+                break
         }
     }
 }

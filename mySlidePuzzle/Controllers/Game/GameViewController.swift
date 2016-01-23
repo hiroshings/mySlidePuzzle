@@ -50,7 +50,7 @@ class GameViewController: UIViewController {
             for touch in touches {
                 
                 // カラピースのある座標
-                emptyPiece = gameView.gameStageView.viewWithTag(AppConst.maxPieces) as! UIImageView
+                emptyPiece = gameView.gameStageView.viewWithTag(gameView.maxPieces) as! UIImageView
                 let emptyLocation_x = emptyPiece.frame.origin.x
                 let emptyLocation_y = emptyPiece.frame.origin.y
                 
@@ -107,8 +107,8 @@ class GameViewController: UIViewController {
      */
     private func getEnableMovePositions(e_x: CGFloat, e_y: CGFloat, t_x: CGFloat, t_y: CGFloat) -> (enable_x: Int, enable_y: Int) {
         
-        let enable_x = (Int(t_x) / Int(AppConst.pieceSize)) - (Int(e_x) / Int(AppConst.pieceSize))
-        let enable_y = (Int(t_y) / Int(AppConst.pieceSize)) - (Int(e_y) / Int(AppConst.pieceSize))
+        let enable_x = (Int(t_x) / Int(gameView.pieceSize)) - (Int(e_x) / Int(gameView.pieceSize))
+        let enable_y = (Int(t_y) / Int(gameView.pieceSize)) - (Int(e_y) / Int(gameView.pieceSize))
         
         print("x座標の移動可能範囲" + String(enable_x))
         print("y座標の移動可能範囲" + String(enable_y))
@@ -128,29 +128,29 @@ class GameViewController: UIViewController {
      */
     private func movePiece(enable_x: Int, enable_y: Int, piece: UIImageView) {
         
-        emptyPiece = gameView.gameStageView.viewWithTag(AppConst.maxPieces) as! UIImageView
+        emptyPiece = gameView.gameStageView.viewWithTag(gameView.maxPieces) as! UIImageView
         let enablePositons = (enable_x, enable_y) // x座標に動かせる距離, y座標に動かせる距離
         
         switch enablePositons {
             // ピースを下に移動
             case (0, -1):
-                emptyPiece.frame.origin.y -= AppConst.pieceSize
-                piece.frame.origin.y += AppConst.pieceSize
+                emptyPiece.frame.origin.y -= gameView.pieceSize
+                piece.frame.origin.y += gameView.pieceSize
                 break
             // ピースを上に移動
             case (0, 1):
-                emptyPiece.frame.origin.y += AppConst.pieceSize
-                piece.frame.origin.y -= AppConst.pieceSize
+                emptyPiece.frame.origin.y += gameView.pieceSize
+                piece.frame.origin.y -= gameView.pieceSize
                 break
             // ピースを左に移動
             case (-1, 0):
-                emptyPiece.frame.origin.x -= AppConst.pieceSize
-                piece.frame.origin.x += AppConst.pieceSize
+                emptyPiece.frame.origin.x -= gameView.pieceSize
+                piece.frame.origin.x += gameView.pieceSize
                 break
             // ピースを右に移動
             case (1, 0):
-                emptyPiece.frame.origin.x += AppConst.pieceSize
-                piece.frame.origin.x -= AppConst.pieceSize
+                emptyPiece.frame.origin.x += gameView.pieceSize
+                piece.frame.origin.x -= gameView.pieceSize
             default:
                 break
         }
@@ -175,12 +175,12 @@ class GameViewController: UIViewController {
         var completeFlag_y = false
         var completeCount:Int = 0
         
-        for (var i = 0; i < AppConst.pieceColumn; i++) {
-            offset_y = CGFloat(i) * AppConst.pieceSize
+        for (var i = 0; i < gameView.pieceColumn; i++) {
+            offset_y = CGFloat(i) * gameView.pieceSize
             
-            for (var j = 0; j < AppConst.pieceColumn; j++) {
+            for (var j = 0; j < gameView.pieceColumn; j++) {
                 
-                offset_x = CGFloat(j) * AppConst.pieceSize
+                offset_x = CGFloat(j) * gameView.pieceSize
                 count++
                 
                 // ピースの現在位置を取得
@@ -204,7 +204,7 @@ class GameViewController: UIViewController {
         }
         
         // コンプカウントがMAXだった場合、クリアしたことになる
-        if completeCount == AppConst.maxPieces {
+        if completeCount == gameView.maxPieces {
             completeFlag = true
         }
         

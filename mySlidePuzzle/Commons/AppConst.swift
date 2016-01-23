@@ -28,7 +28,10 @@ class AppConst: UIView {
     /*-----------------------
     // MARK: - level -
     ----------------------*/
-    // TODO: 15ピースと9ピースのレベルを選択できるようにする
+    // 15パズルと8パズルのレベルを選択できる
+    let piece8 = "8Piece"
+    let piece15 = "15Piece"
+
     
     /*-----------------------
     // MARK: - puzzle -
@@ -41,7 +44,20 @@ class AppConst: UIView {
     static let boardHeight: CGFloat = 300.0 //パズルの縦幅
     
     // piece
-    static let pieceSize: CGFloat = 100.0 //1ピースのサイズ
-    static let maxPieces: Int = 9 //ピースの最大数
-    static let pieceColumn: Int = 3 //ピースの1列
+    let pieceSize: CGFloat = 0.0 //1ピースのサイズ
+    let maxPieces: Int = 0 //ピースの最大数
+    let pieceColumn: Int = 0 //ピースの1列
+    
+    func initPieceStatus(level: String) -> (maxPieces: Int, pieceColumn: Int, pieceSize: CGFloat) {
+        
+        switch level {
+        case piece8:
+            return (9, 3, 100.0)
+        case piece15:
+            return (16, 4, 75.0)
+        default:
+            return (9, 3, 100.0)
+        }
+    }
+
 }
