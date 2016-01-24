@@ -134,6 +134,7 @@ class GameViewController: UIViewController {
      
      - returns: none
      */
+    // TODO: 左右移動も上下移動も処理しようとして、斜め移動できちゃうので修正
     private func movePiece(enable_x: Int, enable_y: Int) {
         
         emptyPiece = gameView.gameStageView.viewWithTag(gameView.maxPieces) as! UIImageView
