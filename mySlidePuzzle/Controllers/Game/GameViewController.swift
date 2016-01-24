@@ -76,9 +76,10 @@ class GameViewController: UIViewController {
                 let enablePositons = getEnableMovePositions(emptyLocation_x, e_y: emptyLocation_y, t_x: touchLocation_x, t_y: touchLocation_y)
                 
                 // ピースの移動
-                movePiece(enablePositons.enable_x, enable_y: enablePositons.enable_y, piece: touchPiece)
+                movePiece(enablePositons.enable_x, enable_y: enablePositons.enable_y)
                 
                 // ピースの現在位置を取得
+                currentPiecesOffset = []
                 currentPiecesOffset = getCurrentPiecesOffset()
                 
                 // クリア判定
@@ -130,11 +131,10 @@ class GameViewController: UIViewController {
      - parameters:
         - enable_x: ｘ座標に移動できる範囲
         - enable_y: y座標に移動できる範囲
-        - piece: ピース
      
      - returns: none
      */
-    private func movePiece(enable_x: Int, enable_y: Int, piece: UIImageView) {
+    private func movePiece(enable_x: Int, enable_y: Int) {
         
         emptyPiece = gameView.gameStageView.viewWithTag(gameView.maxPieces) as! UIImageView
         
@@ -240,50 +240,16 @@ class GameViewController: UIViewController {
      
      - returns: クリア判定
      */
-    
-    // TODO: 冗長な処理。currentの座標とBoard生成時に作った正しい座標配列を比較して合ってないなら、Breakして途中で処理終了する
     private func checkComplete() -> Bool {
         
-        var offset_x = CGFloat()
-        var offset_y = CGFloat()
-        var count: Int = 0
-        var piece = UIImageView()
-        
-        var completeFlag_x = false
-        var completeFlag_y = false
-        var completeCount:Int = 0
-        
-        for (var i = 0; i < gameView.pieceColumn; i++) {
-            offset_y = CGFloat(i) * gameView.pieceSize
+        for i in 0..<gameView.maxPieces {
             
-            for (var j = 0; j < gameView.pieceColumn; j++) {
-                
-                offset_x = CGFloat(j) * gameView.pieceSize
-                count++
-                
-                // ピースの現在位置を取得
-                piece = gameView.gameStageView.viewWithTag(count) as! UIImageView
-                
-                let pieceOffset_x = piece.frame.origin.x
-                let pieceOffset_y = piece.frame.origin.y
-                
-                // あるべき位置と実際の位置が合っていたらtrue, 合っていなければfalse
-                completeFlag_x = offset_x == pieceOffset_x ? true : false
-                completeFlag_y = offset_y == pieceOffset_y ? true : false
-                
-                print(completeFlag_x)
-                print(completeFlag_y)
-                
-                // x座標, y座標ともに一致していればコンプカウントを追加
-                if completeFlag_x == true && completeFlag_y == true {
-                    completeCount++
-                }
+            if gameView.defaultPieceOffset[i] != currentPiecesOffset[i] {
+                completeFlag = false
+                break
+            } else {
+                completeFlag = true
             }
-        }
-        
-        // コンプカウントがMAXだった場合、クリアしたことになる
-        if completeCount == gameView.maxPieces {
-            completeFlag = true
         }
         
         return completeFlag
@@ -366,7 +332,6 @@ class GameViewController: UIViewController {
      - returns: ピースごとの現在座標を格納した配列
      */
     private func getCurrentPiecesOffset() -> [[CGFloat]] {
-        var piecesOffset: [[CGFloat]] = []
         
         for i in 0..<gameView.maxPieces {
             
@@ -375,9 +340,9 @@ class GameViewController: UIViewController {
             let x = piece.frame.origin.x
             let y = piece.frame.origin.y
             offset = [x, y]
-            piecesOffset.append(offset)
+            currentPiecesOffset.append(offset)
         }
         
-        return piecesOffset
+        return currentPiecesOffset
     }
 }

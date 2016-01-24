@@ -39,6 +39,9 @@ class GameView: UIView {
     let defaults = NSUserDefaults()
     let const = AppConst()
     
+    // ピースごとの座標を格納する配列
+    var defaultPieceOffset: [[CGFloat]] = []
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -112,6 +115,11 @@ class GameView: UIView {
                 pieceImage.tag = id
                 pieceImage.userInteractionEnabled = true
                 ids.append(pieceImage.tag)
+                
+                let x = pieceImage.frame.origin.x
+                let y = pieceImage.frame.origin.y
+                let offset = [x, y]
+                defaultPieceOffset.append(offset)
                 
                 // 最後のピースを黒く塗りつぶす
                 if id == maxPieces {
