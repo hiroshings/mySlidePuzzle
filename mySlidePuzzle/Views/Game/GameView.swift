@@ -19,6 +19,8 @@ class GameView: UIView {
     @IBOutlet weak var gameStageBgView: UIView!
     @IBOutlet weak var compMessage: UILabel!
     @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var timer: UILabel!
+    @IBOutlet weak var startBtn: UIButton!
     
     var baseImage = UIImageView()
     var bgImage = UIImageView()
@@ -41,6 +43,9 @@ class GameView: UIView {
     
     // ピースごとの座標を格納する配列
     var defaultPieceOffset: [[CGFloat]] = []
+    
+    // タイマー
+    var count: Int = 0
     
     
     override init(frame: CGRect) {
@@ -242,5 +247,7 @@ class GameView: UIView {
             }
         }
     }
+    
+
 
 }

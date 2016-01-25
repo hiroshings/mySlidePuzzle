@@ -17,9 +17,6 @@ class GameViewController: UIViewController {
     // ゲーム画面のViewClass
     @IBOutlet var gameView: GameView!
     
-    // ゲーム中フラグ
-    var gamingFlag = false
-    
     // 操作するピース
     var emptyPiece = UIImageView()
     var touchPiece = UIImageView()
@@ -35,8 +32,8 @@ class GameViewController: UIViewController {
     // クリアフラグ
     var completeFlag = false
     
-    // スコア
-    var score = "00:00:00"
+    // タイマーカウント
+    var count = 0
 
     
     override func viewDidLoad() {
@@ -44,7 +41,11 @@ class GameViewController: UIViewController {
         
         self.navigationItem.title = "My Slide Puzzle"
         
+        toggleUserInteractionEnabled(false)
+        
         currentPiecesOffset = getCurrentPiecesOffset()
+        
+        gameView.startBtn.addTarget(self, action: "onTapStartBtn:", forControlEvents: .TouchUpInside)
     }
     
     
@@ -244,6 +245,7 @@ class GameViewController: UIViewController {
         
         for i in 0..<gameView.maxPieces {
             
+            // デフォルトのoffsetと現在のoffsetが一致していなければクリアflagがバッキバキ
             if gameView.defaultPieceOffset[i] != currentPiecesOffset[i] {
                 completeFlag = false
                 break
@@ -344,5 +346,29 @@ class GameViewController: UIViewController {
         }
         
         return currentPiecesOffset
+    }
+    
+    func countUpTimer() {
+        
+        count++
+        
+        let ms = count % 100
+        let s = (count - ms) / 100 % 60
+        let m = (count - s - ms) / 6000 % 3600
+        
+        gameView.timer.text = String(format: "%02d:%02d:%02d", arguments: [m, s, ms])
+    }
+    
+    func stopTimer() {
+        
+    }
+    
+    func onTapStartBtn(sender: AnyObject) {
+        
+        // パズルの操作を可能にする
+        toggleUserInteractionEnabled(true)
+        
+        // タイマーカウントを発火させる
+        NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "countUpTimer", userInfo: nil, repeats: true)
     }
 }

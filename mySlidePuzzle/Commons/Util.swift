@@ -63,7 +63,6 @@ public class CurrentTimeFormatted: CurrentTime {
 // MARK: - directory -
 ----------------------*/
 
-// TODO: ディレクトリにアクセスする処理をここにまとめる
 public class PuzzleDirectory {
     
     let fileManager = NSFileManager.defaultManager()
