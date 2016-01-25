@@ -134,16 +134,15 @@ class GameViewController: UIViewController {
      
      - returns: none
      */
-    // TODO: 左右移動も上下移動も処理しようとして、斜め移動できちゃうので修正
     private func movePiece(enable_x: Int, enable_y: Int) {
         
         emptyPiece = gameView.gameStageView.viewWithTag(gameView.maxPieces) as! UIImageView
         
-        switch enable_x {
+        switch (enable_x, enable_y) {
 
             // ピースを右に移動
-            case let x where x < 0:
-                
+            case (let x, let y) where x < 0 && y == 0:
+            
                 for _ in x..<0 {
                     
                     emptyPiece.frame.origin.x -= gameView.pieceSize
@@ -162,7 +161,7 @@ class GameViewController: UIViewController {
                     }
                 }
             // ピースを左に移動
-            case let x where x > 0:
+            case (let x, let y) where x > 0 && y == 0:
             
                 for _ in 0..<x {
                     
@@ -185,10 +184,10 @@ class GameViewController: UIViewController {
                 break
         }
         
-        switch enable_y {
+        switch (enable_x, enable_y) {
             
             // ピースを上に移動
-            case let y where y < 0:
+            case (let x, let y) where x == 0 && y < 0:
                 
                 for _ in y..<0 {
                     
@@ -208,7 +207,7 @@ class GameViewController: UIViewController {
                     }
                 }
             // ピースを下に移動
-            case let y where y > 0:
+            case (let x, let y) where x == 0 && y > 0:
                 
                 for _ in 0..<y {
                     
