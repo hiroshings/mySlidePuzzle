@@ -129,15 +129,5 @@ public class PuzzleDirectory {
             return nil
         }
     }
-    
-    /// TODO: HighScoreの読み込み
-    func getHighScore(key: String) -> String {
-        
-        if let highScore = defaults.objectForKey(key) {
-            return highScore as! String
-        } else {
-            return "00:00:00"
-        }
-    }
 
 }

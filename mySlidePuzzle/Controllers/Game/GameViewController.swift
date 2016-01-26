@@ -32,8 +32,10 @@ class GameViewController: UIViewController {
     // クリアフラグ
     var completeFlag = false
     
-    // タイマーカウント
-    var count = 0
+    // タイマー
+    var timer = NSTimer()
+    var clearTime: Double = 0.0 // 実際のタイム
+    var count = 0 // タイマー表示用のカウント
 
     
     override func viewDidLoad() {
@@ -270,6 +272,9 @@ class GameViewController: UIViewController {
         // ピースの操作を無効にする
         toggleUserInteractionEnabled(false)
         
+        // タイマー停止
+        timer.invalidate()
+        
         // Complete!!メッセージをフェードイン        
         UIView.animateWithDuration(0.4, animations: {self.gameView.compMessage.alpha = 1})
         
@@ -281,6 +286,18 @@ class GameViewController: UIViewController {
                 subView.removeFromSuperview()
             }
         }
+        
+        // タイムの更新
+        updateClearTime()
+        
+        // debug
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let puzzleImageName = appDelegate.puzzleImageName
+        
+        let fastestClearTime = defaults.doubleForKey(puzzleImageName)
+        print(fastestClearTime)
+        
     }
     
     /**
@@ -298,30 +315,6 @@ class GameViewController: UIViewController {
             let piece = gameView.gameStageView.viewWithTag(id) as! UIImageView
             piece.userInteractionEnabled = flag
         }
-    }
-    
-    private func isPossibleClear(var ids: [Int]) {
-        
-        var cnt = 0
-        
-        // バブルソート
-        for (var i = 0; i < ids.count; i++) {
-            
-            // jよりiの方が数字が大きい場合、スワップする
-            for (var j = i + 1; j < ids.count; j++) {
-                
-                if ids[j] < ids[i] {
-                    let tmp: Int = ids[i]
-                    ids[i] = ids[j]
-                    ids[j] = tmp
-                    
-                    cnt++
-                }
-            }
-        }
-        
-        print("count" + String(cnt))
-        print("ids" + String(ids))
     }
     
     
@@ -348,8 +341,17 @@ class GameViewController: UIViewController {
         return currentPiecesOffset
     }
     
-    func countUpTimer() {
+    /**
+     タイマーのカウントアップ
+     
+     - parameters:
+        - none
+     
+     - returns: none
+     */
+    func countUpTimer(timerCount: NSTimer) {
         
+        clearTime++
         count++
         
         let ms = count % 100
@@ -359,16 +361,46 @@ class GameViewController: UIViewController {
         gameView.timer.text = String(format: "%02d:%02d:%02d", arguments: [m, s, ms])
     }
     
-    func stopTimer() {
+    /**
+     最高記録が出たら、NSUserDefaultsに格納されたハイスコアをアップデートする
+     
+     - parameters:
+        - none
+     
+     - returns: none
+     */
+    private func updateClearTime() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let puzzleImageName = appDelegate.puzzleImageName
+        
+        let defaultValue = [puzzleImageName: 0]
+        defaults.registerDefaults(defaultValue)
+        
+        let fastestClearTime = defaults.doubleForKey(puzzleImageName)
+            
+        if clearTime < fastestClearTime {
+            defaults.setDouble(clearTime, forKey: puzzleImageName)
+        }
         
     }
     
+
+    /**
+     スタートボタン押下時の処理
+     
+     - parameters:
+        - sender
+     
+     - returns: none
+     */
     func onTapStartBtn(sender: AnyObject) {
         
         // パズルの操作を可能にする
         toggleUserInteractionEnabled(true)
         
         // タイマーカウントを発火させる
-        NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "countUpTimer", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "countUpTimer:", userInfo: nil, repeats: true)
     }
 }

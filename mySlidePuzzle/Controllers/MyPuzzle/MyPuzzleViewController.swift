@@ -20,7 +20,6 @@ class MyPuzzleViewController: UIViewController {
     // pazzle
     var pazzle = UIImageView()
     var imagePath: String = "" //画像のパス
-    var imageData: Array<String> = [] //画像データ格納用の配列
     
 
     override func viewDidLoad() {
@@ -29,9 +28,9 @@ class MyPuzzleViewController: UIViewController {
         self.navigationItem.title = "My Puzzles"
         
         // マイパズル生成
-        if let imageData = getImageDataNames() {
+        if let imageDataNames = getImageDataNames() {
             
-            for (var i = 0; i < imageData.count; i++) {
+            for (index, imageDataName) in imageDataNames.enumerate() {
                 
                 // myPuzzleインスタンスを生成
                 let rect = CGRectMake(0, 0, 300, 400)
@@ -39,8 +38,11 @@ class MyPuzzleViewController: UIViewController {
                 
                 // myPuzzleの画像パスを取得
                 let dir = getPhotoDirectory()
-                let path = dir.URLByAppendingPathComponent(imageData[i]).path
-                print(path!)
+                let path = dir.URLByAppendingPathComponent(imageDataName).path
+                
+                // 画像ファイル名をもとにしたpuzzleIDを通知
+                let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.puzzleImageName = imageDataName
                 
                 // 画像パスのpngファイルをmyPuzzleViewのUIImageに変換
                 let pazzleImage = UIImage(contentsOfFile: path!)
@@ -52,11 +54,11 @@ class MyPuzzleViewController: UIViewController {
                 
                 // myPuzzleViewの位置をズラす
                 myPuzzleView.frame.origin.x = self.view.bounds.width / 2 - (puzzleWidth / 2)
-                myPuzzleView.frame.origin.y = (puzzleHeight * CGFloat(i)) + 20
+                myPuzzleView.frame.origin.y = (puzzleHeight * CGFloat(index)) + 20
                 
                 // tagの付与
-                myPuzzleView.puzzleImageView.tag = (i + 1)
-                myPuzzleView.playBtn.tag = (i + 1)
+                myPuzzleView.puzzleImageView.tag = (index + 1)
+                myPuzzleView.playBtn.tag = (index + 1)
                 
                 // タップ可能に
                 let tap = UITapGestureRecognizer(target: self, action: "onTapPlayBtn:")
@@ -124,7 +126,6 @@ class MyPuzzleViewController: UIViewController {
         do {
             // ファイル名が格納された配列を返す
             let pngImages = try fileManager.contentsOfDirectoryAtPath(dir)
-            print(pngImages)
             return pngImages
         }
         catch {

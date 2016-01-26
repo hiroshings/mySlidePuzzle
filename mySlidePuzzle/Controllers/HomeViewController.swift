@@ -194,13 +194,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
-    func getImageDataSaveLog() {
-        
-        if let log = defaults.objectForKey("log") {
-            print("画像保存ログ：" + String(log))
-        }
-    }
-    
     /**
      レベル変更をデリゲートに通知
      
