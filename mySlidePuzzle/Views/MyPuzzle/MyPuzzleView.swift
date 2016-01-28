@@ -11,6 +11,7 @@ import UIKit
 class MyPuzzleView: UIView {
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var puzzleImageView: UIImageView!
+    @IBOutlet weak var highScore: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

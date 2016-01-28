@@ -114,7 +114,7 @@ public class PuzzleDirectory {
     func getImageDataNames() -> Array<String>? {
         
         
-        guard let dir = getSubDirectory("photo").path else {
+        guard let dir = getSubDirectory("image").path else {
             return nil
         }
         

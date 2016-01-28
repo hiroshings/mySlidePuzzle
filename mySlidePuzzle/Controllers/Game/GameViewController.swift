@@ -34,9 +34,7 @@ class GameViewController: UIViewController {
     
     // タイマー
     var timer = NSTimer()
-    var clearTime: Double = 0.0 // 実際のタイム
-    var count = 0 // タイマー表示用のカウント
-
+    var clearTime: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +46,14 @@ class GameViewController: UIViewController {
         currentPiecesOffset = getCurrentPiecesOffset()
         
         gameView.startBtn.addTarget(self, action: "onTapStartBtn:", forControlEvents: .TouchUpInside)
+        
+        // debug
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let puzzleImageName = appDelegate.puzzleImageName
+        
+        let highScore = defaults.objectForKey(puzzleImageName)
+        print("highScore" + String(highScore))
     }
     
     
@@ -121,9 +127,6 @@ class GameViewController: UIViewController {
         
         let enable_x = (Int(t_x) / Int(gameView.pieceSize)) - (Int(e_x) / Int(gameView.pieceSize))
         let enable_y = (Int(t_y) / Int(gameView.pieceSize)) - (Int(e_y) / Int(gameView.pieceSize))
-        
-        print("x座標の移動可能範囲" + String(enable_x))
-        print("y座標の移動可能範囲" + String(enable_y))
         
         return (enable_x, enable_y)
     }
@@ -289,15 +292,6 @@ class GameViewController: UIViewController {
         
         // タイムの更新
         updateClearTime()
-        
-        // debug
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let puzzleImageName = appDelegate.puzzleImageName
-        
-        let fastestClearTime = defaults.doubleForKey(puzzleImageName)
-        print(fastestClearTime)
-        
     }
     
     /**
@@ -352,11 +346,10 @@ class GameViewController: UIViewController {
     func countUpTimer(timerCount: NSTimer) {
         
         clearTime++
-        count++
         
-        let ms = count % 100
-        let s = (count - ms) / 100 % 60
-        let m = (count - s - ms) / 6000 % 3600
+        let ms = clearTime % 100
+        let s = (clearTime - ms) / 100 % 60
+        let m = (clearTime - s - ms) / 6000 % 3600
         
         gameView.timer.text = String(format: "%02d:%02d:%02d", arguments: [m, s, ms])
     }
@@ -375,13 +368,14 @@ class GameViewController: UIViewController {
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let puzzleImageName = appDelegate.puzzleImageName
         
-        let defaultValue = [puzzleImageName: 0]
-        defaults.registerDefaults(defaultValue)
-        
-        let fastestClearTime = defaults.doubleForKey(puzzleImageName)
-            
-        if clearTime < fastestClearTime {
-            defaults.setDouble(clearTime, forKey: puzzleImageName)
+        if let highScore = defaults.objectForKey(puzzleImageName) {
+            if clearTime < highScore as! Int {
+                defaults.setInteger(clearTime, forKey: puzzleImageName)
+                print(highScore)
+            }
+        } else {
+            defaults.setInteger(clearTime, forKey: puzzleImageName)
+            print(clearTime)
         }
         
     }

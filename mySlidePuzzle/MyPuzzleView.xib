@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyPuzzleView" customModule="mySlidePuzzle" customModuleProvider="target">
             <connections>
+                <outlet property="highScore" destination="dJN-4p-rw0" id="LEh-1m-cB6"/>
                 <outlet property="playBtn" destination="qdM-MY-Mgf" id="kGd-WF-d7R"/>
                 <outlet property="puzzleImageView" destination="8Ga-x5-6hU" id="4Cu-Uw-h9m"/>
             </connections>
@@ -31,11 +32,27 @@
                     </constraints>
                     <state key="normal" title="Play"/>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJN-4p-rw0">
+                    <rect key="frame" x="205" y="325" width="72" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ymu-n2-qJS">
+                    <rect key="frame" x="207" y="312" width="63" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="qdM-MY-Mgf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="23" id="77S-Yz-srd"/>
+                <constraint firstItem="dJN-4p-rw0" firstAttribute="top" secondItem="8Ga-x5-6hU" secondAttribute="bottom" constant="25" id="7Hq-Da-ZQT"/>
                 <constraint firstItem="8Ga-x5-6hU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Fln-ai-1WF"/>
+                <constraint firstAttribute="trailing" secondItem="dJN-4p-rw0" secondAttribute="trailing" constant="23" id="Ibd-Tn-o3g"/>
+                <constraint firstAttribute="trailing" secondItem="Ymu-n2-qJS" secondAttribute="trailing" constant="30" id="LZ1-nZ-fAo"/>
+                <constraint firstItem="Ymu-n2-qJS" firstAttribute="top" secondItem="8Ga-x5-6hU" secondAttribute="bottom" constant="12" id="fWF-6Q-ILj"/>
                 <constraint firstItem="qdM-MY-Mgf" firstAttribute="top" secondItem="8Ga-x5-6hU" secondAttribute="bottom" constant="20" id="pBe-7R-lsd"/>
                 <constraint firstItem="8Ga-x5-6hU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xWg-bM-2OW"/>
             </constraints>

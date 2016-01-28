@@ -15,7 +15,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     ----------------------*/
     
     @IBOutlet weak var puzzleLevelSC: UISegmentedControl! // レベル切り替えボタン
-    let puzzleDirectory = PuzzleDirectory() // ディレクト管理クラス
+    let puzzleDirectory = PuzzleDirectory() // ディレクトリ管理クラス
     
     let defaults = NSUserDefaults()
     let const = AppConst()
@@ -91,7 +91,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         // ローカルストレージに画像データを保存
         saveImageData(baseImageView.image!, imageFileName: ".png") // ベースイメージ
-        saveImageData(bgImageView.image!, imageFileName: "_bg.png") // 背景イメージ
         
         // 選択画面閉じる
         self.dismissViewControllerAnimated(true, completion: nil)

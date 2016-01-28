@@ -17,6 +17,8 @@ class MyPuzzleViewController: UIViewController {
     @IBOutlet weak var noimageTxt: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    let puzzleDirectory = PuzzleDirectory()
+    
     // pazzle
     var pazzle = UIImageView()
     var imagePath: String = "" //画像のパス
@@ -26,19 +28,38 @@ class MyPuzzleViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = "My Puzzles"
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         
         // マイパズル生成
-        if let imageDataNames = getImageDataNames() {
+        if let imageDataNames = puzzleDirectory.getImageDataNames() {
             
             for (index, imageDataName) in imageDataNames.enumerate() {
                 
+                print(imageDataName)
                 // myPuzzleインスタンスを生成
                 let rect = CGRectMake(0, 0, 300, 400)
                 let myPuzzleView = MyPuzzleView(frame: rect)
                 
                 // myPuzzleの画像パスを取得
-                let dir = getPhotoDirectory()
+                let dir = puzzleDirectory.getSubDirectory("image")
                 let path = dir.URLByAppendingPathComponent(imageDataName).path
+                
+                // ハイスコアを表示
+                let defaults = NSUserDefaults.standardUserDefaults()
+                if let highScoreData = defaults.objectForKey(imageDataName) {
+                    
+                    let highScore = highScoreData as! Int
+                    
+                    let ms = highScore % 100
+                    let s = (highScore - ms) / 100 % 60
+                    let m = (highScore - s - ms) / 6000 % 3600
+                    
+                    myPuzzleView.highScore.text = String(format: "%02d:%02d:%02d", arguments: [m, s, ms])
+                    
+                    print("score" + String(format: "%02d:%02d:%02d", arguments: [m, s, ms]))
+                }
                 
                 // 画像ファイル名をもとにしたpuzzleIDを通知
                 let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -78,7 +99,7 @@ class MyPuzzleViewController: UIViewController {
             
             // 画像データが0の場合、代替テキストを表示
             noimageTxt.alpha = 1.0
-
+            
         }
     }
 
@@ -86,53 +107,7 @@ class MyPuzzleViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    /**
-     ローカルストレージのphotoディレクトリを取得
-     
-     - parameters:
-        - none
-     
-     - returns: photoディレクトリまでのパス
-     */
-    func getPhotoDirectory() -> NSURL {
-        
-        let fileManager = NSFileManager.defaultManager()
-        
-        // NSURL型でルートディレクトリの取得
-        let url = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-        
-        // photoディレクトリを参照
-        let dirUrl = url.URLByAppendingPathComponent("photo")
-        
-        return dirUrl
-    }
-    
-    /**
-     ローカルストレージからファイル名を取得
-     
-     - parameters:
-        - none
-     
-     - returns: ローカルストレージのpngファイル名
-     */
-    func getImageDataNames() -> Array<String>? {
-        
-        let fileManager = NSFileManager.defaultManager()
-        
-        guard let dir = getPhotoDirectory().path else {
-            return nil
-        }
-        
-        do {
-            // ファイル名が格納された配列を返す
-            let pngImages = try fileManager.contentsOfDirectoryAtPath(dir)
-            return pngImages
-        }
-        catch {
-            // ファイル名がない場合、nilを返す
-            return nil
-        }
-    }
+
     
     /**
      playボタン押下時のイベント
@@ -153,8 +128,8 @@ class MyPuzzleViewController: UIViewController {
         }
         
         // 画像データのパスを取得
-        let imageData = getImageDataNames()
-        let dir = getPhotoDirectory()
+        let imageData = puzzleDirectory.getImageDataNames()
+        let dir = puzzleDirectory.getSubDirectory("image")
         let path = dir.URLByAppendingPathComponent(imageData![touchPuzzleId - 1]).path
         
         // 画像データからUIImageViewを生成し、delegateに通知

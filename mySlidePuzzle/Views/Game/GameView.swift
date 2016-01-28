@@ -85,7 +85,7 @@ class GameView: UIView {
         visualEffectView.alpha = 0.8
         
         bgImage.addSubview(visualEffectView)
-        bgView.addSubview(bgImage)
+//        bgView.addSubview(bgImage)
         
         // レベルに応じて、ピースの最大数等を初期化
         if let level = defaults.objectForKey("level") {
