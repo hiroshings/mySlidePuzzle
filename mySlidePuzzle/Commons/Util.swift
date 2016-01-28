@@ -35,28 +35,37 @@ extension UIScrollView {
     }
 }
 
-public class CurrentTime {
+/*-----------------------
+// MARK: - time -
+----------------------*/
+
+/// 現在時刻を返す
+public func getCurrentTime() -> String {
     
     let now = NSDate()
     let dataFormatter = NSDateFormatter()
     
-    /// 現在時刻を返す
-    internal func getCurrentTime() -> String {
-        
-        dataFormatter.locale = NSLocale(localeIdentifier: "ja_JP")
-        dataFormatter.dateFormat = "yyyyMMddHHmmss"
-        return dataFormatter.stringFromDate(now)
-    }
+    dataFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+    dataFormatter.dateFormat = "yyyyMMddhhmmss"
+    return dataFormatter.stringFromDate(now)
 }
 
-public class CurrentTimeFormatted: CurrentTime {
+/**
+ タイマー表示を整形する
+ 
+ - parameters:
+ - originTime: 整形元のタイムカウント
+ 
+ - returns: none
+ */
+public func formatTime(originTimeCount: Int) -> String {
     
-    override internal func getCurrentTime() -> String {
-        
-        dataFormatter.locale = NSLocale(localeIdentifier: "ja_JP")
-        dataFormatter.dateFormat = "yyyy/MM/dd/HH:mm:ss"
-        return dataFormatter.stringFromDate(now)
-    }
+    let ms = originTimeCount % 100
+    let s = (originTimeCount - ms) / 100 % 60
+    let m = (originTimeCount - s - ms) / 6000 % 3600
+    
+    let formatedTime = String(format: "%02d:%02d:%02d", arguments: [m, s, ms])
+    return formatedTime
 }
 
 /*-----------------------
@@ -121,7 +130,7 @@ public class PuzzleDirectory {
         do {
             // ファイル名が格納された配列を返す
             let pngImages = try fileManager.contentsOfDirectoryAtPath(dir)
-            print(pngImages)
+            print("pngImages" + String(pngImages))
             return pngImages
         }
         catch {

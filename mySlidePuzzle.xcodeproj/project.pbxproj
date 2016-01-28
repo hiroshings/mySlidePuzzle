@@ -347,7 +347,7 @@
 				INFOPLIST_FILE = mySlidePuzzle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.pivot.mySlidePuzzles;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.pivot.mySlidePuzzle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "502a80b2-4d23-4c3d-bc8c-8a6008a92959";
 			};
@@ -362,7 +362,7 @@
 				INFOPLIST_FILE = mySlidePuzzle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.pivot.mySlidePuzzles;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.pivot.mySlidePuzzle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b7c545e2-c3a1-4065-b3f8-cbc714641fdf";
 			};

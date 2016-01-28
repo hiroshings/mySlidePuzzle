@@ -20,14 +20,15 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let defaults = NSUserDefaults()
     let const = AppConst()
     
-    // 現在時刻
-    let currentTime = CurrentTime()
-    let currentTimeFormatted = CurrentTimeFormatted()
-    
-    
 //    override func viewWillAppear(animated: Bool) {
 //        self.navigationController?.setNavigationBarHidden(true, animated: true)
 //    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        // debug
+        print(getCurrentTime())
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +88,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         appDelegate.bgImage = bgImageView
         
         // imageディレクトリがなければ作成
-        setDirectory()
+        setImageDirectory()
         
         // ローカルストレージに画像データを保存
         saveImageData(baseImageView.image!, imageFileName: ".png") // ベースイメージ
@@ -142,7 +143,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
      
      - returns: imageディレクトリのパス
      */
-    func setDirectory() {
+    func setImageDirectory() {
         
         let fileManager = NSFileManager.defaultManager()
         
@@ -177,7 +178,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let dirUrl = puzzleDirectory.getSubDirectory("image")
         
         // ファイル名のパスを作成する
-        let imageName = currentTime.getCurrentTime() + imageFileName
+        let imageName = getCurrentTime() + imageFileName
         let path = dirUrl.URLByAppendingPathComponent(imageName).path
         
         // nilチェック

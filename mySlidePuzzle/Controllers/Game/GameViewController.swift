@@ -17,6 +17,9 @@ class GameViewController: UIViewController {
     // ゲーム画面のViewClass
     @IBOutlet var gameView: GameView!
     
+    // パズル名
+    var puzzleImageName = ""
+    
     // 操作するピース
     var emptyPiece = UIImageView()
     var touchPiece = UIImageView()
@@ -36,6 +39,10 @@ class GameViewController: UIViewController {
     var timer = NSTimer()
     var clearTime: Int = 0
     
+    let defaults = NSUserDefaults.standardUserDefaults()
+    let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,14 +53,6 @@ class GameViewController: UIViewController {
         currentPiecesOffset = getCurrentPiecesOffset()
         
         gameView.startBtn.addTarget(self, action: "onTapStartBtn:", forControlEvents: .TouchUpInside)
-        
-        // debug
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let puzzleImageName = appDelegate.puzzleImageName
-        
-        let highScore = defaults.objectForKey(puzzleImageName)
-        print("highScore" + String(highScore))
     }
     
     
@@ -346,12 +345,9 @@ class GameViewController: UIViewController {
     func countUpTimer(timerCount: NSTimer) {
         
         clearTime++
+        let formatedTime = formatTime(clearTime)
         
-        let ms = clearTime % 100
-        let s = (clearTime - ms) / 100 % 60
-        let m = (clearTime - s - ms) / 6000 % 3600
-        
-        gameView.timer.text = String(format: "%02d:%02d:%02d", arguments: [m, s, ms])
+        gameView.timer.text = formatedTime
     }
     
     /**
@@ -364,18 +360,20 @@ class GameViewController: UIViewController {
      */
     private func updateClearTime() {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let puzzleImageName = appDelegate.puzzleImageName
         
         if let highScore = defaults.objectForKey(puzzleImageName) {
+            
             if clearTime < highScore as! Int {
                 defaults.setInteger(clearTime, forKey: puzzleImageName)
-                print(highScore)
+                let formatedTime = formatTime(clearTime)
+                gameView.highScore.text = formatedTime
             }
         } else {
+            // highScoreがnilの場合、初回なのでそのままclearTimeをhighScoreにする
             defaults.setInteger(clearTime, forKey: puzzleImageName)
-            print(clearTime)
+            let formatedTime = formatTime(clearTime)
+            gameView.highScore.text = formatedTime
         }
         
     }
@@ -396,5 +394,7 @@ class GameViewController: UIViewController {
         
         // タイマーカウントを発火させる
         timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "countUpTimer:", userInfo: nil, repeats: true)
+        
+        gameView.startBtn.alpha = 0
     }
 }

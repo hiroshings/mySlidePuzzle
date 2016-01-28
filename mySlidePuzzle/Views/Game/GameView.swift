@@ -21,7 +21,12 @@ class GameView: UIView {
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var timer: UILabel!
     @IBOutlet weak var startBtn: UIButton!
+    @IBOutlet weak var highScore: UILabel!
     
+    // パズル名
+    var puzzleImageName = ""
+    
+    // パズル画像
     var baseImage = UIImageView()
     var bgImage = UIImageView()
     
@@ -93,6 +98,14 @@ class GameView: UIView {
             maxPieces = pieceStatus.maxPieces
             pieceColumn = pieceStatus.pieceColumn
             pieceSize = pieceStatus.pieceSize
+        }
+        
+        // highScore表示
+        puzzleImageName = appDelegate.puzzleImageName
+        if let _highScore = defaults.objectForKey(puzzleImageName) {
+            
+            let formatedTime = formatTime(_highScore as! Int)
+            highScore.text = formatedTime
         }
         
         // パズルの生成

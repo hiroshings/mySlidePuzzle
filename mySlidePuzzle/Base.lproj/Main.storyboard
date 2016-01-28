@@ -118,7 +118,6 @@
         <!--Game View Controller-->
         <scene sceneID="fPL-xa-VA3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sig-BC-R8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="gameView" id="cWq-1q-mkV" customClass="GameViewController" customModule="mySlidePuzzle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="t9g-My-auV"/>
@@ -134,6 +133,7 @@
                         <outlet property="gameView" destination="Vjy-1b-G8M" id="0JL-Xz-IAL"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sig-BC-R8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2257" y="405"/>
         </scene>
