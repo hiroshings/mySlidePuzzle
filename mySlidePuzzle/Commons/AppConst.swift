@@ -14,16 +14,16 @@ class AppConst: UIView {
     /*-----------------------
     // MARK: - screenSize -
     ----------------------*/
-    static let screenBounds = UIScreen .mainScreen().bounds
-    static let screenSize = screenBounds.size
-    static let screenScale = UIScreen.mainScreen().scale
+    let screenBounds = UIScreen.mainScreen().bounds
+    let screenSize = UIScreen.mainScreen().bounds.size
+    let screenScale = UIScreen.mainScreen().scale
     
     /*-----------------------
     // MARK: - headerMenuSize -
     ----------------------*/
-    static let statusBar_height: CGFloat = 20.0
-    static let navbar_height:CGFloat = 44.0
-    static let header_height:CGFloat = 64.0 // 20+44
+    let statusBar_height: CGFloat = 20.0
+    let navbar_height:CGFloat = 44.0
+    let header_height:CGFloat = 64.0 // 20+44
     
     /*-----------------------
     // MARK: - level -
@@ -37,11 +37,11 @@ class AppConst: UIView {
     // MARK: - puzzle -
     ----------------------*/
     // bg
-    static let bgColor: UIColor = UIColor.rgb(42, g: 55, b: 79)
+    let bgColor: UIColor = UIColor.rgb(42, g: 55, b: 79)
     
     // frame
-    static let boardWidth: CGFloat = 300.0 //パズルの横幅
-    static let boardHeight: CGFloat = 300.0 //パズルの縦幅
+    let boardWidth: CGFloat = 300.0 //パズルの横幅
+    let boardHeight: CGFloat = 300.0 //パズルの縦幅
     
     // piece
     let pieceSize: CGFloat = 0.0 //1ピースのサイズ
@@ -59,5 +59,11 @@ class AppConst: UIView {
             return (9, 3, 100.0)
         }
     }
+    
+    /*-----------------------
+    // MARK: - myPuzzle -
+    ----------------------*/
+    let myPuzzleViewWidth: CGFloat = 300.0
+    let myPuzzleViewHeight: CGFloat = 400.0
 
 }

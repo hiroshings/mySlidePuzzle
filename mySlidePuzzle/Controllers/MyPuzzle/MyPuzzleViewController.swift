@@ -17,11 +17,14 @@ class MyPuzzleViewController: UIViewController {
     @IBOutlet weak var noimageTxt: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    let puzzleDirectory = PuzzleDirectory()
-    
     // pazzle
+    var myPuzzleView = MyPuzzleView()
     var pazzle = UIImageView()
     var imagePath: String = "" //画像のパス
+    
+    // TODO:ほぼ全画面で使うclassはどこかでまとめてインスタンス化する
+    let util = Util()
+    let const = AppConst()
     
 
     override func viewDidLoad() {
@@ -32,18 +35,23 @@ class MyPuzzleViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         
+        let screenWidth = const.screenSize.width
+        let myPuzzleViewHeight = const.myPuzzleViewHeight
+        
         // マイパズル生成
-        if let imageDataNames = puzzleDirectory.getImageDataNames() {
+        if let imageDataNames = util.getImageDataNames() {
+            
+            scrollView.contentSize = CGSizeMake(screenWidth, myPuzzleViewHeight * CGFloat(imageDataNames.count))
             
             for (index, imageDataName) in imageDataNames.enumerate() {
                 
                 print(imageDataName)
                 // myPuzzleインスタンスを生成
                 let rect = CGRectMake(0, 0, 300, 400)
-                let myPuzzleView = MyPuzzleView(frame: rect)
+                myPuzzleView = MyPuzzleView(frame: rect)
                 
                 // myPuzzleの画像パスを取得
-                let dir = puzzleDirectory.getSubDirectory("image")
+                let dir = util.getSubDirectory("image")
                 let path = dir.URLByAppendingPathComponent(imageDataName).path
                 
                 // ハイスコアを表示
@@ -60,10 +68,6 @@ class MyPuzzleViewController: UIViewController {
                     
                     print("score" + String(format: "%02d:%02d:%02d", arguments: [m, s, ms]))
                 }
-                
-                // 画像ファイル名をもとにしたpuzzleIDを通知
-                let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                appDelegate.puzzleImageName = imageDataName
                 
                 // 画像パスのpngファイルをmyPuzzleViewのUIImageに変換
                 let pazzleImage = UIImage(contentsOfFile: path!)
@@ -87,10 +91,6 @@ class MyPuzzleViewController: UIViewController {
                 
                 myPuzzleView.playBtn.addTarget(self, action: "onTapPlayBtn:", forControlEvents: .TouchUpInside)
                 myPuzzleView.userInteractionEnabled = true
-                
-                // 下にスクロールできるようにContentSizeを拡大
-                scrollView.contentSize.height += (puzzleHeight + 20)
-                print(scrollView.contentSize.height)
                 
                 scrollView.addSubview(myPuzzleView)
             }
@@ -128,16 +128,19 @@ class MyPuzzleViewController: UIViewController {
         }
         
         // 画像データのパスを取得
-        let imageData = puzzleDirectory.getImageDataNames()
-        let dir = puzzleDirectory.getSubDirectory("image")
+        let imageData = util.getImageDataNames()
+        let dir = util.getSubDirectory("image")
         let path = dir.URLByAppendingPathComponent(imageData![touchPuzzleId - 1]).path
+        
+        // 画像ファイル名をもとにしたpuzzleIDを通知
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.puzzleImageName = imageData![touchPuzzleId - 1]
         
         // 画像データからUIImageViewを生成し、delegateに通知
         let baseImage = UIImageView()
         baseImage.image = UIImage(contentsOfFile: path!)
-        baseImage.frame = CGRectMake(0, 0, AppConst.boardWidth, AppConst.boardHeight)
+        baseImage.frame = CGRectMake(0, 0, const.boardWidth, const.boardHeight)
         
-        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.baseImage = baseImage
         
         // ゲーム画面に遷移

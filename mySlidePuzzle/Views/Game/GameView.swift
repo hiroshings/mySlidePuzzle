@@ -44,13 +44,15 @@ class GameView: UIView {
     var level = ""
     
     let defaults = NSUserDefaults()
-    let const = AppConst()
     
     // ピースごとの座標を格納する配列
     var defaultPieceOffset: [[CGFloat]] = []
     
     // タイマー
     var count: Int = 0
+    
+    let util = Util()
+    let const = AppConst()
     
     
     override init(frame: CGRect) {
@@ -82,7 +84,7 @@ class GameView: UIView {
         gameStageBgView.layer.shadowRadius = 5.0
         
         // 背景画像を生成
-        bgImage.frame = CGRectMake(0, 0, AppConst.screenBounds.width, AppConst.screenBounds.height)
+        bgImage.frame = CGRectMake(0, 0, const.screenBounds.width, const.screenBounds.height)
         
         let blurEffect = UIBlurEffect(style: .ExtraLight)
         let visualEffectView = UIVisualEffectView(effect: blurEffect)
@@ -104,7 +106,7 @@ class GameView: UIView {
         puzzleImageName = appDelegate.puzzleImageName
         if let _highScore = defaults.objectForKey(puzzleImageName) {
             
-            let formatedTime = formatTime(_highScore as! Int)
+            let formatedTime = util.formatTime(_highScore as! Int)
             highScore.text = formatedTime
         }
         
@@ -177,7 +179,7 @@ class GameView: UIView {
     */
     func cropImage(image :UIImage, x:CGFloat, y:CGFloat, w:CGFloat, h:CGFloat) ->UIImage {
         
-        let size: CGSize = CGSize(width: AppConst.boardWidth, height: AppConst.boardHeight)
+        let size: CGSize = CGSize(width: const.boardWidth, height: const.boardHeight)
         UIGraphicsBeginImageContext(size)
         image.drawInRect(CGRectMake(0, 0, size.width, size.height))
         

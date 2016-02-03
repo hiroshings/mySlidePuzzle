@@ -9,71 +9,44 @@
 import Foundation
 import UIKit
 
-extension UIColor {
-
-    class func rgb(r:CGFloat, g:CGFloat, b:CGFloat) -> UIColor{
-        return rgba(r, g: g, b: b, a: 1.0)
+class Util {
+    /*-----------------------
+    // MARK: - time -
+    ----------------------*/
+    
+    /// 現在時刻を返す
+    func getCurrentTime() -> String {
+        
+        let now = NSDate()
+        let dataFormatter = NSDateFormatter()
+        
+        dataFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        dataFormatter.dateFormat = "yyyyMMddhhmmss"
+        return dataFormatter.stringFromDate(now)
     }
     
-    class func rgba(r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor{
+    /**
+     タイマー表示を整形する
+     
+     - parameters:
+     - originTime: 整形元のタイムカウント
+     
+     - returns: none
+     */
+    func formatTime(originTimeCount: Int) -> String {
         
-        let denominator:CGFloat = 255.0
+        let ms = originTimeCount % 100
+        let s = (originTimeCount - ms) / 100 % 60
+        let m = (originTimeCount - s - ms) / 6000 % 3600
         
-        let red =  r/denominator
-        let green = g/denominator
-        let blue = b/denominator
-        
-        let color = UIColor(red: red, green: green, blue: blue, alpha: a)
-        return color
+        let formatedTime = String(format: "%02d:%02d:%02d", arguments: [m, s, ms])
+        return formatedTime
     }
-}
-
-extension UIScrollView {
     
-    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        superview?.touchesBegan(touches, withEvent: event)
-    }
-}
+    /*-----------------------
+    // MARK: - directory -
+    ----------------------*/
 
-/*-----------------------
-// MARK: - time -
-----------------------*/
-
-/// 現在時刻を返す
-public func getCurrentTime() -> String {
-    
-    let now = NSDate()
-    let dataFormatter = NSDateFormatter()
-    
-    dataFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-    dataFormatter.dateFormat = "yyyyMMddhhmmss"
-    return dataFormatter.stringFromDate(now)
-}
-
-/**
- タイマー表示を整形する
- 
- - parameters:
- - originTime: 整形元のタイムカウント
- 
- - returns: none
- */
-public func formatTime(originTimeCount: Int) -> String {
-    
-    let ms = originTimeCount % 100
-    let s = (originTimeCount - ms) / 100 % 60
-    let m = (originTimeCount - s - ms) / 6000 % 3600
-    
-    let formatedTime = String(format: "%02d:%02d:%02d", arguments: [m, s, ms])
-    return formatedTime
-}
-
-/*-----------------------
-// MARK: - directory -
-----------------------*/
-
-public class PuzzleDirectory {
-    
     let fileManager = NSFileManager.defaultManager()
     let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -82,7 +55,7 @@ public class PuzzleDirectory {
      ローカルストレージのRootディレクトリを取得
      
      - parameters:
-        - none
+     - none
      
      - returns: ディレクトリまでのパス
      */
@@ -94,13 +67,13 @@ public class PuzzleDirectory {
     }
     
     /**
-    ローカルストレージのSubディレクトリを取得
-    
-    - parameters:
+     ローカルストレージのSubディレクトリを取得
+     
+     - parameters:
      - subDirName: 参照するディレクトリ名
-    
-    - returns: ディレクトリまでのパス
-    */
+     
+     - returns: ディレクトリまでのパス
+     */
     func getSubDirectory(subDirName: String) -> NSURL {
         
         // NSURL型でルートディレクトリの取得
@@ -138,5 +111,24 @@ public class PuzzleDirectory {
             return nil
         }
     }
+}
 
+/// RGB, RGBA値を返すようUIColorを拡張
+extension UIColor {
+
+    class func rgb(r:CGFloat, g:CGFloat, b:CGFloat) -> UIColor{
+        return rgba(r, g: g, b: b, a: 1.0)
+    }
+    
+    class func rgba(r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor{
+        
+        let denominator:CGFloat = 255.0
+        
+        let red =  r/denominator
+        let green = g/denominator
+        let blue = b/denominator
+        
+        let color = UIColor(red: red, green: green, blue: blue, alpha: a)
+        return color
+    }
 }

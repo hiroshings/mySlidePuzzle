@@ -15,10 +15,10 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     ----------------------*/
     
     @IBOutlet weak var puzzleLevelSC: UISegmentedControl! // レベル切り替えボタン
-    let puzzleDirectory = PuzzleDirectory() // ディレクトリ管理クラス
     
-    let defaults = NSUserDefaults()
+    let util = Util()
     let const = AppConst()
+    let defaults = NSUserDefaults()
     
 //    override func viewWillAppear(animated: Bool) {
 //        self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -27,7 +27,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewWillAppear(animated: Bool) {
         
         // debug
-        print(getCurrentTime())
+        print(util.getCurrentTime())
     }
     
     override func viewDidLoad() {
@@ -79,8 +79,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         bgImageView.image = bgImage
         
         // TODO: 縦横比を守ったままリサイズ
-        baseImageView.frame = CGRectMake(0, 0, AppConst.boardWidth, AppConst.boardHeight)
-        bgImageView.frame = CGRectMake(0, 0, AppConst.screenBounds.width, AppConst.screenBounds.height)
+        baseImageView.frame = CGRectMake(0, 0, const.boardWidth, const.boardHeight)
 
         // デリゲートにイメージデータを渡す
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -147,7 +146,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let fileManager = NSFileManager.defaultManager()
         
-        let dirUrl = puzzleDirectory.getSubDirectory("image")
+        let dirUrl = util.getSubDirectory("image")
         let dir = dirUrl.path
         print("ディレクトリ = " + dir!)
         
@@ -175,10 +174,10 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // pngデータ生成
         let _imageData = UIImagePNGRepresentation(image)
         
-        let dirUrl = puzzleDirectory.getSubDirectory("image")
+        let dirUrl = util.getSubDirectory("image")
         
         // ファイル名のパスを作成する
-        let imageName = getCurrentTime() + imageFileName
+        let imageName = util.getCurrentTime() + imageFileName
         let path = dirUrl.URLByAppendingPathComponent(imageName).path
         
         // nilチェック

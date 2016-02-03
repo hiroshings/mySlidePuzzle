@@ -41,6 +41,8 @@ class GameViewController: UIViewController {
     
     let defaults = NSUserDefaults.standardUserDefaults()
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    let util = Util()
 
     
     override func viewDidLoad() {
@@ -48,8 +50,19 @@ class GameViewController: UIViewController {
         
         self.navigationItem.title = "My Slide Puzzle"
         
+        // TODO:ハイスコアを更新する
+        
+        // ハイスコアの初期化
+        puzzleImageName = appDelegate.puzzleImageName
+        print(puzzleImageName)
+        if let highScore = defaults.objectForKey(puzzleImageName) {
+            let formatedTime = util.formatTime(highScore as! Int)
+            gameView.highScore.text = formatedTime
+        }
+        
         toggleUserInteractionEnabled(false)
         
+        // ゲーム開始時のピースの初期位置を取得
         currentPiecesOffset = getCurrentPiecesOffset()
         
         gameView.startBtn.addTarget(self, action: "onTapStartBtn:", forControlEvents: .TouchUpInside)
@@ -290,7 +303,8 @@ class GameViewController: UIViewController {
         }
         
         // タイムの更新
-        updateClearTime()
+        puzzleImageName = appDelegate.puzzleImageName
+        updateClearTime(puzzleImageName)
     }
     
     /**
@@ -345,7 +359,7 @@ class GameViewController: UIViewController {
     func countUpTimer(timerCount: NSTimer) {
         
         clearTime++
-        let formatedTime = formatTime(clearTime)
+        let formatedTime = util.formatTime(clearTime)
         
         gameView.timer.text = formatedTime
     }
@@ -358,21 +372,19 @@ class GameViewController: UIViewController {
      
      - returns: none
      */
-    private func updateClearTime() {
-        
-        let puzzleImageName = appDelegate.puzzleImageName
+    private func updateClearTime(puzzleImageName: String) {
         
         if let highScore = defaults.objectForKey(puzzleImageName) {
             
             if clearTime < highScore as! Int {
                 defaults.setInteger(clearTime, forKey: puzzleImageName)
-                let formatedTime = formatTime(clearTime)
+                let formatedTime = util.formatTime(clearTime)
                 gameView.highScore.text = formatedTime
             }
         } else {
             // highScoreがnilの場合、初回なのでそのままclearTimeをhighScoreにする
             defaults.setInteger(clearTime, forKey: puzzleImageName)
-            let formatedTime = formatTime(clearTime)
+            let formatedTime = util.formatTime(clearTime)
             gameView.highScore.text = formatedTime
         }
         
