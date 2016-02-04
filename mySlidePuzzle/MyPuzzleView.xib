@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyPuzzleView" customModule="mySlidePuzzle" customModuleProvider="target">
             <connections>
+                <outlet property="deleteBtn" destination="h9W-Ub-MG9" id="Nv0-PK-ylO"/>
                 <outlet property="highScore" destination="dJN-4p-rw0" id="LEh-1m-cB6"/>
                 <outlet property="playBtn" destination="qdM-MY-Mgf" id="kGd-WF-d7R"/>
                 <outlet property="puzzleImageView" destination="8Ga-x5-6hU" id="4Cu-Uw-h9m"/>
@@ -44,9 +45,28 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9W-Ub-MG9">
+                    <rect key="frame" x="82" y="320" width="45" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="KIq-nZ-qtx"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="cah-mf-8fh"/>
+                        <constraint firstAttribute="height" constant="30" id="gF1-OD-hNr"/>
+                        <constraint firstAttribute="width" constant="45" id="jja-8o-yPb"/>
+                    </constraints>
+                    <state key="normal" title="Delete">
+                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="KIq-nZ-qtx"/>
+                            <exclude reference="cah-mf-8fh"/>
+                        </mask>
+                    </variation>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="h9W-Ub-MG9" firstAttribute="leading" secondItem="qdM-MY-Mgf" secondAttribute="trailing" constant="14" id="09T-N8-50a"/>
                 <constraint firstItem="qdM-MY-Mgf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="23" id="77S-Yz-srd"/>
                 <constraint firstItem="dJN-4p-rw0" firstAttribute="top" secondItem="8Ga-x5-6hU" secondAttribute="bottom" constant="25" id="7Hq-Da-ZQT"/>
                 <constraint firstItem="8Ga-x5-6hU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Fln-ai-1WF"/>
@@ -55,6 +75,7 @@
                 <constraint firstItem="Ymu-n2-qJS" firstAttribute="top" secondItem="8Ga-x5-6hU" secondAttribute="bottom" constant="12" id="fWF-6Q-ILj"/>
                 <constraint firstItem="qdM-MY-Mgf" firstAttribute="top" secondItem="8Ga-x5-6hU" secondAttribute="bottom" constant="20" id="pBe-7R-lsd"/>
                 <constraint firstItem="8Ga-x5-6hU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xWg-bM-2OW"/>
+                <constraint firstItem="h9W-Ub-MG9" firstAttribute="top" secondItem="8Ga-x5-6hU" secondAttribute="bottom" constant="20" id="ztq-5R-epe"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="547" y="443"/>

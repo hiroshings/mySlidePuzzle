@@ -19,7 +19,6 @@ class MyPuzzleViewController: UIViewController {
     
     // pazzle
     var myPuzzleView = MyPuzzleView()
-    var pazzle = UIImageView()
     var imagePath: String = "" //画像のパス
     
     // TODO:ほぼ全画面で使うclassはどこかでまとめてインスタンス化する
@@ -35,13 +34,36 @@ class MyPuzzleViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         
+        initMypuzzleViews()
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    /**
+     パズル一覧を生成する
+     
+     - parameters:
+        - none
+     
+     - returns: none
+     */
+    func initMypuzzleViews() {
+        
         let screenWidth = const.screenSize.width
         let myPuzzleViewHeight = const.myPuzzleViewHeight
         
-        // マイパズル生成
         if let imageDataNames = util.getImageDataNames() {
             
             scrollView.contentSize = CGSizeMake(screenWidth, myPuzzleViewHeight * CGFloat(imageDataNames.count))
+            
+            if imageDataNames.isEmpty {
+                
+                // 画像データが0の場合、代替テキストを表示
+                noimageTxt.alpha = 1.0
+            }
             
             for (index, imageDataName) in imageDataNames.enumerate() {
                 
@@ -56,17 +78,17 @@ class MyPuzzleViewController: UIViewController {
                 
                 // ハイスコアを表示
                 let defaults = NSUserDefaults.standardUserDefaults()
+                
                 if let highScoreData = defaults.objectForKey(imageDataName) {
                     
                     let highScore = highScoreData as! Int
                     
-                    let ms = highScore % 100
-                    let s = (highScore - ms) / 100 % 60
-                    let m = (highScore - s - ms) / 6000 % 3600
+                    let formattedTime = util.formatTime(highScore)
+                    myPuzzleView.highScore.text = formattedTime
                     
-                    myPuzzleView.highScore.text = String(format: "%02d:%02d:%02d", arguments: [m, s, ms])
-                    
-                    print("score" + String(format: "%02d:%02d:%02d", arguments: [m, s, ms]))
+                    print("score" + formattedTime)
+                } else {
+                    print("no score")
                 }
                 
                 // 画像パスのpngファイルをmyPuzzleViewのUIImageに変換
@@ -84,57 +106,73 @@ class MyPuzzleViewController: UIViewController {
                 // tagの付与
                 myPuzzleView.puzzleImageView.tag = (index + 1)
                 myPuzzleView.playBtn.tag = (index + 1)
+                myPuzzleView.deleteBtn.tag = (index + 1)
                 
                 // タップ可能に
-                let tap = UITapGestureRecognizer(target: self, action: "onTapPlayBtn:")
-                myPuzzleView.puzzleImageView.addGestureRecognizer(tap)
-                
-                myPuzzleView.playBtn.addTarget(self, action: "onTapPlayBtn:", forControlEvents: .TouchUpInside)
+                myPuzzleView.playBtn.addTarget(self, action: "onTapEventHandler:", forControlEvents: .TouchUpInside)
+                myPuzzleView.deleteBtn.addTarget(self, action: "onTapEventHandler:", forControlEvents: .TouchUpInside)
                 myPuzzleView.userInteractionEnabled = true
+                
+                myPuzzleView.alpha = 0.8
                 
                 scrollView.addSubview(myPuzzleView)
             }
             
         } else {
             
-            // 画像データが0の場合、代替テキストを表示
+            // 画像データがnilの場合、代替テキストを表示
             noimageTxt.alpha = 1.0
             
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
-
+    /**
+     ボタンタップ時のイベントハンドラ
+     
+     - parameters:
+        - sender
+     
+     - returns: none
+     */
+    func onTapEventHandler(sender: AnyObject) {
+        
+        let btnTitle: String? = sender.currentTitle
+        
+        guard let touchedPuzzleId = sender.tag else {
+            return
+        }
+        if touchedPuzzleId == 0 {
+            return
+        }
+        
+        switch btnTitle! {
+            case "Play":
+                goGameView(touchedPuzzleId)
+            case "Delete":
+                deltePuzzle(touchedPuzzleId)
+            default:
+                break
+        }
+    }
     
     /**
      playボタン押下時のイベント
      
      - parameters:
-        - none
+     - none
      
      - returns: none
      */
-    func onTapPlayBtn(sender: AnyObject) {
-        
-        // tag = 0の場合、return
-        guard let touchPuzzleId = sender.tag else {
-            return
-        }
-        if touchPuzzleId == 0 {
-            return
-        }
+    func goGameView(touchedPuzzleId: Int) {
         
         // 画像データのパスを取得
-        let imageData = util.getImageDataNames()
+        let imageDataNames = util.getImageDataNames()
         let dir = util.getSubDirectory("image")
-        let path = dir.URLByAppendingPathComponent(imageData![touchPuzzleId - 1]).path
+        let path = dir.URLByAppendingPathComponent(imageDataNames![touchedPuzzleId - 1]).path
         
         // 画像ファイル名をもとにしたpuzzleIDを通知
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.puzzleImageName = imageData![touchPuzzleId - 1]
+        appDelegate.puzzleImageName = imageDataNames![touchedPuzzleId - 1]
         
         // 画像データからUIImageViewを生成し、delegateに通知
         let baseImage = UIImageView()
@@ -145,6 +183,52 @@ class MyPuzzleViewController: UIViewController {
         
         // ゲーム画面に遷移
         self.performSegueWithIdentifier("goGameView", sender: self)
+    }
+    
+    /**
+    deleteボタン押下時のイベント
+    
+    - parameters:
+        - touchedPuzzleId: タッチしたパズルのID
+    
+    - returns: none
+    */
+    func deltePuzzle(touchedPuzzleId: Int) {
+        
+        let fileManager = NSFileManager.defaultManager()
+        
+        // 画像データ名を取得
+        let imageDataNames = util.getImageDataNames()
+        let imageDataName = imageDataNames![touchedPuzzleId - 1]
+
+        // 画像のpathを取得
+        let dir = util.getSubDirectory("image")
+        let path = dir.URLByAppendingPathComponent(imageDataName).path
+        
+        // pathが存在したら画像を削除
+        if fileManager.fileExistsAtPath(path!) {
+            do {
+                try fileManager.removeItemAtPath(path!)
+            }
+            catch {
+                print("Unable to delete file: \(error)")
+            }
+        }
+        
+        // ハイスコアを削除
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let _ = defaults.objectForKey(imageDataName) {
+            defaults.removeObjectForKey(imageDataName)
+        }
+        
+        let subviews = scrollView.subviews
+        
+        for subview in subviews {
+            subview.removeFromSuperview()
+        }
+        
+        initMypuzzleViews()
     }
     
 }

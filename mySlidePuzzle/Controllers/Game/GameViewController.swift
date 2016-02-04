@@ -54,8 +54,11 @@ class GameViewController: UIViewController {
         
         // ハイスコアの初期化
         puzzleImageName = appDelegate.puzzleImageName
-        print(puzzleImageName)
+        
         if let highScore = defaults.objectForKey(puzzleImageName) {
+            
+            print("highScore")
+            print(highScore as! Int)
             let formatedTime = util.formatTime(highScore as! Int)
             gameView.highScore.text = formatedTime
         }
@@ -374,6 +377,9 @@ class GameViewController: UIViewController {
      */
     private func updateClearTime(puzzleImageName: String) {
         
+        print("puzzle名は..")
+        print(puzzleImageName)
+        
         if let highScore = defaults.objectForKey(puzzleImageName) {
             
             if clearTime < highScore as! Int {
@@ -384,7 +390,9 @@ class GameViewController: UIViewController {
         } else {
             // highScoreがnilの場合、初回なのでそのままclearTimeをhighScoreにする
             defaults.setInteger(clearTime, forKey: puzzleImageName)
+            
             let formatedTime = util.formatTime(clearTime)
+            print(formatedTime)
             gameView.highScore.text = formatedTime
         }
         

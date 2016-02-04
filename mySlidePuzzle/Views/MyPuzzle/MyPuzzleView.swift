@@ -10,6 +10,7 @@ import UIKit
 
 class MyPuzzleView: UIView {
     @IBOutlet weak var playBtn: UIButton!
+    @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var puzzleImageView: UIImageView!
     @IBOutlet weak var highScore: UILabel!
     

@@ -26,8 +26,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewWillAppear(animated: Bool) {
         
-        // debug
-        print(util.getCurrentTime())
     }
     
     override func viewDidLoad() {
@@ -56,10 +54,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Dispose of any resources that can be recreated.
     }
     
-//    override func viewWillDisappear(animated: Bool) {
-//        self.navigationController?.setNavigationBarHidden(false, animated: true)
-//    }
-    
     
     /*-----------------------
     // MARK: - private -
@@ -69,14 +63,15 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         let baseImageView = UIImageView()
-        let bgImageView = UIImageView()
+        
+        let currentTime = util.getCurrentTime()
+        let fileName = ".png"
+        let imageName = currentTime + fileName
         
         // イメージデータを取得
         let baseImage = info[UIImagePickerControllerEditedImage] as! UIImage // editedImageにすることで編集後のイメージを使用可能
-        let bgImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         baseImageView.image = baseImage
-        bgImageView.image = bgImage
         
         // TODO: 縦横比を守ったままリサイズ
         baseImageView.frame = CGRectMake(0, 0, const.boardWidth, const.boardHeight)
@@ -84,13 +79,14 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // デリゲートにイメージデータを渡す
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.baseImage = baseImageView
-        appDelegate.bgImage = bgImageView
+        appDelegate.puzzleImageName = imageName
+        
         
         // imageディレクトリがなければ作成
         setImageDirectory()
         
         // ローカルストレージに画像データを保存
-        saveImageData(baseImageView.image!, imageFileName: ".png") // ベースイメージ
+        saveImageData(baseImageView.image!, imageName: imageName) // ベースイメージ
         
         // 選択画面閉じる
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -169,7 +165,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
      
      - returns: none
      */
-    func saveImageData(image: UIImage, imageFileName: String) {
+    func saveImageData(image: UIImage, imageName: String) {
         
         // pngデータ生成
         let _imageData = UIImagePNGRepresentation(image)
@@ -177,7 +173,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let dirUrl = util.getSubDirectory("image")
         
         // ファイル名のパスを作成する
-        let imageName = util.getCurrentTime() + imageFileName
         let path = dirUrl.URLByAppendingPathComponent(imageName).path
         
         // nilチェック
@@ -187,7 +182,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         // pngデータの保存
         if imageData.writeToFile(path!, atomically: true) {
-            print(imageName)
+            print("Save" + imageName)
         } else {
             print("error writing file: \(path)")
         }
