@@ -50,8 +50,6 @@ class GameViewController: UIViewController {
         
         self.navigationItem.title = "My Slide Puzzle"
         
-        // TODO:ハイスコアを更新する
-        
         // ハイスコアの初期化
         puzzleImageName = appDelegate.puzzleImageName
         
@@ -166,20 +164,37 @@ class GameViewController: UIViewController {
             
                 for _ in x..<0 {
                     
-                    emptyPiece.frame.origin.x -= gameView.pieceSize
                     let e_x = emptyPiece.frame.origin.x
                     let e_y = emptyPiece.frame.origin.y
                     
-                    for (index, currentOffset) in currentPiecesOffset.enumerate() {
-                        
-                        let c_x = currentOffset[0]
-                        let c_y = currentOffset[1]
-                        
-                        if e_x == c_x && e_y == c_y {
-                            let movePiece = gameView.gameStageView.viewWithTag(index + 1) as! UIImageView
-                            movePiece.frame.origin.x += gameView.pieceSize
-                        }
-                    }
+                    let anim = POPBasicAnimation()
+                    anim.property = POPAnimatableProperty.propertyWithName(kPOPLayerPositionX) as! POPAnimatableProperty
+                    anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+                    anim.duration = 0.2
+                    
+                    let toValue = (emptyPiece.frame.origin.x += gameView.pieceSize)
+
+                    // TODO: アニメーションの座標がうまく行かない
+                    anim.toValue = toValue
+                    
+                    print(emptyPiece.frame.origin.x)
+                    print(gameView.pieceSize)
+                    
+                    emptyPiece.pop_addAnimation(anim, forKey: "slide")
+                    
+//                    for (index, currentOffset) in currentPiecesOffset.enumerate() {
+//                        
+//                        let c_x = currentOffset[0]
+//                        let c_y = currentOffset[1]
+//                        
+//                        if e_x == c_x && e_y == c_y {
+//                            let movePiece = gameView.gameStageView.viewWithTag(index + 1) as! UIImageView
+//                            movePiece.frame.origin.x += gameView.pieceSize
+//                            
+//
+//                            
+//                        }
+//                    }
                 }
             // ピースを左に移動
             case (let x, let y) where x > 0 && y == 0:
