@@ -14,41 +14,62 @@ class AppConst: UIView {
     /*-----------------------
     // MARK: - screenSize -
     ----------------------*/
-    let screenBounds = UIScreen.mainScreen().bounds
-    let screenSize = UIScreen.mainScreen().bounds.size
-    let screenScale = UIScreen.mainScreen().scale
+    static let screenBounds = UIScreen.mainScreen().bounds
+    static let screenSize = UIScreen.mainScreen().bounds.size
+    static let screenScale = UIScreen.mainScreen().scale
     
     /*-----------------------
     // MARK: - headerMenuSize -
     ----------------------*/
-    let statusBar_height: CGFloat = 20.0
-    let navbar_height:CGFloat = 44.0
-    let header_height:CGFloat = 64.0 // 20+44
-    
-    /*-----------------------
-    // MARK: - level -
-    ----------------------*/
-    // 15パズルと8パズルのレベルを選択できる
-    let piece8 = "8Piece"
-    let piece15 = "15Piece"
-
+    static let statusBar_height: CGFloat = 20.0
+    static let navbar_height:CGFloat = 44.0
+    static let header_height:CGFloat = 64.0 // 20+44
     
     /*-----------------------
     // MARK: - puzzle -
     ----------------------*/
     // bg
-    let bgColor: UIColor = UIColor.rgb(42, g: 55, b: 79)
+    static let bgColor: UIColor = UIColor.rgb(42, g: 55, b: 79)
     
     // frame
-    let boardWidth: CGFloat = 300.0 //パズルの横幅
-    let boardHeight: CGFloat = 300.0 //パズルの縦幅
+    static let boardWidth: CGFloat = 300.0 //パズルの横幅
+    static let boardHeight: CGFloat = 300.0 //パズルの縦幅
     
     // piece
-    let pieceSize: CGFloat = 0.0 //1ピースのサイズ
-    let maxPieces: Int = 0 //ピースの最大数
-    let pieceColumn: Int = 0 //ピースの1列
+    static let pieceSize: CGFloat = 0.0 //1ピースのサイズ
+    static let maxPieces: Int = 0 //ピースの最大数
+    static let pieceColumn: Int = 0 //ピースの1列
     
-    func initPieceStatus(level: String) -> (maxPieces: Int, pieceColumn: Int, pieceSize: CGFloat) {
+    /*-----------------------
+    // MARK: - myPuzzle -
+    ----------------------*/
+    static let myPuzzleViewWidth: CGFloat = 300.0
+    static let myPuzzleViewHeight: CGFloat = 400.0
+    
+    /*-----------------------
+    // MARK: - level -
+    ----------------------*/
+    // パズルのレベル
+    static let piece8 = "8Piece"
+    static let piece15 = "15Piece"
+    
+    
+    /**
+    レベルに応じたパズルのステータスを設定する
+    
+    - parameters:
+     - level: パズルのレベル
+    
+    - returns: レベルに応じたパズルの設定
+     - maxPieces: パズルの最大ピース
+     - pieceColumn: パズルの列数
+     - pieceSize: ピースの大きさ
+     
+    */
+    static func initPieceStatus(level: String) -> (maxPieces: Int, pieceColumn: Int, pieceSize: CGFloat) {
+        
+        let piece8 = "8Piece"
+        let piece15 = "15Piece"
         
         switch level {
         case piece8:
@@ -59,11 +80,5 @@ class AppConst: UIView {
             return (9, 3, 100.0)
         }
     }
-    
-    /*-----------------------
-    // MARK: - myPuzzle -
-    ----------------------*/
-    let myPuzzleViewWidth: CGFloat = 300.0
-    let myPuzzleViewHeight: CGFloat = 400.0
 
 }

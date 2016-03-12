@@ -57,7 +57,7 @@ class GameViewController: UIViewController {
             
             print("highScore")
             print(highScore as! Int)
-            let formatedTime = util.formatTime(highScore as! Int)
+            let formatedTime = Util.formatTime(highScore as! Int)
             gameView.highScore.text = formatedTime
         }
         
@@ -98,7 +98,7 @@ class GameViewController: UIViewController {
                 let enablePositons = getEnableMovePositions(emptyLocation_x, e_y: emptyLocation_y, t_x: touchLocation_x, t_y: touchLocation_y)
                 
                 // ピースの移動
-                movePiece(enablePositons.enable_x, enable_y: enablePositons.enable_y)
+                movePiece(enablePositons.enable_x, enable_y: enablePositons.enable_y, t_x: touchLocation_x, t_y: touchLocation_y)
                 
                 // ピースの現在位置を取得
                 currentPiecesOffset = []
@@ -153,9 +153,15 @@ class GameViewController: UIViewController {
      
      - returns: none
      */
-    private func movePiece(enable_x: Int, enable_y: Int) {
+    private func movePiece(enable_x: Int, enable_y: Int, t_x: CGFloat, t_y: CGFloat) {
         
         emptyPiece = gameView.gameStageView.viewWithTag(gameView.maxPieces) as! UIImageView
+        
+        let touchedPiece_x = Int(t_x / 100) * 100
+        let touchedPiece_y = Int(t_y / 100) * 100
+        
+        print("成形後：タッチ座標" + String(touchedPiece_x))
+        print("成形後：タッチ座標" + String(touchedPiece_y))
         
         switch (enable_x, enable_y) {
 
@@ -164,37 +170,28 @@ class GameViewController: UIViewController {
             
                 for _ in x..<0 {
                     
-                    let e_x = emptyPiece.frame.origin.x
-                    let e_y = emptyPiece.frame.origin.y
-                    
-                    let anim = POPBasicAnimation()
-                    anim.property = POPAnimatableProperty.propertyWithName(kPOPLayerPositionX) as! POPAnimatableProperty
-                    anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-                    anim.duration = 0.2
-                    
-                    let toValue = (emptyPiece.frame.origin.x += gameView.pieceSize)
-
-                    // TODO: アニメーションの座標がうまく行かない
-                    anim.toValue = toValue
-                    
-                    print(emptyPiece.frame.origin.x)
-                    print(gameView.pieceSize)
-                    
-                    emptyPiece.pop_addAnimation(anim, forKey: "slide")
-                    
-//                    for (index, currentOffset) in currentPiecesOffset.enumerate() {
-//                        
-//                        let c_x = currentOffset[0]
-//                        let c_y = currentOffset[1]
-//                        
-//                        if e_x == c_x && e_y == c_y {
-//                            let movePiece = gameView.gameStageView.viewWithTag(index + 1) as! UIImageView
-//                            movePiece.frame.origin.x += gameView.pieceSize
-//                            
+//                    let fromValue = emptyPiece.frame.origin.x
+//                    let toValue = (fromValue - gameView.pieceSize)
 //
+//                    addAnimation(emptyPiece, fromValue: fromValue, toValue: toValue)
+                    
+                    for (index, currentOffset) in currentPiecesOffset.enumerate() {
+                        
+                        let currentPiece_x = Int(currentOffset[0])
+                        let currentPiece_y = Int(currentOffset[1])
+                        
+                        if touchedPiece_x == currentPiece_x && touchedPiece_y == currentPiece_y {
+                            
+                            let movePiece = gameView.gameStageView.viewWithTag(index + 1) as! UIImageView
+                            
+                            gameView.gameStageView.convertRect(movePiece.bounds, toView: emptyPiece)
+                                                        
+//                            let fromValue = CGFloat(currentPiece_x)
+//                            let toValue = (fromValue + gameView.pieceSize)
 //                            
-//                        }
-//                    }
+//                            addAnimation(movePiece, fromValue: fromValue, toValue: toValue)
+                        }
+                    }
                 }
             // ピースを左に移動
             case (let x, let y) where x > 0 && y == 0:
@@ -265,6 +262,34 @@ class GameViewController: UIViewController {
             
             default:
                 break
+        }
+    }
+    
+    /**
+     ピースの移動アニメーション用ヘルパーメソッド
+     
+     - parameters:
+        - targetView: アニメさせる対象のview
+        - fromValue: アニメの開始位置
+        - toValue: アニメの目標位置
+     
+     - returns: none
+     */
+    private func addAnimation(targetView: UIView, fromValue: CGFloat, toValue: CGFloat) {
+        
+        let anim = POPSpringAnimation()
+        anim.property = POPAnimatableProperty.propertyWithName(kPOPLayerPositionX) as! POPAnimatableProperty
+        anim.springSpeed = 100
+        
+        anim.fromValue = fromValue
+        anim.toValue = toValue
+
+        print("fromValue" + String(anim.fromValue))
+        print("toValue" + String(anim.toValue))
+
+        targetView.layer.pop_addAnimation(anim, forKey: "slide")
+        anim.completionBlock = {(anim, finished) in
+            print("animation finish")
         }
     }
     
@@ -377,7 +402,7 @@ class GameViewController: UIViewController {
     func countUpTimer(timerCount: NSTimer) {
         
         clearTime++
-        let formatedTime = util.formatTime(clearTime)
+        let formatedTime = Util.formatTime(clearTime)
         
         gameView.timer.text = formatedTime
     }
@@ -399,14 +424,14 @@ class GameViewController: UIViewController {
             
             if clearTime < highScore as! Int {
                 defaults.setInteger(clearTime, forKey: puzzleImageName)
-                let formatedTime = util.formatTime(clearTime)
+                let formatedTime = Util.formatTime(clearTime)
                 gameView.highScore.text = formatedTime
             }
         } else {
             // highScoreがnilの場合、初回なのでそのままclearTimeをhighScoreにする
             defaults.setInteger(clearTime, forKey: puzzleImageName)
             
-            let formatedTime = util.formatTime(clearTime)
+            let formatedTime = Util.formatTime(clearTime)
             print(formatedTime)
             gameView.highScore.text = formatedTime
         }

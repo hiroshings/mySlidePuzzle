@@ -15,7 +15,7 @@ class Util {
     ----------------------*/
     
     /// 現在時刻を返す
-    func getCurrentTime() -> String {
+    static func getCurrentTime() -> String {
         
         let now = NSDate()
         let dataFormatter = NSDateFormatter()
@@ -33,7 +33,7 @@ class Util {
      
      - returns: none
      */
-    func formatTime(originTimeCount: Int) -> String {
+    static func formatTime(originTimeCount: Int) -> String {
         
         let ms = originTimeCount % 100
         let s = (originTimeCount - ms) / 100 % 60
@@ -46,10 +46,6 @@ class Util {
     /*-----------------------
     // MARK: - directory -
     ----------------------*/
-
-    let fileManager = NSFileManager.defaultManager()
-    let defaults = NSUserDefaults.standardUserDefaults()
-    
     
     /**
      ローカルストレージのRootディレクトリを取得
@@ -59,9 +55,10 @@ class Util {
      
      - returns: ディレクトリまでのパス
      */
-    func getRootDirectory() -> NSURL {
+    static func getRootDirectory() -> NSURL {
         
         // NSURL型でルートディレクトリの取得
+        let fileManager = NSFileManager.defaultManager()
         let url = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
         return url
     }
@@ -74,9 +71,10 @@ class Util {
      
      - returns: ディレクトリまでのパス
      */
-    func getSubDirectory(subDirName: String) -> NSURL {
+    static func getSubDirectory(subDirName: String) -> NSURL {
         
         // NSURL型でルートディレクトリの取得
+        let fileManager = NSFileManager.defaultManager()
         let url = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
         
         // ディレクトリを参照
@@ -93,7 +91,7 @@ class Util {
      
      - returns: ローカルストレージのpngファイル名
      */
-    func getImageDataNames() -> Array<String>? {
+    static func getImageDataNames() -> Array<String>? {
         
         
         guard let dir = getSubDirectory("image").path else {
@@ -102,6 +100,7 @@ class Util {
         
         do {
             // ファイル名が格納された配列を返す
+            let fileManager = NSFileManager.defaultManager()
             let pngImages = try fileManager.contentsOfDirectoryAtPath(dir)
             print("pngImages" + String(pngImages))
             return pngImages

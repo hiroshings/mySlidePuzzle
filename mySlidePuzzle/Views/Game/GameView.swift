@@ -51,10 +51,6 @@ class GameView: UIView {
     // タイマー
     var count: Int = 0
     
-    let util = Util()
-    let const = AppConst()
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -84,7 +80,7 @@ class GameView: UIView {
         gameStageBgView.layer.shadowRadius = 5.0
         
         // 背景画像を生成
-        bgImage.frame = CGRectMake(0, 0, const.screenBounds.width, const.screenBounds.height)
+        bgImage.frame = CGRectMake(0, 0, AppConst.screenBounds.width, AppConst.screenBounds.height)
         
         let blurEffect = UIBlurEffect(style: .ExtraLight)
         let visualEffectView = UIVisualEffectView(effect: blurEffect)
@@ -96,7 +92,7 @@ class GameView: UIView {
         
         // レベルに応じて、ピースの最大数等を初期化
         if let level = defaults.objectForKey("level") {
-            let pieceStatus = const.initPieceStatus(level as! String)
+            let pieceStatus = AppConst.initPieceStatus(level as! String)
             maxPieces = pieceStatus.maxPieces
             pieceColumn = pieceStatus.pieceColumn
             pieceSize = pieceStatus.pieceSize
@@ -106,7 +102,7 @@ class GameView: UIView {
         puzzleImageName = appDelegate.puzzleImageName
         if let _highScore = defaults.objectForKey(puzzleImageName) {
             
-            let formatedTime = util.formatTime(_highScore as! Int)
+            let formatedTime = Util.formatTime(_highScore as! Int)
             highScore.text = formatedTime
         }
         
@@ -179,7 +175,7 @@ class GameView: UIView {
     */
     func cropImage(image :UIImage, x:CGFloat, y:CGFloat, w:CGFloat, h:CGFloat) ->UIImage {
         
-        let size: CGSize = CGSize(width: const.boardWidth, height: const.boardHeight)
+        let size: CGSize = CGSize(width: AppConst.boardWidth, height: AppConst.boardHeight)
         UIGraphicsBeginImageContext(size)
         image.drawInRect(CGRectMake(0, 0, size.width, size.height))
         

@@ -16,8 +16,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var puzzleLevelSC: UISegmentedControl! // レベル切り替えボタン
     
-    let util = Util()
-    let const = AppConst()
     let defaults = NSUserDefaults()
     
 //    override func viewWillAppear(animated: Bool) {
@@ -32,15 +30,15 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewDidLoad()
         
         // 初期値は8パズル
-        defaults.registerDefaults(["level": const.piece8])
+        defaults.registerDefaults(["level": AppConst.piece8])
         
         // レベル選択ボタンの選択位置初期化
         if let level = defaults.objectForKey("level") {
             
             switch String(level) {
-            case const.piece8:
+            case AppConst.piece8:
                 puzzleLevelSC.selectedSegmentIndex = 0
-            case const.piece15:
+            case AppConst.piece15:
                 puzzleLevelSC.selectedSegmentIndex = 1
             default:
                 break
@@ -64,7 +62,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let baseImageView = UIImageView()
         
-        let currentTime = util.getCurrentTime()
+        let currentTime = Util.getCurrentTime()
         let fileName = ".png"
         let imageName = currentTime + fileName
         
@@ -74,7 +72,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         baseImageView.image = baseImage
         
         // TODO: 縦横比を守ったままリサイズ
-        baseImageView.frame = CGRectMake(0, 0, const.boardWidth, const.boardHeight)
+        baseImageView.frame = CGRectMake(0, 0, AppConst.boardWidth, AppConst.boardHeight)
 
         // デリゲートにイメージデータを渡す
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -142,7 +140,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let fileManager = NSFileManager.defaultManager()
         
-        let dirUrl = util.getSubDirectory("image")
+        let dirUrl = Util.getSubDirectory("image")
         let dir = dirUrl.path
         print("ディレクトリ = " + dir!)
         
@@ -170,7 +168,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // pngデータ生成
         let _imageData = UIImagePNGRepresentation(image)
         
-        let dirUrl = util.getSubDirectory("image")
+        let dirUrl = Util.getSubDirectory("image")
         
         // ファイル名のパスを作成する
         let path = dirUrl.URLByAppendingPathComponent(imageName).path
@@ -200,9 +198,9 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         switch sender.selectedSegmentIndex {
             case 0:
-                defaults.setObject(const.piece8, forKey: "level")
+                defaults.setObject(AppConst.piece8, forKey: "level")
             case 1:
-                defaults.setObject(const.piece15, forKey: "level")
+                defaults.setObject(AppConst.piece15, forKey: "level")
             default:
                 break
         }
