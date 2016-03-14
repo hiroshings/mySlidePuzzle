@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ebb-WE-asC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ebb-WE-asC">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -24,28 +24,45 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gG-o2-7yb">
-                                <rect key="frame" x="184" y="353" width="47" height="30"/>
-                                <state key="normal" title="START"/>
-                                <connections>
-                                    <action selector="onTapStartBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BhF-SE-64u"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGp-BI-uKC">
-                                <rect key="frame" x="169" y="430" width="78" height="30"/>
-                                <state key="normal" title="My Puzzles"/>
-                                <connections>
-                                    <segue destination="CKX-1S-Cf0" kind="show" id="cE6-3c-fR5"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gvu-se-BvC">
+                                <rect key="frame" x="168" y="368" width="78" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gG-o2-7yb">
+                                        <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
+                                        <state key="normal" title="START"/>
+                                        <connections>
+                                            <action selector="onTapStartBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BhF-SE-64u"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGp-BI-uKC">
+                                        <rect key="frame" x="0.0" y="50" width="78" height="30"/>
+                                        <state key="normal" title="My Puzzles"/>
+                                        <connections>
+                                            <segue destination="CKX-1S-Cf0" kind="show" id="cE6-3c-fR5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9gG-o2-7yb" firstAttribute="centerX" secondItem="mIB-PN-3sq" secondAttribute="centerX" id="4Je-lU-wmB"/>
-                            <constraint firstItem="9gG-o2-7yb" firstAttribute="top" secondItem="cmq-sU-7qm" secondAttribute="bottom" constant="150" id="DDX-jr-JUm"/>
+                            <constraint firstItem="gvu-se-BvC" firstAttribute="centerY" secondItem="mIB-PN-3sq" secondAttribute="centerY" constant="40" id="3v4-ns-PPM"/>
+                            <constraint firstItem="gvu-se-BvC" firstAttribute="centerX" secondItem="mIB-PN-3sq" secondAttribute="centerX" id="3yl-Rg-T0j"/>
+                            <constraint firstItem="cmq-sU-7qm" firstAttribute="centerX" secondItem="mIB-PN-3sq" secondAttribute="centerX" id="ERV-uC-TDh"/>
                             <constraint firstItem="cmq-sU-7qm" firstAttribute="top" secondItem="XSh-dk-HSF" secondAttribute="bottom" constant="100" id="NcL-QE-WKd"/>
+                            <constraint firstItem="cmq-sU-7qm" firstAttribute="centerX" secondItem="mIB-PN-3sq" secondAttribute="centerX" id="WEa-SK-9gW"/>
+                            <constraint firstItem="cmq-sU-7qm" firstAttribute="centerX" secondItem="mIB-PN-3sq" secondAttribute="centerX" id="X7A-OJ-pr2"/>
+                            <constraint firstItem="cmq-sU-7qm" firstAttribute="centerY" secondItem="mIB-PN-3sq" secondAttribute="centerY" id="s6f-TZ-SxW"/>
                             <constraint firstItem="cmq-sU-7qm" firstAttribute="centerX" secondItem="mIB-PN-3sq" secondAttribute="centerX" id="t3M-4O-1G1"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ERV-uC-TDh"/>
+                                <exclude reference="X7A-OJ-pr2"/>
+                                <exclude reference="s6f-TZ-SxW"/>
+                                <exclude reference="t3M-4O-1G1"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="MoM-RU-iyU">
                         <barButtonItem key="rightBarButtonItem" style="done" id="fGQ-84-AN2">
@@ -85,8 +102,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ゲームを遊ぶと遊んだパズルが表示されます" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0c-Rg-chZ">
-                                <rect key="frame" x="37" y="358" width="340" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="87" y="361" width="240" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -96,13 +113,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="M0c-Rg-chZ" secondAttribute="trailing" constant="17" id="19U-s1-NzA"/>
                             <constraint firstItem="M0c-Rg-chZ" firstAttribute="centerY" secondItem="byU-SS-QQj" secondAttribute="centerY" id="5oO-5m-0oR"/>
                             <constraint firstAttribute="trailing" secondItem="Bs9-T5-53G" secondAttribute="trailing" id="6YP-nn-E3B"/>
+                            <constraint firstItem="M0c-Rg-chZ" firstAttribute="leading" secondItem="byU-SS-QQj" secondAttribute="leadingMargin" constant="17" id="BQz-uT-ox6"/>
                             <constraint firstItem="Bs9-T5-53G" firstAttribute="top" secondItem="byU-SS-QQj" secondAttribute="topMargin" constant="64" id="Lid-Ie-YCE"/>
                             <constraint firstItem="Bs9-T5-53G" firstAttribute="leading" secondItem="byU-SS-QQj" secondAttribute="leading" id="M9O-Gk-ytY"/>
                             <constraint firstItem="jAm-nG-UXz" firstAttribute="top" secondItem="Bs9-T5-53G" secondAttribute="bottom" id="Mm8-yH-1Ps"/>
                             <constraint firstItem="M0c-Rg-chZ" firstAttribute="centerX" secondItem="byU-SS-QQj" secondAttribute="centerX" id="tBp-qE-q9R"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="19U-s1-NzA"/>
+                                <exclude reference="BQz-uT-ox6"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -142,6 +167,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ebb-WE-asC" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="84H-35-xrT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -157,6 +183,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Fsf-gV-tKr"/>
+        <segue reference="1Z4-Jc-NeZ"/>
     </inferredMetricsTieBreakers>
 </document>

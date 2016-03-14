@@ -42,9 +42,6 @@ class GameViewController: UIViewController {
     let defaults = NSUserDefaults.standardUserDefaults()
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
-    let util = Util()
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,12 +58,14 @@ class GameViewController: UIViewController {
             gameView.highScore.text = formatedTime
         }
         
-        toggleUserInteractionEnabled(false)
+        // パズルの操作を可能にする
+        toggleUserInteractionEnabled(true)
+        
+        // タイマーカウントを発火させる
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "countUpTimer:", userInfo: nil, repeats: true)
         
         // ゲーム開始時のピースの初期位置を取得
         currentPiecesOffset = getCurrentPiecesOffset()
-        
-        gameView.startBtn.addTarget(self, action: "onTapStartBtn:", forControlEvents: .TouchUpInside)
     }
     
     
@@ -98,7 +97,7 @@ class GameViewController: UIViewController {
                 let enablePositons = getEnableMovePositions(emptyLocation_x, e_y: emptyLocation_y, t_x: touchLocation_x, t_y: touchLocation_y)
                 
                 // ピースの移動
-                movePiece(enablePositons.enable_x, enable_y: enablePositons.enable_y, t_x: touchLocation_x, t_y: touchLocation_y)
+                movePiece(enablePositons.enable_x, enable_y: enablePositons.enable_y)
                 
                 // ピースの現在位置を取得
                 currentPiecesOffset = []
@@ -153,66 +152,89 @@ class GameViewController: UIViewController {
      
      - returns: none
      */
-    private func movePiece(enable_x: Int, enable_y: Int, t_x: CGFloat, t_y: CGFloat) {
+    private func movePiece(enable_x: Int, enable_y: Int) {
         
         emptyPiece = gameView.gameStageView.viewWithTag(gameView.maxPieces) as! UIImageView
         
-        let touchedPiece_x = Int(t_x / 100) * 100
-        let touchedPiece_y = Int(t_y / 100) * 100
-        
-        print("成形後：タッチ座標" + String(touchedPiece_x))
-        print("成形後：タッチ座標" + String(touchedPiece_y))
-        
         switch (enable_x, enable_y) {
 
-            // ピースを右に移動
+            // タッチしたピースを右に移動
             case (let x, let y) where x < 0 && y == 0:
+                
+            var count: CGFloat = 0.0
+            for _ in x..<0 {
+                
+                count++
+                currentPiecesOffset = getCurrentPiecesOffset()
             
-                for _ in x..<0 {
+                let fromValue = emptyPiece.center.x
+                let toValue = fromValue - gameView.pieceSize * count
+                
+                addAnimation(emptyPiece, fromValue: fromValue, toValue: toValue)
+                
+//                let emptyPiece_x = emptyPiece.frame.origin.x - (gameView.pieceSize * count)
+                let emptyPiece_x = emptyPiece.frame.origin.x
+                let emptyPiece_y = emptyPiece.frame.origin.y
+                
+                for (index, currentOffset) in currentPiecesOffset.enumerate() {
+                    let currentPiece_x = currentOffset[0]
+                    let currentPiece_y = currentOffset[1]
                     
-//                    let fromValue = emptyPiece.frame.origin.x
-//                    let toValue = (fromValue - gameView.pieceSize)
-//
-//                    addAnimation(emptyPiece, fromValue: fromValue, toValue: toValue)
-                    
-                    for (index, currentOffset) in currentPiecesOffset.enumerate() {
+                    if emptyPiece_x == currentPiece_x && emptyPiece_y == currentPiece_y {
                         
-                        let currentPiece_x = Int(currentOffset[0])
-                        let currentPiece_y = Int(currentOffset[1])
+                        let movePiece = gameView.gameStageView.viewWithTag(index + 1) as! UIImageView
                         
-                        if touchedPiece_x == currentPiece_x && touchedPiece_y == currentPiece_y {
-                            
-                            let movePiece = gameView.gameStageView.viewWithTag(index + 1) as! UIImageView
-                            
-                            gameView.gameStageView.convertRect(movePiece.bounds, toView: emptyPiece)
-                                                        
-//                            let fromValue = CGFloat(currentPiece_x)
-//                            let toValue = (fromValue + gameView.pieceSize)
-//                            
-//                            addAnimation(movePiece, fromValue: fromValue, toValue: toValue)
-                        }
+                        print("currentPiece_x: \(currentPiece_x)")
+                        print("currentPiece_y: \(currentPiece_y)")
+                        print("movePiece: \(index + 1)")
+                        
+                        let fromValue = movePiece.center.x
+                        let toValue = fromValue + gameView.pieceSize
+                        
+                        addAnimation(movePiece, fromValue: fromValue, toValue: toValue)
+                        break
                     }
                 }
-            // ピースを左に移動
+            }
+
+            // タッチしたピースを左に移動
             case (let x, let y) where x > 0 && y == 0:
-            
-                for _ in 0..<x {
+        
+            var count: CGFloat = 0.0
+            for _ in 0..<x {
+                
+                count++
+                currentPiecesOffset = getCurrentPiecesOffset()
+                
+                let fromValue = emptyPiece.center.x
+                let toValue = fromValue + gameView.pieceSize * count
+                
+                addAnimation(emptyPiece, fromValue: fromValue, toValue: toValue)
+                
+                let emptyPiece_x = emptyPiece.frame.origin.x
+                let emptyPiece_y = emptyPiece.frame.origin.y
+                
+                for (index, currentOffset) in currentPiecesOffset.enumerate() {
+                    let currentPiece_x = currentOffset[0]
+                    let currentPiece_y = currentOffset[1]
                     
-                    emptyPiece.frame.origin.x += gameView.pieceSize
-                    let e_x = emptyPiece.frame.origin.x
-                    let e_y = emptyPiece.frame.origin.y
-                    
-                    for (index, currentOffset) in currentPiecesOffset.enumerate() {
+                    if emptyPiece_x == currentPiece_x && emptyPiece_y == currentPiece_y {
                         
-                        let c_x = currentOffset[0]
-                        let c_y = currentOffset[1]
+                        let movePiece = gameView.gameStageView.viewWithTag(index + 1) as! UIImageView
                         
-                        if e_x == c_x && e_y == c_y {
-                            let movePiece = gameView.gameStageView.viewWithTag(index + 1) as! UIImageView
-                            movePiece.frame.origin.x -= gameView.pieceSize
-                        }
+                        print("currentPiece_x: \(currentPiece_x)")
+                        print("currentPiece_y: \(currentPiece_y)")
+                        print("movePiece: \(index + 1)")
+                        
+                        let fromValue = movePiece.center.x
+                        let toValue = fromValue - gameView.pieceSize
+                        
+                        addAnimation(movePiece, fromValue: fromValue, toValue: toValue)
+                        break
                     }
                 }
+            }
+            
             default:
                 break
         }
@@ -283,10 +305,7 @@ class GameViewController: UIViewController {
         
         anim.fromValue = fromValue
         anim.toValue = toValue
-
-        print("fromValue" + String(anim.fromValue))
-        print("toValue" + String(anim.toValue))
-
+        
         targetView.layer.pop_addAnimation(anim, forKey: "slide")
         anim.completionBlock = {(anim, finished) in
             print("animation finish")
@@ -436,25 +455,5 @@ class GameViewController: UIViewController {
             gameView.highScore.text = formatedTime
         }
         
-    }
-    
-
-    /**
-     スタートボタン押下時の処理
-     
-     - parameters:
-        - sender
-     
-     - returns: none
-     */
-    func onTapStartBtn(sender: AnyObject) {
-        
-        // パズルの操作を可能にする
-        toggleUserInteractionEnabled(true)
-        
-        // タイマーカウントを発火させる
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "countUpTimer:", userInfo: nil, repeats: true)
-        
-        gameView.startBtn.alpha = 0
     }
 }
