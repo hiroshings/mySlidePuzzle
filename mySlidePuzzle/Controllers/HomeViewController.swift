@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -95,11 +96,36 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     /// STARTボタン押下でフォトライブラリを表示
     @IBAction func onTapStartBtn(sender: AnyObject) {
+        
+        let status = PHPhotoLibrary.authorizationStatus()
+        
+        switch(status) {
+        case PHAuthorizationStatus.Denied:
+            // カメラロールへのアクセスが許可されていない場合
+            let alert:UIAlertController = UIAlertController(
+                title: "エラー",
+                message: "「写真」へのアクセスが拒否されています。設定より変更してください",
+                preferredStyle: UIAlertControllerStyle.Alert
+            )
+            let cancelAction:UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.Cancel, handler: nil)
+            let defaultAction:UIAlertAction = UIAlertAction(title: "設定画面へ", style: UIAlertActionStyle.Default, handler: {
+                (UIAlertAction) -> Void in (self.goSettingApp())
+            })
+            
+            alert.addAction(cancelAction)
+            alert.addAction(defaultAction)
+            presentViewController(alert, animated: true, completion: nil)
+            
+        default:
+            break
+        }
+        
         /**
         - 画像選択画面を表示
         */
         if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
-            // アラート表示
+            
+            // カメラロールが存在しない場合の処理
             let alert:UIAlertController = UIAlertController(
                 title: "警告",
                 message: "フォトライブラリにアクセスできません",
@@ -126,6 +152,19 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             // 選択画面起動
             self.presentViewController(imagePickerController, animated: true, completion: nil)
         }
+    }
+    
+    /**
+     設定アプリに遷移する
+     
+     - parameters:
+        - none
+     
+     - returns: none
+     */
+    func goSettingApp() {
+        let url = NSURL(string: UIApplicationOpenSettingsURLString)
+        UIApplication.sharedApplication().openURL(url!)
     }
     
     /**
