@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // 初期値は8パズル
         defaults.registerDefaults(["level": AppConst.piece8])
         
-        // レベル選択ボタンの選択位置初期化
+        // userDefaultからレベル選択ボタンのカレント状態を再現する
         if let level = defaults.objectForKey("level") {
             
             switch String(level) {
@@ -94,14 +94,16 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.performSegueWithIdentifier("goGameView", sender: self)
     }
     
+    
     /// STARTボタン押下でフォトライブラリを表示
     @IBAction func onTapStartBtn(sender: AnyObject) {
         
         let status = PHPhotoLibrary.authorizationStatus()
         
         switch(status) {
+        
+        // カメラロールへのアクセスが許可されていない場合
         case PHAuthorizationStatus.Denied:
-            // カメラロールへのアクセスが許可されていない場合
             let alert:UIAlertController = UIAlertController(
                 title: "エラー",
                 message: "「写真」へのアクセスが拒否されています。設定より変更してください",
@@ -125,7 +127,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         */
         if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
             
-            // カメラロールが存在しない場合の処理
+            // カメラロールが端末に存在しない場合
             let alert:UIAlertController = UIAlertController(
                 title: "警告",
                 message: "フォトライブラリにアクセスできません",
@@ -226,7 +228,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     /**
-     レベル変更をデリゲートに通知
+     レベル変更をuserDefaultに保存
      
      - parameters:
         - sender: actionの送信元オブジェクト

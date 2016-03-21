@@ -17,12 +17,10 @@ class MyPuzzleViewController: UIViewController {
     @IBOutlet weak var noimageTxt: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    // pazzle
+    // puzzle
     var myPuzzleView = MyPuzzleView()
     var imagePath: String = "" //画像のパス
     
-    // TODO:ほぼ全画面で使うclassはどこかでまとめてインスタンス化する
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,7 +62,6 @@ class MyPuzzleViewController: UIViewController {
             
             for (index, imageDataName) in imageDataNames.enumerate() {
                 
-                print(imageDataName)
                 // myPuzzleインスタンスを生成
                 let rect = CGRectMake(0, 0, 300, 400)
                 myPuzzleView = MyPuzzleView(frame: rect)
@@ -109,8 +106,6 @@ class MyPuzzleViewController: UIViewController {
                 myPuzzleView.playBtn.addTarget(self, action: "onTapEventHandler:", forControlEvents: .TouchUpInside)
                 myPuzzleView.deleteBtn.addTarget(self, action: "onTapEventHandler:", forControlEvents: .TouchUpInside)
                 myPuzzleView.userInteractionEnabled = true
-                
-                myPuzzleView.alpha = 0.8
                 
                 scrollView.addSubview(myPuzzleView)
             }

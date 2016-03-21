@@ -42,18 +42,17 @@ class GameViewController: UIViewController {
     let defaults = NSUserDefaults.standardUserDefaults()
     let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "My Slide Puzzle"
+        self.navigationItem.title = "Simple Slide Puzzle"
         
-        // ハイスコアの初期化
+        // ハイスコアの表示
         puzzleImageName = appDelegate.puzzleImageName
         
         if let highScore = defaults.objectForKey(puzzleImageName) {
             
-            print("highScore")
-            print(highScore as! Int)
             let formatedTime = Util.formatTime(highScore as! Int)
             gameView.highScore.text = formatedTime
         }
@@ -75,16 +74,16 @@ class GameViewController: UIViewController {
         if let _ = touches.first {
             for touch in touches {
                 
-                // カラピースのある座標
-                emptyPiece = gameView.gameStageView.viewWithTag(gameView.maxPieces) as! UIImageView
-                let emptyPiece_x = emptyPiece.frame.origin.x
-                let emptyPiece_y = emptyPiece.frame.origin.y
-                
                 let touchViewId = touch.view?.tag
                 
                 if touchViewId == 0 {
                     return
                 }
+                
+                // カラピースの座標
+                emptyPiece = gameView.gameStageView.viewWithTag(gameView.maxPieces) as! UIImageView
+                let emptyPiece_x = emptyPiece.frame.origin.x
+                let emptyPiece_y = emptyPiece.frame.origin.y
                 
                 // タッチしたピース
                 touchPiece = gameView.gameStageView.viewWithTag(touchViewId!) as! UIImageView
@@ -98,17 +97,6 @@ class GameViewController: UIViewController {
                 
                 // ピースの移動
                 movePiece(enablePositons.enable_x, enable_y: enablePositons.enable_y)
-                
-                // ピースの現在位置を取得
-                currentPiecesOffset = getCurrentPiecesOffset()
-                
-                // クリア判定
-                completeFlag = checkComplete()
-                
-                // クリア判定trueの場合、クリア演出に移行
-                if completeFlag == true {
-                    showCompleteProduction()
-                }
             }
         }
         
@@ -284,7 +272,7 @@ class GameViewController: UIViewController {
     }
     
     /**
-     ピースの移動アニメーション用ヘルパーメソッド
+     ピースの移動アニメーション
      
      - parameters:
         - targetView: アニメさせる対象のview
@@ -310,7 +298,7 @@ class GameViewController: UIViewController {
     }
     
     /**
-     ピース移動アニメ終了後、ピースの状態をアップデートする
+     ピース移動アニメ終了後、ピースの状態をアップデートするコールバック関数
      
      - parameters:
         - none
@@ -368,7 +356,7 @@ class GameViewController: UIViewController {
         
         for i in 0..<gameView.maxPieces {
             
-            // デフォルトのoffsetと現在のoffsetが一致していなければクリアflagがバッキバキ
+            // デフォルトのoffsetと現在のoffsetが一致していなければクリアflag崩壊
             if gameView.defaultPieceOffset[i] != currentPiecesOffset[i] {
                 completeFlag = false
                 break
@@ -396,8 +384,12 @@ class GameViewController: UIViewController {
         // タイマー停止
         timer.invalidate()
         
-        // Complete!!メッセージをフェードイン        
-        UIView.animateWithDuration(0.4, animations: {self.gameView.compMessage.alpha = 1})
+        // Complete!!メッセージをフェードイン・アウト       
+        UIView.animateWithDuration(1.0, animations: {self.gameView.compMessage.alpha = 1}, completion: {
+            _ in
+            sleep(1)
+            UIView.animateWithDuration(0.4, animations: {self.gameView.compMessage.alpha = 0})
+        })
         
         // ピースの番号・黒マスを排除
         for id in gameView.ids {

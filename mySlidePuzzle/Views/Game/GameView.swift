@@ -79,17 +79,6 @@ class GameView: UIView {
         gameStageBgView.layer.shadowOffset = CGSizeMake(1.0, 1.0)
         gameStageBgView.layer.shadowRadius = 5.0
         
-        // 背景画像を生成
-        bgImage.frame = CGRectMake(0, 0, AppConst.screenBounds.width, AppConst.screenBounds.height)
-        
-        let blurEffect = UIBlurEffect(style: .ExtraLight)
-        let visualEffectView = UIVisualEffectView(effect: blurEffect)
-        visualEffectView.frame = bgImage.bounds
-        visualEffectView.alpha = 0.8
-        
-        bgImage.addSubview(visualEffectView)
-//        bgView.addSubview(bgImage)
-        
         // レベルに応じて、ピースの最大数等を初期化
         if let level = defaults.objectForKey("level") {
             let pieceStatus = AppConst.initPieceStatus(level as! String)
@@ -121,6 +110,10 @@ class GameView: UIView {
                 pieceId.text = String(id)
                 pieceId.textAlignment = NSTextAlignment.Center
                 pieceId.textColor = UIColor.whiteColor()
+                pieceId.shadowOffset = CGSize(width: 1.0, height: 1.0)
+                pieceId.layer.shadowColor = UIColor.blackColor().CGColor
+                pieceId.layer.shadowOpacity = 0.5
+                
                 
                 // ピースの生成
                 offset_x = CGFloat(j) * pieceSize
@@ -241,10 +234,10 @@ class GameView: UIView {
         var count: Int = 0
         var tag: Int = 0
         
-        for (var i = 0; i < pieceColumn; i++) {
+        for i in 0..<pieceColumn {
             offset_y = CGFloat(i) * pieceSize
             
-            for (var j = 0; j < pieceColumn; j++) {
+            for j in 0..<pieceColumn {
                 offset_x = CGFloat(j) * pieceSize
                 count++
                 

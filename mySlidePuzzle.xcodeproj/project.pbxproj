@@ -22,7 +22,6 @@
 		5293F22F1C3E80720002BC66 /* MyPuzzleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5293F22E1C3E80720002BC66 /* MyPuzzleView.xib */; };
 		5293F2321C3E835E0002BC66 /* MyPuzzleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293F2311C3E835E0002BC66 /* MyPuzzleView.swift */; };
 		5293F2351C3E87F90002BC66 /* MyPuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5293F2341C3E87F90002BC66 /* MyPuzzleViewController.swift */; };
-		52CC9B881C48963200778463 /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CC9B871C48963200778463 /* Puzzle.swift */; };
 		BA0409EA7DA6FF2AA4C4872E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7F28D08811CE701475F0D5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +45,6 @@
 		5293F22E1C3E80720002BC66 /* MyPuzzleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPuzzleView.xib; sourceTree = "<group>"; };
 		5293F2311C3E835E0002BC66 /* MyPuzzleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MyPuzzleView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5293F2341C3E87F90002BC66 /* MyPuzzleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MyPuzzleViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		52CC9B871C48963200778463 /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		9CDC43FA28E4282F6285A389 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CB7F28D08811CE701475F0D5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -67,7 +65,6 @@
 		449F4F441C383893007CE3E0 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
-				52CC9B871C48963200778463 /* Puzzle.swift */,
 				44B3AE881C38FCBB00DF15E4 /* AppConst.swift */,
 				44B3AE861C38FC3900DF15E4 /* Util.swift */,
 			);
@@ -307,7 +304,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5293F2321C3E835E0002BC66 /* MyPuzzleView.swift in Sources */,
-				52CC9B881C48963200778463 /* Puzzle.swift in Sources */,
 				44D1D16C1C37E2F000C8CB76 /* HomeViewController.swift in Sources */,
 				44B3AE871C38FC3900DF15E4 /* Util.swift in Sources */,
 				5247FB581C4C9F1700B3C6CF /* GameView.swift in Sources */,
