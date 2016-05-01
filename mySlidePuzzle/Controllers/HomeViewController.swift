@@ -15,6 +15,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // MARK: - properties -
     ----------------------*/
     
+    @IBOutlet weak var startBtn: UIButton!
+    @IBOutlet weak var myPuzzleBtn: UIButton!
     @IBOutlet weak var puzzleLevelSC: UISegmentedControl! // レベル切り替えボタン
     
     let defaults = NSUserDefaults()
