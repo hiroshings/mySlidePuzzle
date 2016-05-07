@@ -12,7 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var baseImage = UIImageView()
+    var baseImage = UIImageView() // パズルベースイメージ
+    var bgImage = UIImageView() // ゲーム画面の背景イメージ
+    var level = "" // パズルのレベル
+    var puzzleImageName = "" // パズルの画像名
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

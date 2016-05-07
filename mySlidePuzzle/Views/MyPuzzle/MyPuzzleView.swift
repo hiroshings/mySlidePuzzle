@@ -10,7 +10,9 @@ import UIKit
 
 class MyPuzzleView: UIView {
     @IBOutlet weak var playBtn: UIButton!
+    @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var puzzleImageView: UIImageView!
+    @IBOutlet weak var highScore: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,7 +27,7 @@ class MyPuzzleView: UIView {
     func viewInit() {
         
         // xibからカスタムviewをロードする
-        let nib = UINib(nibName: "myPuzzleView", bundle: nil)
+        let nib = UINib(nibName: "MyPuzzleView", bundle: nil)
         let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         
         addSubview(view)

@@ -9,6 +9,110 @@
 import Foundation
 import UIKit
 
+class Util {
+    /*-----------------------
+    // MARK: - time -
+    ----------------------*/
+    
+    /// 現在時刻を返す
+    static func getCurrentTime() -> String {
+        
+        let now = NSDate()
+        let dataFormatter = NSDateFormatter()
+        
+        dataFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        dataFormatter.dateFormat = "yyyyMMddhhmmss"
+        return dataFormatter.stringFromDate(now)
+    }
+    
+    /**
+     タイマー表示を整形する
+     
+     - parameters:
+     - originTime: 整形元のタイムカウント
+     
+     - returns: none
+     */
+    static func formatTime(originTimeCount: Int) -> String {
+        
+        let ms = originTimeCount % 100
+        let s = (originTimeCount - ms) / 100 % 60
+        let m = (originTimeCount - s - ms) / 6000 % 3600
+        
+        let formatedTime = String(format: "%02d:%02d:%02d", arguments: [m, s, ms])
+        return formatedTime
+    }
+    
+    /*-----------------------
+    // MARK: - directory -
+    ----------------------*/
+    
+    /**
+     ローカルストレージのRootディレクトリを取得
+     
+     - parameters:
+     - none
+     
+     - returns: ディレクトリまでのパス
+     */
+    static func getRootDirectory() -> NSURL {
+        
+        // NSURL型でルートディレクトリの取得
+        let fileManager = NSFileManager.defaultManager()
+        let url = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        return url
+    }
+    
+    /**
+     ローカルストレージのSubディレクトリを取得
+     
+     - parameters:
+     - subDirName: 参照するディレクトリ名
+     
+     - returns: ディレクトリまでのパス
+     */
+    static func getSubDirectory(subDirName: String) -> NSURL {
+        
+        // NSURL型でルートディレクトリの取得
+        let fileManager = NSFileManager.defaultManager()
+        let url = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        
+        // ディレクトリを参照
+        let dirUrl = url.URLByAppendingPathComponent(subDirName)
+        
+        return dirUrl
+    }
+    
+    /**
+     ローカルストレージからファイル名を取得
+     
+     - parameters:
+     - none
+     
+     - returns: ローカルストレージのpngファイル名
+     */
+    static func getImageDataNames() -> Array<String>? {
+        
+        
+        guard let dir = getSubDirectory("image").path else {
+            return nil
+        }
+        
+        do {
+            // ファイル名が格納された配列を返す
+            let fileManager = NSFileManager.defaultManager()
+            let pngImages = try fileManager.contentsOfDirectoryAtPath(dir)
+            print("pngImages" + String(pngImages))
+            return pngImages
+        }
+        catch {
+            // ファイル名がない場合、nilを返す
+            return nil
+        }
+    }
+}
+
+/// RGB, RGBA値を返すようUIColorを拡張
 extension UIColor {
 
     class func rgb(r:CGFloat, g:CGFloat, b:CGFloat) -> UIColor{
@@ -26,119 +130,4 @@ extension UIColor {
         let color = UIColor(red: red, green: green, blue: blue, alpha: a)
         return color
     }
-}
-
-extension UIScrollView {
-    
-    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        superview?.touchesBegan(touches, withEvent: event)
-    }
-}
-
-public class CurrentTime {
-    
-    let now = NSDate()
-    let dataFormatter = NSDateFormatter()
-    
-    /// 現在時刻を返す
-    internal func getCurrentTime() -> String {
-        
-        dataFormatter.locale = NSLocale(localeIdentifier: "ja_JP")
-        dataFormatter.dateFormat = "yyyyMMddHHmmss"
-        return dataFormatter.stringFromDate(now)
-    }
-}
-
-public class CurrentTimeFormatted: CurrentTime {
-    
-    override internal func getCurrentTime() -> String {
-        
-        dataFormatter.locale = NSLocale(localeIdentifier: "ja_JP")
-        dataFormatter.dateFormat = "yyyy/MM/dd/HH:mm:ss"
-        return dataFormatter.stringFromDate(now)
-    }
-}
-
-/*-----------------------
-// MARK: - directory -
-----------------------*/
-
-// TODO: ディレクトリにアクセスする処理をここにまとめる
-public class PuzzleDirectory {
-    
-    let fileManager = NSFileManager.defaultManager()
-    let defaults = NSUserDefaults.standardUserDefaults()
-    
-    
-    /**
-     ローカルストレージのRootディレクトリを取得
-     
-     - parameters:
-        - none
-     
-     - returns: ディレクトリまでのパス
-     */
-    func getRootDirectory() -> NSURL {
-        
-        // NSURL型でルートディレクトリの取得
-        let url = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-        return url
-    }
-    
-    /**
-    ローカルストレージのSubディレクトリを取得
-    
-    - parameters:
-     - subDirName: 参照するディレクトリ名
-    
-    - returns: ディレクトリまでのパス
-    */
-    func getSubDirectory(subDirName: String) -> NSURL {
-        
-        // NSURL型でルートディレクトリの取得
-        let url = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-        
-        // ディレクトリを参照
-        let dirUrl = url.URLByAppendingPathComponent(subDirName)
-        
-        return dirUrl
-    }
-    
-    /**
-     ローカルストレージからファイル名を取得
-     
-     - parameters:
-     - none
-     
-     - returns: ローカルストレージのpngファイル名
-     */
-    func getImageDataNames() -> Array<String>? {
-        
-        
-        guard let dir = getSubDirectory("photo").path else {
-            return nil
-        }
-        
-        do {
-            // ファイル名が格納された配列を返す
-            let pngImages = try fileManager.contentsOfDirectoryAtPath(dir)
-            print(pngImages)
-            return pngImages
-        }
-        catch {
-            // ファイル名がない場合、nilを返す
-            return nil
-        }
-    }
-    
-    /// TODO: HighScoreの読み込み
-    func getHighScore(key: String) -> String {
-        
-        if let highScore = defaults.objectForKey(key) {
-            return highScore as! String
-        } else {
-            return "00:00:00"
-        }
-    }
-
 }

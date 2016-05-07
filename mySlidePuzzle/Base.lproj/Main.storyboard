@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ebb-WE-asC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ebb-WE-asC">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -15,47 +16,137 @@
                         <viewControllerLayoutGuide type="bottom" id="ysl-cg-zKk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mIB-PN-3sq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simple 9 Puzzle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmq-sU-7qm">
-                                <rect key="frame" x="87" y="164" width="240" height="39"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gG-o2-7yb">
-                                <rect key="frame" x="184" y="353" width="47" height="30"/>
-                                <state key="normal" title="START"/>
-                                <connections>
-                                    <action selector="onTapStartBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BhF-SE-64u"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGp-BI-uKC">
-                                <rect key="frame" x="169" y="430" width="78" height="30"/>
-                                <state key="normal" title="My Puzzles"/>
-                                <connections>
-                                    <segue destination="CKX-1S-Cf0" kind="show" id="cE6-3c-fR5"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6GE-cl-6mr" customClass="Mainvisual">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="mainVisual" translatesAutoresizingMaskIntoConstraints="NO" id="dkO-IL-H14">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="360"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJ3-Wr-o9o">
+                                        <rect key="frame" x="76" y="378" width="168" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="168" id="kq9-ok-8dy"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="startBtn"/>
+                                        <connections>
+                                            <action selector="onTapStartBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v2p-8c-dD4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOK-0I-fIP">
+                                        <rect key="frame" x="89" y="446" width="143" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="143" id="QPA-zH-Kad"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="mypuzzleBtn"/>
+                                        <connections>
+                                            <segue destination="CKX-1S-Cf0" kind="show" id="VWs-ia-SQv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="9i1-CE-e5e"/>
+                                    <constraint firstItem="qOK-0I-fIP" firstAttribute="centerX" secondItem="6GE-cl-6mr" secondAttribute="centerX" id="C6g-yJ-W5K"/>
+                                    <constraint firstItem="dkO-IL-H14" firstAttribute="width" secondItem="6GE-cl-6mr" secondAttribute="width" id="Cno-r4-9hl"/>
+                                    <constraint firstItem="dkO-IL-H14" firstAttribute="top" secondItem="6GE-cl-6mr" secondAttribute="top" constant="10" id="DIn-R7-4mm"/>
+                                    <constraint firstAttribute="height" id="G3s-em-nop"/>
+                                    <constraint firstAttribute="width" id="Hw7-eg-X9n"/>
+                                    <constraint firstItem="lJ3-Wr-o9o" firstAttribute="centerX" secondItem="6GE-cl-6mr" secondAttribute="centerX" id="XdQ-YT-6eD"/>
+                                    <constraint firstItem="qOK-0I-fIP" firstAttribute="top" secondItem="lJ3-Wr-o9o" secondAttribute="bottom" constant="14" id="Z21-HY-ZsN"/>
+                                    <constraint firstAttribute="height" secondItem="dkO-IL-H14" secondAttribute="height" multiplier="1.4" id="d9c-5c-9ae"/>
+                                    <constraint firstItem="dkO-IL-H14" firstAttribute="centerX" secondItem="6GE-cl-6mr" secondAttribute="centerX" id="rxk-qy-63e"/>
+                                    <constraint firstItem="lJ3-Wr-o9o" firstAttribute="top" secondItem="dkO-IL-H14" secondAttribute="bottom" constant="8" id="tOE-Ha-KKp"/>
+                                    <constraint firstAttribute="width" id="zJH-ql-Cn7"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9i1-CE-e5e"/>
+                                        <exclude reference="G3s-em-nop"/>
+                                        <exclude reference="Hw7-eg-X9n"/>
+                                        <exclude reference="zJH-ql-Cn7"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9gG-o2-7yb" firstAttribute="centerX" secondItem="mIB-PN-3sq" secondAttribute="centerX" id="4Je-lU-wmB"/>
-                            <constraint firstItem="9gG-o2-7yb" firstAttribute="top" secondItem="cmq-sU-7qm" secondAttribute="bottom" constant="150" id="DDX-jr-JUm"/>
-                            <constraint firstItem="cmq-sU-7qm" firstAttribute="top" secondItem="XSh-dk-HSF" secondAttribute="bottom" constant="100" id="NcL-QE-WKd"/>
-                            <constraint firstItem="cmq-sU-7qm" firstAttribute="centerX" secondItem="mIB-PN-3sq" secondAttribute="centerX" id="t3M-4O-1G1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6GE-cl-6mr" secondAttribute="trailing" id="2mx-oa-1gt"/>
+                            <constraint firstItem="6GE-cl-6mr" firstAttribute="leading" secondItem="mIB-PN-3sq" secondAttribute="leading" id="7M7-KJ-pyb"/>
+                            <constraint firstItem="6GE-cl-6mr" firstAttribute="leading" secondItem="mIB-PN-3sq" secondAttribute="leadingMargin" id="8MJ-6j-85T"/>
+                            <constraint firstItem="6GE-cl-6mr" firstAttribute="top" secondItem="XSh-dk-HSF" secondAttribute="bottom" id="8tc-h9-WYY"/>
+                            <constraint firstItem="6GE-cl-6mr" firstAttribute="top" secondItem="XSh-dk-HSF" secondAttribute="bottom" id="BRz-xd-8Bc"/>
+                            <constraint firstAttribute="trailing" secondItem="6GE-cl-6mr" secondAttribute="trailing" id="ExE-Y0-zRH"/>
+                            <constraint firstItem="6GE-cl-6mr" firstAttribute="top" secondItem="XSh-dk-HSF" secondAttribute="bottom" id="GY8-XC-P6u"/>
+                            <constraint firstItem="ysl-cg-zKk" firstAttribute="top" secondItem="6GE-cl-6mr" secondAttribute="bottom" id="RXu-QO-shh"/>
+                            <constraint firstItem="ysl-cg-zKk" firstAttribute="top" secondItem="6GE-cl-6mr" secondAttribute="bottom" id="S6a-x1-Xwp"/>
+                            <constraint firstItem="6GE-cl-6mr" firstAttribute="top" secondItem="XSh-dk-HSF" secondAttribute="bottom" id="YU2-wA-rDC"/>
+                            <constraint firstItem="6GE-cl-6mr" firstAttribute="leading" secondItem="mIB-PN-3sq" secondAttribute="leadingMargin" id="YXo-Z5-YtM"/>
+                            <constraint firstItem="6GE-cl-6mr" firstAttribute="leading" secondItem="mIB-PN-3sq" secondAttribute="leadingMargin" id="cFs-8N-87R"/>
+                            <constraint firstItem="6GE-cl-6mr" firstAttribute="leading" secondItem="mIB-PN-3sq" secondAttribute="leadingMargin" id="esd-rx-uy0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6GE-cl-6mr" secondAttribute="trailing" id="g93-mx-Gta"/>
+                            <constraint firstItem="ysl-cg-zKk" firstAttribute="top" secondItem="6GE-cl-6mr" secondAttribute="bottom" id="gIF-cx-7Mc"/>
+                            <constraint firstItem="6GE-cl-6mr" firstAttribute="leading" secondItem="mIB-PN-3sq" secondAttribute="leadingMargin" id="h2Z-OJ-10l"/>
+                            <constraint firstItem="6GE-cl-6mr" firstAttribute="top" secondItem="XSh-dk-HSF" secondAttribute="bottom" id="jot-sP-5jk"/>
+                            <constraint firstItem="ysl-cg-zKk" firstAttribute="top" secondItem="6GE-cl-6mr" secondAttribute="bottom" id="pFp-7Y-h6q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6GE-cl-6mr" secondAttribute="trailing" id="sEF-2l-8ma"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6GE-cl-6mr" secondAttribute="trailing" id="sMk-1E-1Wc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6GE-cl-6mr" secondAttribute="trailing" id="toT-MJ-rAn"/>
+                            <constraint firstItem="6GE-cl-6mr" firstAttribute="top" secondItem="XSh-dk-HSF" secondAttribute="bottom" id="vhB-P9-8xu"/>
+                            <constraint firstItem="ysl-cg-zKk" firstAttribute="top" secondItem="6GE-cl-6mr" secondAttribute="bottom" id="wRJ-Q0-Frz"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2mx-oa-1gt"/>
+                                <exclude reference="8MJ-6j-85T"/>
+                                <exclude reference="8tc-h9-WYY"/>
+                                <exclude reference="GY8-XC-P6u"/>
+                                <exclude reference="YU2-wA-rDC"/>
+                                <exclude reference="YXo-Z5-YtM"/>
+                                <exclude reference="cFs-8N-87R"/>
+                                <exclude reference="esd-rx-uy0"/>
+                                <exclude reference="g93-mx-Gta"/>
+                                <exclude reference="h2Z-OJ-10l"/>
+                                <exclude reference="jot-sP-5jk"/>
+                                <exclude reference="sEF-2l-8ma"/>
+                                <exclude reference="sMk-1E-1Wc"/>
+                                <exclude reference="toT-MJ-rAn"/>
+                                <exclude reference="vhB-P9-8xu"/>
+                                <exclude reference="RXu-QO-shh"/>
+                                <exclude reference="S6a-x1-Xwp"/>
+                                <exclude reference="gIF-cx-7Mc"/>
+                                <exclude reference="pFp-7Y-h6q"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="MoM-RU-iyU"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <navigationItem key="navigationItem" id="MoM-RU-iyU">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="fGQ-84-AN2">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dbl-pD-Uoz">
+                                <rect key="frame" x="165" y="5" width="139" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="8Puzzle"/>
+                                    <segment title="15Puzzle"/>
+                                </segments>
+                                <connections>
+                                    <action selector="levelChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Uxe-Zw-ZJg"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="myPuzzleBtn" destination="qOK-0I-fIP" id="5Yh-94-YU7"/>
+                        <outlet property="puzzleLevelSC" destination="dbl-pD-Uoz" id="kfe-QP-kaO"/>
+                        <outlet property="startBtn" destination="lJ3-Wr-o9o" id="KZL-5E-FUw"/>
                         <segue destination="cWq-1q-mkV" kind="show" identifier="goGameView" id="1Z4-Jc-NeZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="387"/>
+            <point key="canvasLocation" x="1216" y="382"/>
         </scene>
         <!--My Puzzle View Controller-->
         <scene sceneID="7vQ-hH-DPl">
@@ -70,8 +161,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ゲームを遊ぶと遊んだパズルが表示されます" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0c-Rg-chZ">
-                                <rect key="frame" x="37" y="358" width="340" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="87" y="361" width="240" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -81,13 +172,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="M0c-Rg-chZ" secondAttribute="trailing" constant="17" id="19U-s1-NzA"/>
                             <constraint firstItem="M0c-Rg-chZ" firstAttribute="centerY" secondItem="byU-SS-QQj" secondAttribute="centerY" id="5oO-5m-0oR"/>
                             <constraint firstAttribute="trailing" secondItem="Bs9-T5-53G" secondAttribute="trailing" id="6YP-nn-E3B"/>
+                            <constraint firstItem="M0c-Rg-chZ" firstAttribute="leading" secondItem="byU-SS-QQj" secondAttribute="leadingMargin" constant="17" id="BQz-uT-ox6"/>
                             <constraint firstItem="Bs9-T5-53G" firstAttribute="top" secondItem="byU-SS-QQj" secondAttribute="topMargin" constant="64" id="Lid-Ie-YCE"/>
                             <constraint firstItem="Bs9-T5-53G" firstAttribute="leading" secondItem="byU-SS-QQj" secondAttribute="leading" id="M9O-Gk-ytY"/>
                             <constraint firstItem="jAm-nG-UXz" firstAttribute="top" secondItem="Bs9-T5-53G" secondAttribute="bottom" id="Mm8-yH-1Ps"/>
                             <constraint firstItem="M0c-Rg-chZ" firstAttribute="centerX" secondItem="byU-SS-QQj" secondAttribute="centerX" id="tBp-qE-q9R"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="19U-s1-NzA"/>
+                                <exclude reference="BQz-uT-ox6"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -105,40 +204,17 @@
             <objects>
                 <viewController storyboardIdentifier="gameView" id="cWq-1q-mkV" customClass="GameViewController" customModule="mySlidePuzzle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kiW-Jk-nxN"/>
-                        <viewControllerLayoutGuide type="bottom" id="kNx-X7-PG8"/>
+                        <viewControllerLayoutGuide type="top" id="t9g-My-auV"/>
+                        <viewControllerLayoutGuide type="bottom" id="YJ3-oS-5Lb"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WwR-cO-Egv">
+                    <view key="view" contentMode="scaleToFill" id="Vjy-1b-G8M" customClass="GameView" customModule="mySlidePuzzle" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6r-Id-j7m">
-                                <rect key="frame" x="57" y="218" width="300" height="300"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Fir-p1-31A"/>
-                                    <constraint firstAttribute="height" constant="300" id="Jdt-B5-TuK"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HB1-rf-4MI">
-                                <rect key="frame" x="123" y="578" width="169" height="39"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="HB1-rf-4MI" firstAttribute="centerX" secondItem="WwR-cO-Egv" secondAttribute="centerX" id="O84-1J-4LP"/>
-                            <constraint firstItem="y6r-Id-j7m" firstAttribute="centerX" secondItem="WwR-cO-Egv" secondAttribute="centerX" id="W0O-bq-rHO"/>
-                            <constraint firstItem="HB1-rf-4MI" firstAttribute="top" secondItem="y6r-Id-j7m" secondAttribute="bottom" constant="60" id="ais-K6-OA7"/>
-                            <constraint firstItem="y6r-Id-j7m" firstAttribute="centerY" secondItem="WwR-cO-Egv" secondAttribute="centerY" id="cBZ-nW-ep8"/>
-                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="compMessage" destination="HB1-rf-4MI" id="e8b-td-bMz"/>
-                        <outlet property="gameStageView" destination="y6r-Id-j7m" id="c0S-sf-IOR"/>
+                        <outlet property="gameView" destination="Vjy-1b-G8M" id="0JL-Xz-IAL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sig-BC-R8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -150,6 +226,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ebb-WE-asC" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="84H-35-xrT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -164,7 +241,12 @@
             <point key="canvasLocation" x="385" y="387"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mainVisual" width="282" height="349"/>
+        <image name="mypuzzleBtn" width="143" height="44"/>
+        <image name="startBtn" width="168" height="54"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fsf-gV-tKr"/>
+        <segue reference="1Z4-Jc-NeZ"/>
     </inferredMetricsTieBreakers>
 </document>
