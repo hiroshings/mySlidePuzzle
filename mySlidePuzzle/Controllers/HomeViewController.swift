@@ -26,11 +26,13 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //    }
     
     override func viewWillAppear(animated: Bool) {
-        
+        print("viewWillAppearは画面遷移ごとに毎回呼ばれます。ね？")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("viewDidLoadは画面をインスタンス化するとき(初回)しか呼ばれないですね")
         
         // 初期値は8パズル
         defaults.registerDefaults(["level": AppConst.piece8])
